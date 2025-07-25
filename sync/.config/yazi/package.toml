@@ -1,0 +1,12 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:mime-ext"
+rev = "1ab21d4"
+hash = "d7467b0a216c9b1a43932bf15d8255c7"
+
+[[plugin.deps]]
+use = "KKV9/compress"
+rev = "9fc8fe0"
+hash = "2ad086899bf368fba211a33d8f68c39d"
+
+[flavor]
+deps = []

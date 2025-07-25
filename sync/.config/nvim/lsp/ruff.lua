@@ -1,7 +1,5 @@
 return {
-  init_options = {
-    settings = {
-      cmd = { vim.fn.exepath("ruff"), "server" }
-    }
+  cmd = { vim.fn.exepath("ruff"), "server" },
+  settings = {
   }
 }

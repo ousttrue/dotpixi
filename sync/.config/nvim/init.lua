@@ -1,5 +1,7 @@
 require("config.lazy")
 
+vim.api.nvim_create_user_command("Here", ":!start %:p:h", {})
+
 --
 -- options
 --
@@ -80,7 +82,8 @@ vim.keymap.set("n", "<C-d>", ":qa<CR>", { noremap = true })
 
 local function get_lsp_servers()
   local config_dir = vim.fn.stdpath("config")
-  local dir = vim.uv.fs_opendir(vim.fs.joinpath(config_dir, "lsp"))
+  local lsp_dir = vim.fs.joinpath(config_dir, "lsp")
+  local dir = vim.uv.fs_opendir(lsp_dir)
   ---@type string[]
   local lsp_servers = {}
   if dir then
@@ -90,7 +93,7 @@ local function get_lsp_servers()
         break
       end
       local item = items[1]
-      if item and item.type == 'file' and vim.endswith(item.name, ".lua") then
+      if item and (item.type == 'file' or item.type == 'link') and vim.endswith(item.name, ".lua") then
         table.insert(lsp_servers, item.name.sub(item.name, 1, #item.name - 4))
       end
     end
