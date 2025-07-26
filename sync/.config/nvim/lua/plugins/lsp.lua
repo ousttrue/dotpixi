@@ -4,7 +4,17 @@ return {
     opts = {}
   },
   {
-    "neovim/nvim-lspconfig"
+    "mason-org/mason-lspconfig.nvim",
+    opts = {
+      ensure_installed = { "lua_ls", "tombi", "clangd", "ruff", "pyright", "powershell_es" },
+    },
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    },
+  },
+  {
+    "neovim/nvim-lspconfig",
   },
   {
     "nvimtools/none-ls.nvim",

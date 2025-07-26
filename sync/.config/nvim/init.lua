@@ -134,6 +134,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
     end
 
+    -- formatter
+    vim.keymap.set("n", "<Space>f", function()
+      vim.lsp.buf.format { timeout_ms = 2000 }
+    end, { noremap = true })
+
     -- Auto-format ("lint") on save.
     -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
     if not client:supports_method('textDocument/willSaveWaitUntil')
@@ -145,11 +150,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
           vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
         end,
       })
-
-      -- formatter
-      vim.keymap.set("n", "<Space>f", function()
-        vim.lsp.buf.format { timeout_ms = 2000 }
-      end, { noremap = true })
     end
   end,
 })

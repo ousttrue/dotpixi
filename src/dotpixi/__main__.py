@@ -107,13 +107,26 @@ def make_links(sync: pathlib.Path, force=False):
                 make_links(child, force)
 
 
-def remove_deadlinks():
-    pass
+def remove_deadlinks(dir):
+    for target in dir.iterdir():
+        if target.is_symlink():
+            src = target.readlink()
+            if not src.exists():
+                LOGGER.error(f"deadlink {target.relative_to(HOME)} => {src}")
+                target.unlink()
+        elif target.is_dir():
+            if dir == HOME:
+                if target.name == ".config":
+                    remove_deadlinks(target)
+                else:
+                    LOGGER.debug(f"skip {target}")
+            else:
+                remove_deadlinks(target)
 
 
 def command_sync(force=False):
     make_links(SYNC_DIR, force)
-    remove_deadlinks()
+    remove_deadlinks(HOME)
 
 
 def command_add(src: pathlib.Path, force=False):

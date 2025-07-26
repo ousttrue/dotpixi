@@ -1,5 +1,5 @@
 ---@type vim.lsp.Config
-return {
+local config = {
   cmd = { vim.fn.exepath "lua-language-server" },
   filetypes = { "lua" },
   root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
@@ -22,3 +22,5 @@ return {
     },
   },
 }
+
+return config

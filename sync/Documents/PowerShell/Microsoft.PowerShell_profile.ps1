@@ -51,6 +51,10 @@ if ($IsWindows)
 } 
 $NVIM_PREFIX = Join-Path $HOME "neovim"
 $NVIM_PATH =(Join-Path $NVIM_PREFIX "/bin/nvim${EXE}")
+if (-not (Test-Path $NVIM_PATH))
+{
+  $NVIM_PATH = "C:\Program Files\Neovim\bin\nvim.exe"
+}
 Set-Alias v $NVIM_PATH
 if (Test-Path $NVIM_PATH)
 {
