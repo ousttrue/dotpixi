@@ -1,4 +1,5 @@
 # pixi environments
 .pixi
+pixi.lock
 
 *.pyc

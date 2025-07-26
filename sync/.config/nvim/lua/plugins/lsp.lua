@@ -1,9 +1,12 @@
+local opts = {}
+if vim.fn.has('win64') then
+  opts.ensure_installed = require('config.lsp').get_lsp_servers()
+end
+
 return {
   {
     "mason-org/mason-lspconfig.nvim",
-    opts = {
-      ensure_installed = require('config.lsp').get_lsp_servers(),
-    },
+    opts = opts,
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
       "neovim/nvim-lspconfig",
