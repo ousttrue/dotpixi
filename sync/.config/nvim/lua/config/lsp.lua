@@ -7,7 +7,7 @@ local M = {}
 ---@return string[]
 function M.get_lsp_servers()
   local config_dir = vim.fn.stdpath("config")
-  local lsp_dir = vim.fs.joinpath(config_dir, "lsp")
+  local lsp_dir = vim.fs.joinpath(config_dir, "after/lsp")
   local dir = vim.uv.fs_opendir(lsp_dir)
   ---@type string[]
   local lsp_servers = {}
