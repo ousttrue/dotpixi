@@ -49,6 +49,14 @@ https://neovim.io/doc/
 - vim.lsp.completion
 - none-ls(prettierd)
 
+#### vim.lsp.config の初期化順
+
+- `<rtp>/lsp/*.lua`
+- lazy lspconfig
+- `<rtp>/after/lsp/*.lua`
+
+after に配置しないと lspconfig に負ける
+
 ## cui / tui
 
 ### yazi
