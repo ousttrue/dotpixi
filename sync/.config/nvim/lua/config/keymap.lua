@@ -14,6 +14,7 @@ end
 function M.setup()
   vim.keymap.set({ "n", "i" }, "<C-s>", write_buffer, { noremap = true })
   vim.keymap.set("n", "<C-d>", ":qa<CR>", { noremap = true })
+  vim.keymap.set("n", "<F7>", ":make<CR>", { noremap = true })
 end
 
 return M
