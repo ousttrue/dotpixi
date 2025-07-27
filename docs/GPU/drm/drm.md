@@ -16,6 +16,12 @@ const card_path = "/dev/dri/card1";
 
 動かず
 
+# vkmark
+
+https://github.com/vkmark/vkmark
+
+動いた。
+
 # glmark2
 
 https://github.com/glmark2/glmark2

@@ -55,7 +55,7 @@ function M.setup()
       end
 
       -- formatter
-      vim.keymap.set("n", "<Space>f", function()
+      vim.keymap.set("n", "gf", function()
         vim.lsp.buf.format { timeout_ms = 2000 }
       end, { noremap = true })
 
