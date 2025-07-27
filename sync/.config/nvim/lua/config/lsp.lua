@@ -46,6 +46,12 @@ function M.setup()
         client.server_capabilities.completionProvider = nil
       end
 
+      if client.name == "clangd" then
+        vim.keymap.set("n", "<C-h>", function()
+          vim.cmd "LspClangdSwitchSourceHeader"
+        end, { noremap = true })
+      end
+
       -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
       if client:supports_method('textDocument/completion') and client.name ~= 'ruff' then
         -- Optional: trigger autocompletion on EVERY keypress. May be slow!
@@ -55,7 +61,7 @@ function M.setup()
       end
 
       -- formatter
-      vim.keymap.set("n", "gf", function()
+      vim.keymap.set("n", "<space>f", function()
         vim.lsp.buf.format { timeout_ms = 2000 }
       end, { noremap = true })
 

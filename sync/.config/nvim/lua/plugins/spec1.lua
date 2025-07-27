@@ -12,7 +12,7 @@ return {
       -- vim.keymap.set("n", "<space>g", "<cmd>FzfLua live_grep<CR>", { noremap = true })
       vim.keymap.set("n", "<space>g", "<cmd>FzfLua grep_cword<CR>", { noremap = true })
       vim.keymap.set("n", "<space>b", "<cmd>FzfLua buffers<CR>", { noremap = true })
-      vim.keymap.set("n", "<space>f", "<cmd>FzfLua files<CR>", { noremap = true })
+      -- vim.keymap.set("n", "<space>f", "<cmd>FzfLua files<CR>", { noremap = true })
     end
   },
   {
