@@ -32,3 +32,6 @@ function gg {
 }
 
 export PATH="$HOME/local/bin:$PATH"
+
+# Created by `pipx` on 2025-07-27 06:39:41
+export PATH="$PATH:/home/ousttrue/.local/bin"
