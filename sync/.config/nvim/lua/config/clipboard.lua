@@ -4,7 +4,9 @@
 local M = {}
 
 function M.setup()
-  vim.o.clipboard = "unnamedplus"
+  -- vim.o.clipboard = "unnamedplus"
+  -- vim.opt.clipboard = "unnamedplus" -- Access system clipboard
+  vim.opt.clipboard:append { "unnamedplus" }
 
   local function paste()
     return {
@@ -24,6 +26,10 @@ function M.setup()
       ["*"] = paste,
     },
   }
+
+  -- require xclip ? xsel ?
+  -- vim.keymap.set({ "i", "c" }, "<S-Insert>", "<C-R>+", { noremap = true })
+  -- vim.keymap.set({ "n" }, "<S-Insert>", "p", { noremap = true })
 end
 
 return M
