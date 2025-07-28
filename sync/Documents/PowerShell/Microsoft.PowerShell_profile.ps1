@@ -144,6 +144,7 @@ function addPath($path)
     $null
   }
 }
+addPath(Join-Path $HOME "local/bin")
 
 # For zoxide v0.8.0+
 if (has zoxide)
