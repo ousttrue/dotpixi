@@ -13,7 +13,11 @@
 local M = {}
 
 function M.setup()
-  vim.o.bg = "dark"
+  if vim.fn.has('win64') == 1 then
+    vim.o.bg = "dark"
+  else
+    vim.o.bg = "light"
+  end
 
   local SYNTAX_UTIL = require "config.syntax_util"
 
@@ -27,11 +31,11 @@ function M.setup()
 autocmd FileType markdown hi link markdownError NONE
 ]]
 
-  if vim.fn.has('win64') == 1 then
-    vim.cmd "colorschem retrobox"
-  else
-    vim.cmd "colorschem habamax"
-  end
+  -- if vim.fn.has('win64') == 1 then
+  --   vim.cmd "colorschem retrobox"
+  -- else
+  --   vim.cmd "colorschem habamax"
+  -- end
 
   -- Background colors for active vs inactive windows
 
