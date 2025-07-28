@@ -2,7 +2,11 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
-config.default_prog = { "pwsh", "-nologo" }
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  -- We are running on Windows; maybe we emit different
+  -- key assignments here?
+  config.default_prog = { "pwsh", "-nologo" }
+end
 
 config.initial_cols = 120
 config.initial_rows = 60
