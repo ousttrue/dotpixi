@@ -1,0 +1,12 @@
+#!/bin/sh
+xremap ~/.xremap&
+
+waybar&
+# ime
+fcitx5&
+# monitoring
+# conky&
+# notification daemon
+dunst&
+# wallpaper
+swww init

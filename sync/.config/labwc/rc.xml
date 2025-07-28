@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<labwc_config>
+  <theme>
+    <name>Numix</name>
+  </theme>
+:
+  <keyboard>
+    <default />
+    <keybind key="W-Return">
+      <action name="Execute" command="foot" />
+    </keybind>
+
+    <keybind key="A-Left">
+      <action name="None" />
+    </keybind>
+    <keybind key="A-Right">
+      <action name="None" />
+    </keybind>
+
+  </keyboard>
+
+</labwc_config>
