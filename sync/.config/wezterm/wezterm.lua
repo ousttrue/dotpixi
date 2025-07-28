@@ -23,4 +23,6 @@ config.keys = {
   { mods = "ALT", key = "RightArrow", action = wezterm.action { MoveTabRelative = 1 } },
 }
 
+require("util.theme").setup(wezterm, config)
+
 return config

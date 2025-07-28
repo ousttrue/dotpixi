@@ -15,6 +15,7 @@ require("config.clipboard").setup()
 require("config.keymap").setup()
 require("config.lsp").setup()
 require("config.markdown").setup()
+require("config.color").setup()
 
 vim.cmd [[
 autocmd QuickfixCmdPost make,vimgrep copen
