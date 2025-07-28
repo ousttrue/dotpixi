@@ -3,7 +3,8 @@ if vim.fn.has('win64') == 1 then
   opts.ensure_installed = require('config.lsp').get_lsp_servers()
 end
 
-return {
+---@type LazySpec[]
+local config = {
   {
     "mason-org/mason-lspconfig.nvim",
     opts = opts,
@@ -24,3 +25,5 @@ return {
     end,
   },
 }
+
+return config

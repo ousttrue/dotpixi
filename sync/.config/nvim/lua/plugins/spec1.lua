@@ -1,5 +1,6 @@
 ---@type LazySpec[]
 return {
+  -- fzf
   {
     "ibhagwan/fzf-lua",
     -- optional for icon support
@@ -17,23 +18,6 @@ return {
     end
   },
   {
-    "haya14busa/vim-edgemotion",
-    keys = {
-      { "<C-j>", "<Plug>(edgemotion-j)", mode = { "n", "v" } },
-      { "<C-k>", "<Plug>(edgemotion-k)", mode = { "n", "v" } },
-    },
-  },
-  -- the colorscheme should be available when starting Neovim
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme tokyonight]])
-    end,
-  },
-  {
     'https://gitlab.com/itaranto/id3.nvim',
     version = '*',
     config = function()
@@ -42,32 +26,7 @@ return {
       }
     end,
   },
-  {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup {
-        mappings = { basic = false, extra = false },
-      }
-
-      -- Toggle current line (linewise) using C-/
-      vim.keymap.set("n", "<C-_>", require("Comment.api").toggle.linewise.current)
-      vim.keymap.set("n", "<C-/>", require("Comment.api").toggle.linewise.current)
-
-      -- Toggle selection (linewise)
-      local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
-      local function vcomment()
-        vim.api.nvim_feedkeys(esc, "nx", false)
-        require("Comment.api").toggle.linewise(vim.fn.visualmode())
-      end
-
-      vim.keymap.set("x", "<C-_>", vcomment)
-      vim.keymap.set("x", "<C-/>", vcomment)
-
-      -- vala lang
-      local ft = require "Comment.ft"
-      ft.vala = { "//%s", "/*%s*/" }
-    end,
-  },
+  -- yazi
   {
     "rolv-apneseth/tfm.nvim",
     config = function()

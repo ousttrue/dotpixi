@@ -13,12 +13,6 @@
 local M = {}
 
 function M.setup()
-  if vim.fn.has('win64') == 1 then
-    vim.o.bg = "dark"
-  else
-    vim.o.bg = "light"
-  end
-
   local SYNTAX_UTIL = require "config.syntax_util"
 
   vim.api.nvim_create_autocmd("colorscheme", {
@@ -31,11 +25,13 @@ function M.setup()
 autocmd FileType markdown hi link markdownError NONE
 ]]
 
-  -- if vim.fn.has('win64') == 1 then
-  --   vim.cmd "colorschem retrobox"
-  -- else
-  --   vim.cmd "colorschem habamax"
-  -- end
+  if vim.fn.has('win64') == 1 then
+    vim.o.bg = "dark"
+    vim.cmd "colorschem retrobox"
+  else
+    vim.o.bg = "light"
+    vim.cmd "colorschem tokyonight"
+  end
 
   -- Background colors for active vs inactive windows
 
