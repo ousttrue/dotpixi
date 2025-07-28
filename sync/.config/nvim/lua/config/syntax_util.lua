@@ -12,8 +12,10 @@ function M.clear_syntax_link(ev)
   end
   if vim.o.background == "dark" then
     vim.api.nvim_set_hl(0, "NonText", { fg = "#444444" })
+    vim.api.nvim_set_hl(0, "SignColumn", { bg = "#444444" })
   elseif vim.o.background == "light" then
     vim.api.nvim_set_hl(0, "NonText", { fg = "#cccccc" })
+    vim.api.nvim_set_hl(0, "SignColumn", { bg = "#cccccc" })
   end
 
   vim.api.nvim_set_hl(0, "TabLineSel", { link = "CurSearch" })
@@ -31,7 +33,6 @@ function M.clear_syntax_link(ev)
   vim.api.nvim_set_hl(0, "Conceal", { link = "NonText" })
   vim.api.nvim_set_hl(0, "@conceal", { link = "NonText" })
 
-  vim.api.nvim_set_hl(0, "SignColumn", { bg = "#111111" })
   vim.api.nvim_set_hl(0, "SatelliteCursor", { bg = "#ff0000" })
 
   -- Keyword

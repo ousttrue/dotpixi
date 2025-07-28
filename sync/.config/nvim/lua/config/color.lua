@@ -30,7 +30,8 @@ autocmd FileType markdown hi link markdownError NONE
     vim.cmd "colorschem retrobox"
   else
     vim.o.bg = "light"
-    vim.cmd "colorschem tokyonight"
+    -- vim.cmd "colorschem tokyonight"
+    vim.cmd "colorschem rose-pine"
   end
 
   -- Background colors for active vs inactive windows
