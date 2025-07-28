@@ -6,6 +6,8 @@
 :
   <keyboard>
     <default />
+    <keybind key="W-z"><action name="Execute" command="wofi --show drun" /></keybind>
+
     <keybind key="W-Return">
       <action name="Execute" command="foot" />
     </keybind>
