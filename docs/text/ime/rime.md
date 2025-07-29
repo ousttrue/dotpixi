@@ -12,3 +12,7 @@
 
 - https://github.com/Freed-Wu/rime.nvim
 - https://github.com/Ninlives/cmp-rime
+
+# fcitx5
+
+- https://wiki.archlinux.jp/index.php/Fcitx5#RIME.2FZhongzhou_rhyme

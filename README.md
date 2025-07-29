@@ -39,23 +39,25 @@ https://github.com/uobikiemukot/yaft
 
 ### neovim
 
+一から設定しなおし
+
 https://neovim.io/doc/
 
-- 一から設定しなおし
-- lazy の分割設定
-- 0.11 スタイルの lsp 設定
-- lspconfig 使うが setup しない。手動で enable する
-- mason 使う
-- vim.lsp.completion
-- none-ls(prettierd)
+- [x] lazy の分割設定
+- [x] 0.11 スタイルの lsp 設定
+- [x] mason 使う. `vim.fn.exepath`
+- [x] vim.lsp.completion
+- [x] none-ls(prettierdなど)
 
 #### vim.lsp.config の初期化順
 
+lspconfig をインストールするが setup しない。手動で enable する
+
 - `<rtp>/lsp/*.lua`
-- lazy lspconfig
+- lazy による lspconfig install で `<rtp>/lsp/*.lua` が更新される
 - `<rtp>/after/lsp/*.lua`
 
-after に配置しないと lspconfig に負ける
+after に配置しないと上書きされて負ける
 
 ## cui / tui
 
