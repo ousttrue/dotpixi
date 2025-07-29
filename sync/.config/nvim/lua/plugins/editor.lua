@@ -1,6 +1,15 @@
 ---@type LazySpec[]
 local config = {
   {
+    "nvim-lualine/lualine.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("config.lualine").setup()
+    end,
+  },
+  {
     "numToStr/Comment.nvim",
     config = function()
       require("Comment").setup {
