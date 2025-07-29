@@ -1,12 +1,19 @@
 #!/bin/sh
-xremap ~/.xremap&
+xremap ~/.xremap &
 
-waybar&
+if type waybar >/dev/null 2>&1; then
+  waybar &
+fi
+
 # ime
-fcitx5&
+if type fcitx5 >/dev/null 2>&1; then
+  fcitx5 &
+fi
+
 # monitoring
 # conky&
 # notification daemon
-dunst&
+# dunst&
 # wallpaper
-swww init
+# swww init
+# clipboard
