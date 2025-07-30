@@ -39,6 +39,7 @@ class ColorFormatter(logging.Formatter):
 HERE = pathlib.Path(__file__).absolute().parent
 PROJECT_ROOT = HERE.parent.parent
 SYNC_DIR = PROJECT_ROOT / "sync"
+DOCS_DIR = PROJECT_ROOT / "docs"
 
 
 HOME = pathlib.Path(os.environ.get("HOME") or os.environ.get("USERPROFILE"))
@@ -116,17 +117,40 @@ def remove_deadlinks(dir):
                 target.unlink()
         elif target.is_dir():
             if dir == HOME:
-                if target.name == ".config":
-                    remove_deadlinks(target)
-                else:
+                if target.name != ".config":
                     LOGGER.debug(f"skip {target}")
+                    continue
+            remove_deadlinks(target)
+
+
+def remove_empty_dir(dir: pathlib.Path):
+    assert dir.is_dir(), f"is not dir: {dir}"
+
+    count = 0
+    for child in dir.iterdir():
+        if child.is_dir():
+            if dir == HOME:
+                if child.name != ".config":
+                    LOGGER.debug(f"skip {child}")
+                    continue
+
+            child_count = remove_empty_dir(child)
+            if child_count == 0:
+                LOGGER.info(f"remove empty dir: {child}")
+                shutil.rmtree(child)
             else:
-                remove_deadlinks(target)
+                count += 1
+        else:
+            count += 1
+    return count
 
 
 def command_sync(force=False):
     make_links(SYNC_DIR, force)
     remove_deadlinks(HOME)
+    remove_empty_dir(HOME)
+    remove_empty_dir(SYNC_DIR)
+    remove_empty_dir(DOCS_DIR)
 
 
 def command_add(src: pathlib.Path, force=False):
