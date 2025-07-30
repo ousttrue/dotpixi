@@ -162,6 +162,12 @@ if (has zoxide)
     })
 }
 
+function p
+{
+  Set-Location $HOME/dotpixi
+  &v
+}
+
 # cd ghq
 function gg
 {
