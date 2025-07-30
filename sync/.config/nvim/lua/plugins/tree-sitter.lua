@@ -5,11 +5,8 @@ return {
     lazy = false,
     build = ":TSUpdate",
     dependencies = {
-      {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        event = "CursorMoved",
-      },
-      "m-demare/hlargs.nvim",
+      { "nvim-treesitter/nvim-treesitter-textobjects", event = "CursorMoved", },
+      { "m-demare/hlargs.nvim",                        opts = {} },
     },
     main = "nvim-treesitter.configs",
     opts = {
@@ -70,18 +67,18 @@ return {
   --   "lucario387/nvim-ts-format",
   --   dependencies = { "nvim-treesitter/nvim-treesitter" },
   -- },
-  -- {
-  --   "hedyhli/outline.nvim",
-  --   config = function()
-  --     -- Example mapping to toggle outline
-  --     vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>",
-  --       { desc = "Toggle Outline" })
-  --
-  --     require("outline").setup {
-  --       -- Your setup opts here (leave empty to use defaults)
-  --     }
-  --   end,
-  -- },
+  {
+    "hedyhli/outline.nvim",
+    config = function()
+      -- Example mapping to toggle outline
+      vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>",
+        { desc = "Toggle Outline" })
+
+      require("outline").setup {
+        -- Your setup opts here (leave empty to use defaults)
+      }
+    end,
+  },
   {
     "stevearc/aerial.nvim",
     opts = {

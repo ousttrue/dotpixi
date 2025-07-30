@@ -145,6 +145,7 @@ function addPath($path)
   }
 }
 addPath(Join-Path $HOME "local/bin")
+addPath(py -c 'import sys; print(sys.base_prefix)')
 
 # For zoxide v0.8.0+
 if (has zoxide)

@@ -34,7 +34,6 @@ function M.clear_syntax_link(ev)
   vim.api.nvim_set_hl(0, "@conceal", { link = "NonText" })
 
   vim.api.nvim_set_hl(0, "SatelliteCursor", { bg = "#ff0000" })
-
   -- Keyword
   -- hl_clear "Statement"
   -- hl_clear "Keyword"
@@ -43,15 +42,16 @@ function M.clear_syntax_link(ev)
   vim.api.nvim_set_hl(0, "Type", { link = "Statement" })
   vim.api.nvim_set_hl(0, "Special", { link = "Statement" })
   vim.api.nvim_set_hl(0, "PreProc", { link = "Statement" })
+  vim.api.nvim_set_hl(0, "Include", { link = "Statement" })
+  vim.api.nvim_set_hl(0, "Macro", { link = "Statement" })
 
   -- Literal
   -- hl_clear "String"
   vim.api.nvim_set_hl(0, "@boolean", { link = "String" })
-  vim.api.nvim_set_hl(0, "@number", { link = "String" })
 
   -- Identifier
   -- hl_clear "Identifier"
-  vim.api.nvim_set_hl(0, "Constant", { link = "Identifier" })
+  vim.api.nvim_set_hl(0, "Define", { link = "Constant" })
   vim.api.nvim_set_hl(0, "Function", { link = "Identifier" })
   -- vim.api.nvim_set_hl(0, "@function", { link = "Identifier" })
   -- vim.api.nvim_set_hl(0, "@function.builtin", { link = "Identifier" })
@@ -91,6 +91,10 @@ function M.clear_syntax_link(ev)
   -- vim.api.nvim_set_hl(0, "@text.strong.markdown", { link = "String" })
   vim.api.nvim_set_hl(0, "@markup.strong", { fg = "#FFaa00" })
   vim.api.nvim_set_hl(0, "@text.strong", { fg = "#FFaa00" })
+  vim.api.nvim_set_hl(0, "@number", { link = "String" })
+  vim.api.nvim_set_hl(0, "@number.float", { link = "String" })
+  vim.api.nvim_set_hl(0, "@keyword.type", { link = "Keyword" })
+  vim.api.nvim_set_hl(0, "@type", { link = "Constant" })
 
   -- hl_clear "@variable.parameter.vimdoc"
   -- vim.api.nvim_set_hl(0, "@markup.link.vimdoc", { link = "Identifier" })
@@ -100,7 +104,9 @@ function M.clear_syntax_link(ev)
   -- vim.api.nvim_set_hl(0, "@punctuation.bracket.cpp", {})
   -- vim.api.nvim_set_hl(0, "@string.escape.cpp", { link = "String" })
   -- vim.api.nvim_set_hl(0, "@constant.builtin.cpp", { link = "String" })
-  vim.api.nvim_set_hl(0, "@variable.builtin", { link = "String" })
+  vim.api.nvim_set_hl(0, "@variable.builtin", { fg = "#FFAA00" })
+  -- vim.api.nvim_set_hl(0, "@constant", { link = "Define" })
+  vim.api.nvim_set_hl(0, "@string.regexp", { link = "String" })
   vim.api.nvim_set_hl(0, "@markup.heading", { link = "Identifier" })
   -- vim.api.nvim_set_hl(0, "@constructor.cpp", { link = "String" })
   -- vim.api.nvim_set_hl(0, "@lsp.type.macro.cpp", { fg = "#FFaa00" })

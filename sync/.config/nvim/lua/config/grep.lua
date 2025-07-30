@@ -13,7 +13,7 @@ local function grep(arg)
   end
 end
 
-function M:setup()
+function M.setup()
   -- https://zenn.dev/kawarimidoll/books/6064bf6f193b51/viewer/b14229
   vim.opt.grepprg = table.concat({
     'rg',

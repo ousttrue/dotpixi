@@ -41,7 +41,7 @@ PROJECT_ROOT = HERE.parent.parent
 SYNC_DIR = PROJECT_ROOT / "sync"
 
 
-HOME = pathlib.Path(os.environ.get("HOME"))
+HOME = pathlib.Path(os.environ.get("HOME") or os.environ.get("USERPROFILE"))
 
 
 def get_xdg_config_home():
@@ -58,7 +58,7 @@ XDG_CONFIG_HOME = get_xdg_config_home()
 def make_a_link(sync: pathlib.Path, target: pathlib.Path, force=False):
     assert not sync.is_symlink(), f"{sync} is_symlink"
     target.parent.mkdir(parents=True, exist_ok=True)
-    if target.exists():
+    if target.exists(follow_symlinks=False):
         if not force:
             LOGGER.debug(
                 f"skip {sync.relative_to(SYNC_DIR)} => {target.relative_to(HOME)}"
