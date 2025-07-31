@@ -1,5 +1,7 @@
 # TUI
 
+[tmuxだけじゃない、Terminal Multiplexer - とことんDevOps | 日本仮想化技術のDevOps技術情報メディア](https://devops-blog.virtualtech.jp/entry/20240919/1726713070)
+
 [[tui_app]]
 [[screen]]
 [[tmux]]
