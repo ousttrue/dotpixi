@@ -1,13 +1,21 @@
 #!/bin/sh
-xremap ~/.xremap &
+
+if type xremap >/dev/null 2>&1; then
+  xremap ~/.xremap &
+fi
 
 if type waybar >/dev/null 2>&1; then
   waybar &
 fi
 
+# clipboard
+if type wl-paste >/dev/null 2>&1 && type cliphist >/dev/null 2>&1; then
+  wl-paste --watch cliphist store &
+fi
+
 # ime
 if type fcitx5 >/dev/null 2>&1; then
-  fcitx5 &
+  fcitx5 >~/fcitx5.log 2>&1 &
 fi
 
 # monitoring
@@ -16,4 +24,3 @@ fi
 # dunst&
 # wallpaper
 # swww init
-# clipboard

@@ -41,3 +41,10 @@ export PATH="$HOME/local/bin:$PATH"
 export PATH="$PATH:/home/ousttrue/.local/bin"
 
 export SDL_AUDIODRIVER=jack
+
+function fpac {
+  local selected=$(pacman -Sl | cut -d " " -f 2 | fzf --preview "pacman -Si {}")
+  if [[ ${selected} =~ [^\s] ]]; then
+    sudo pacman -S ${selected}
+  fi
+}

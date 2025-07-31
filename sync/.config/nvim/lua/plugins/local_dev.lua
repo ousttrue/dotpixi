@@ -27,13 +27,14 @@ local function g_match(src, pattern)
   end
 end
 
+local GHQ_ROOT = vim.env["GHQ_ROOT"] or (vim.env['HOME'] .. '/ghq')
 ---@type LazySpec[]
 local config = {
   {
     name = "ousttrue/neomarkdown.nvim",
     dependencies = { "uga-rosa/utf8.nvim" },
     -- enabled = false,
-    dir = vim.env["GHQ_ROOT"] .. "/github.com/ousttrue/neomarkdown.nvim",
+    dir = GHQ_ROOT .. "/github.com/ousttrue/neomarkdown.nvim",
     dev = true,
     config = function()
       local HtmlAnchor = require "neomarkdown.HtmlAnchor"

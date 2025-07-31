@@ -20,6 +20,8 @@ function M.setup()
   vim.keymap.set("n", "<M-j>", "<C-w>j", { noremap = true })
   vim.keymap.set("n", "<M-k>", "<C-w>k", { noremap = true })
   vim.keymap.set("n", "<M-l>", "<C-w>l", { noremap = true })
+
+  vim.keymap.set("n", "q", "<cmd>:b#|bd#<CR>", { noremap = true })
 end
 
 return M
