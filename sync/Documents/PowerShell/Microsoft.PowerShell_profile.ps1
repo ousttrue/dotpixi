@@ -145,7 +145,11 @@ function addPath($path)
   }
 }
 addPath(Join-Path $HOME "local/bin")
-addPath(py -c 'import sys; print(sys.base_prefix)')
+if ($IsWindows)
+{
+  addPath(py -c 'import sys; print(sys.base_prefix)')
+  addPath("C:\Program Files\Git\usr\bin")
+}
 
 # For zoxide v0.8.0+
 if (has zoxide)
