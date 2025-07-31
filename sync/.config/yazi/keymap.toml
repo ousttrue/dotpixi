@@ -4,6 +4,11 @@ on = ["g", "r"]
 run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"'
 desc = "go git toplevel"
 
+[[mgr.prepend_keymap]]
+on = ["<Esc>"]
+run = "quit"
+desc = "quit"
+
 [[input.prepend_keymap]]
 on = "<Esc>"
 run = "close"
