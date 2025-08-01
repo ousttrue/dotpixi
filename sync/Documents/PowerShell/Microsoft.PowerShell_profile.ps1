@@ -28,6 +28,7 @@ Set-PSReadLineKeyHandler -Key "alt+r" -ScriptBlock {
   [Microsoft.PowerShell.PSConsoleReadLine]::Insert('<#SKIPHISTORY#> . $PROFILE')
   [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
 }
+Set-PSReadLineOption -Colors @{ InlinePrediction = "`e[38;5;238m" }
 
 # ctrl + [
 # [System.Console]::ReadKey()
