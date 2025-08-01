@@ -24,3 +24,5 @@ autocmd QuickfixCmdPost make,vimgrep copen
 
 vim.keymap.set("n", "<C-n>", ":cn<CR>", { noremap = true })
 vim.keymap.set("n", "<C-p>", ":cp<CR>", { noremap = true })
+
+vim.keymap.set("n", "g/", ":s/\\\\/\\//g<CR>", { noremap = true })

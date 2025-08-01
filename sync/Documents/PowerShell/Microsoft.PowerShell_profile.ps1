@@ -19,7 +19,11 @@ Set-PSReadlineKeyHandler -Key 'Ctrl+h' -Function BackwardDeleteChar
 Set-PSReadlineKeyHandler -Key 'Ctrl+p' -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key 'Ctrl+n' -Function HistorySearchForward
 Set-PSReadlineKeyHandler -Key 'Ctrl+a' -Function BeginningOfLine
-Set-PSReadlineKeyHandler -Key 'Ctrl+e' -Function AcceptSuggestion #EndOfLine
+# Set-PSReadlineKeyHandler -Key 'Ctrl+e' -Function AcceptSuggestion #EndOfLine
+Set-PSReadLineKeyHandler -Key "Ctrl+e" -ScriptBlock {
+  [Microsoft.PowerShell.PSConsoleReadLine]::AcceptSuggestion()
+  [Microsoft.PowerShell.PSConsoleReadLine]::EndOfLine()
+}
 Set-PSReadlineKeyHandler -Key 'Ctrl+m' -Function AcceptLine
 Set-PSReadlineKeyHandler -Key 'Ctrl+k' -Function ForwardDeleteLine
 
@@ -124,7 +128,7 @@ if(has ov)
 #
 function insertPath($path)
 {
-  if (-not $env:PATH.Contains($path))
+  if (-not $env:PATH.Split(";").Contains($path))
   {
     $env:PATH = $path + [System.IO.Path]::PathSeparator + $env:PATH
     $path
@@ -136,7 +140,7 @@ function insertPath($path)
 #
 function addPath($path)
 {
-  if (-not $env:PATH.Contains($path))
+  if (-not $env:PATH.Split(";").Contains($path))
   {
     $env:PATH = $env:PATH + [System.IO.Path]::PathSeparator + $path
     $path
@@ -148,7 +152,9 @@ function addPath($path)
 addPath(Join-Path $HOME "local/bin")
 if ($IsWindows)
 {
-  addPath(py -c 'import sys; print(sys.base_prefix)')
+  $py_dir = py -c 'import sys; print(sys.base_prefix)'
+  insertPath((Join-Path $py_dir "Scripts"))
+  insertPath($py_dir)
   addPath("C:\Program Files\Git\usr\bin")
 }
 
