@@ -144,6 +144,9 @@ end
 ---@type LazySpec[]
 local config = {
   {
+    "petertriho/nvim-scrollbar", opts = {},
+  },
+  {
     "nvim-lualine/lualine.nvim",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
