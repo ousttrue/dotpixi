@@ -253,3 +253,8 @@ function y
   }
   Remove-Item -Path $tmp
 }
+
+function rmrf()
+{
+  Remove-Item -Recurse -Force $args
+}

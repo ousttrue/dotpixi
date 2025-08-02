@@ -1,5 +1,9 @@
 # todo
 
+- text
+- rect
+- cube
+
 ## OpenXR + Vulkan
 
 - https://github.com/ousttrue/hello_vulkan
@@ -56,7 +60,6 @@ quest3 向きに MR 部分を改造。
 - simple desktop
 - more tui(w3m)
 - desktop vr
-
   - handtracking
   - cu3e
 
