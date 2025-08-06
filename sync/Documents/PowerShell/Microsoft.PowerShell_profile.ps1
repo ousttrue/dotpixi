@@ -60,7 +60,6 @@ if (-not (Test-Path $NVIM_PATH))
 {
   $NVIM_PATH = "C:\Program Files\Neovim\bin\nvim.exe"
 }
-Set-Alias v $NVIM_PATH
 if (Test-Path $NVIM_PATH)
 {
   $env:EDITOR = $NVIM_PATH
@@ -123,6 +122,30 @@ if(has ov)
   $env:PAGER="ov"
 }
 
+# a letter commands
+Set-Alias l lazygit
+Set-Alias v $NVIM_PATH
+function p
+{
+  Set-Location $HOME/dotpixi
+  &v
+}
+function y
+{
+  $tmp = (New-TemporaryFile).FullName
+  yazi $args --cwd-file="$tmp"
+  $cwd = Get-Content -Path $tmp -Encoding UTF8
+  if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path)
+  {
+    Set-Location -LiteralPath (Resolve-Path -LiteralPath $cwd).Path
+    if(has lsd)
+    {
+      lsd
+    }
+  }
+  Remove-Item -Path $tmp
+}
+
 #
 # path
 #
@@ -171,12 +194,6 @@ if (has zoxide)
       }
       (zoxide init --hook $hook powershell | Out-String)
     })
-}
-
-function p
-{
-  Set-Location $HOME/dotpixi
-  &v
 }
 
 # cd ghq
@@ -235,23 +252,6 @@ function Windows-RightClick
   }
   Set-ItemProperty ${key} -Name "(default)" -Value ""
   Stop-Process -Name explorer -Force
-}
-
-# yazi
-function y
-{
-  $tmp = (New-TemporaryFile).FullName
-  yazi $args --cwd-file="$tmp"
-  $cwd = Get-Content -Path $tmp -Encoding UTF8
-  if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path)
-  {
-    Set-Location -LiteralPath (Resolve-Path -LiteralPath $cwd).Path
-    if(has lsd)
-    {
-      lsd
-    }
-  }
-  Remove-Item -Path $tmp
 }
 
 function rmrf()

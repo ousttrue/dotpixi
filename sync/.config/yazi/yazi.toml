@@ -11,6 +11,9 @@ open = [
   { run = 'xdg-open "$@"', desc = "Open", for = "unix" },
   { run = "pwsh -noprofile -c Invoke-Item %*", desc = "Open", for = "windows" },
 ]
+exe = [
+  { run = "wezterm cli spawn -- pwsh -noexit -c %*", desc = "Spawn(wez term)" },
+]
 
 [open]
 rules = [
@@ -20,6 +23,7 @@ rules = [
   { name = "*.json", use = "edit" },
   # Multiple openers for a single rule
   { name = "*.html", use = ["open", "edit"] },
+  { name = "*.exe", use = ["exe"] },
 ]
 
 [plugin]

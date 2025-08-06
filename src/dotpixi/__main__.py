@@ -93,13 +93,13 @@ def make_xdg_config(dir: pathlib.Path, force=False):
             make_a_link(sync, target, force)
 
 
-def make_links(sync: pathlib.Path, force=False):
-    assert sync.is_dir()
+def make_links(dir: pathlib.Path, force=False):
+    assert dir.is_dir()
 
-    if sync.parent == SYNC_DIR / ".config":
-        make_xdg_config(sync)
+    if dir.parent == SYNC_DIR / ".config":
+        make_xdg_config(dir)
     else:
-        for child in sync.iterdir():
+        for child in dir.iterdir():
             if child.is_file():
                 rel = child.relative_to(SYNC_DIR)
                 target = HOME / str(rel)
@@ -167,7 +167,7 @@ def command_add(src: pathlib.Path, force=False):
         if not dst.parent.exists():
             dst.parent.mkdir(parents=True)
         shutil.move(src, dst)
-        make_links()
+        make_links(dst)
 
     elif src.is_file():
         if not dst.parent.exists():
