@@ -1,17 +1,62 @@
+# basic
+
+https://arthursonzogni.github.io/FTXUI/module-dom.html
+
+> a hierarchical set of ftxui::Element
+
+https://arthursonzogni.github.io/FTXUI/#example
+
+```cpp
+int main() {
+  using namespace ftxui;
+
+  // Create a simple document with three text elements.
+  Element document = hbox({
+      text("left") | border,
+      text("middle") | border | flex,
+      text("right") | border,
+  });
+
+  // Create a screen with full width and height fitting the document.
+  auto screen = Screen::Create(Dimension::Full(),       // Width
+                               Dimension::Fit(document) // Height
+  );
+
+  // Render the document onto the screen.
+  Render(screen, document);
+
+  // Print the screen to the console.
+  screen.Print();
+}
+```
+
+print して終わり。
+loop によるイベントハンドリングは、componentで
+
+## document & print
+
 ```cpp
 #include <ftxui/dom/elements.hpp>
 
-void Print(const ftxui::Elment &document)
-{
-	auto screen = ftxui::Screen::Create(
-		// Width
-		ftxui::Dimension::Full(),       
-		// Height
-		ftxui::Dimension::Fit(document) 
-	);
-	
-	ftxui::Render(screen, document);
-	screen.Print();
+void Print(ftxui::Element document) {
+  auto screen = ftxui::Screen::Create(
+      // Width
+      ftxui::Dimension::Full(),
+      // Height
+      ftxui::Dimension::Fit(document));
+
+  ftxui::Render(screen, document);
+  screen.Print();
+}
+
+int main() {
+  auto document = ftxui::hbox({
+      ftxui::text("left") | ftxui::border,
+      ftxui::text("middle") | ftxui::border | ftxui::flex,
+      ftxui::text("right") | ftxui::border,
+  });
+
+  Print(document);
 }
 ```
 
@@ -20,22 +65,24 @@ void Print(const ftxui::Elment &document)
 ## Text
 
 ```cpp
-class Text : public Node {
- public:
+#include <ftxui/dom/elements.hpp>
+
+class Text : public ftxui::Node {
+public:
   explicit Text(std::string text) : text_(std::move(text)) {}
 
   void ComputeRequirement() override {
-    requirement_.min_x = string_width(text_);
+    requirement_.min_x = ftxui::string_width(text_);
     requirement_.min_y = 1;
   }
 
-  void Render(Screen& screen) override {
+  void Render(ftxui::Screen &screen) override {
     int x = box_.x_min;
     const int y = box_.y_min;
     if (y > box_.y_max) {
       return;
     }
-    for (const auto& cell : Utf8ToGlyphs(text_)) {
+    for (const auto &cell : ftxui::Utf8ToGlyphs(text_)) {
       if (x > box_.x_max) {
         return;
       }
@@ -47,9 +94,12 @@ class Text : public Node {
     }
   }
 
- private:
+private:
   std::string text_;
 };
+
+// use
+auto element = std::make_shared<Text>("abc");
 ```
 
 # ftxui::Render
@@ -76,44 +126,14 @@ document = vbox({
 ```
 
 ## border
+
 ```cpp
 // Add a border, by calling the `ftxui::border` decorator function.
 document = border(document);
- 
+
 // Add another border, using the pipe operator.
 document = document | border.
- 
+
 // Add another border, using the |= operator.
 document |= border
-```
-
-# Render to Screen
-`one time`
-```cpp
-auto screen = screen::create(
-	// width
-	dimension::full(),
-	// height
-	dimension::fit(document)
-);
-ftxui::Render(screen, document);
-```
-
-## ToString
-- https://arthursonzogni.github.io/FTXUI/#module-screen
-```cpp
-screen.ToString();
-```
-
-## Print
-- [FTXUI: Main Page](https://arthursonzogni.github.io/FTXUI/)
-```cpp
-screen.Print();
-```
-
-# Renderer
-=> [[ftxui_component]]
-## Loop
-```cpp
-screen.Loop(ftxui::Renderer([&] { return document; }));
 ```

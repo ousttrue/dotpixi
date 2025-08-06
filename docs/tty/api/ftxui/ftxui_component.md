@@ -1,7 +1,7 @@
-[[FTXUI]]
-
 Component のツリーはイベントを伝搬する。
 `Renderer` の第１引数に `子Component` を指定できる。
+
+`ScreenInteractive`
 
 # hello
 
@@ -9,7 +9,7 @@ Component のツリーはイベントを伝搬する。
 
 ## Renderer
 
-描画のみ。OnEvent が無い
+### 描画のみ。OnEvent が無い例
 
 ```cpp
 #include <ftxui/component/component.hpp>
@@ -17,37 +17,79 @@ Component のツリーはイベントを伝搬する。
 
 int main() {
 
-  auto screen = ftxui::ScreenInteractive::Fullscreen();
+  auto interactive = ftxui::ScreenInteractive::Fullscreen();
 
-  auto component = ftxui::Renderer([]() { return ftxui::text("hello"); });
+  auto component = ftxui::Renderer([]() { return ftxui::text("[q] to quit"); });
 
   auto event_component = CatchEvent(component, [&](ftxui::Event event) {
     if (event == ftxui::Event::Character('q') ||
         event == ftxui::Event::Escape) {
-      screen.ExitLoopClosure()();
+      interactive.ExitLoopClosure()();
       return true;
     }
 
     return false;
   });
 
-  screen.Loop(event_component);
+  interactive.Loop(event_component);
 
   return 0;
 }
 ```
 
+### Component を構成する
+
+https://github.com/ArthurSonzogni/FTXUI/blob/main/examples/component/renderer.cpp
+
 ```cpp
-  auto renderer = Renderer(component, [&] {
-    return vbox({
-               text("Hello " + first_name + " " + last_name),
-               separator(),
-               hbox(text(" First name : "), input_first_name->Render()),
-               hbox(text(" Last name  : "), input_last_name->Render()),
-               hbox(text(" Password   : "), input_password->Render()),
-           }) |
-           border;
+#include "ftxui/component/captured_mouse.hpp" // for ftxui
+#include "ftxui/component/component.hpp"      // for Renderer, Button, Vertical
+#include "ftxui/component/component_base.hpp" // for ComponentBase
+#include "ftxui/component/screen_interactive.hpp" // for ScreenInteractive
+#include "ftxui/dom/elements.hpp" // for operator|, Element, text, bold, border, center, color
+#include "ftxui/screen/color.hpp" // for Color, Color::Red
+
+auto makeComponents(const std::function<void()> &onClick) {
+  // 1. Example of focusable renderer:
+  auto renderer_focusable = ftxui::Renderer([](bool focused) {
+    using namespace ftxui;
+    if (focused)
+      return text("FOCUSABLE RENDERER()") | center | bold | border;
+    else
+      return text(" Focusable renderer() ") | center | border;
   });
+
+  // 2. Examples of a non focusable renderer.
+  auto renderer_non_focusable = ftxui::Renderer([&] {
+    using namespace ftxui;
+    return text("~~~~~ Non Focusable renderer() ~~~~~"); //
+  });
+
+  // 3. Renderer can wrap other components to redefine their Render() function.
+  auto button = ftxui::Button("Wrapped quit button", onClick);
+
+  // A Renderer() is a component using a lambda function as a parameter to
+  // render itself.
+  auto renderer_wrap = Renderer(button, [&] {
+    using namespace ftxui;
+    if (button->Focused())
+      return button->Render() | bold | color(Color::Red);
+    else
+      return button->Render();
+  });
+
+  return ftxui::Container::Vertical({
+      renderer_focusable,
+      renderer_non_focusable,
+      renderer_wrap,
+  });
+}
+
+int main() {
+  auto screen = ftxui::ScreenInteractive::FitComponent();
+  auto component = makeComponents(screen.ExitLoopClosure());
+  screen.Loop(component);
+}
 ```
 
 # widgets

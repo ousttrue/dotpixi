@@ -1,9 +1,14 @@
 https://arthursonzogni.github.io/FTXUI/
 
-- [FTXUI: Main Page](https://arthursonzogni.github.io/FTXUI/#build-cmake)
 - [GitHub - ArthurSonzogni/FTXUI: C++ Functional Terminal User Interface.](https://github.com/ArthurSonzogni/FTXUI)
 
+`cmake fetchcontent`
+
+- https://github.com/ArthurSonzogni/FTXUI?tab=readme-ov-file#build-using-cmake
+
 # Version
+
+## 6.19 @2025
 
 ## 5.0
 
