@@ -22,6 +22,8 @@ local function get_build_tool(dir, level)
     -- print(dir, level, #items)
     -- print("fs_stat", vim.inspect(items))
     vim.uv.fs_closedir(dir_t)
+
+    -- first search file
     for _, item in ipairs(items) do
       if item.type == "file" and item.name == "CMakeCache.txt" then
         return dir, "cmake"
@@ -29,7 +31,10 @@ local function get_build_tool(dir, level)
       if item.type == "file" and item.name == "meson-info" then
         return dir, "meson"
       end
+    end
 
+    -- if not found search dir
+    for _, item in ipairs(items) do
       if item.type == "directory" then
         -- recursive
         local nest = vim.fs.joinpath(dir, item.name)
