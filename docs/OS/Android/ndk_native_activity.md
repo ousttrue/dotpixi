@@ -11,7 +11,7 @@
 ```xml
 <manifest>
   <application>
-    <activity>
+    <activity android:name="android.app.NativeActivity">
       <meta-data android:name="android.app.lib_name"
                  android:value="native-activity" /> <!-- libnative-activity.so -->
       <intent-filter>

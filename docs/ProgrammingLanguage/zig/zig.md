@@ -10,7 +10,11 @@
 
 # Version
 
-## 0.14 next
+## 0.15 @202508
+
+- [Zig's New Async I/O](https://kristoff.it/blog/zig-new-async-io/)
+
+## 0.14
 
 - [Good news! If all goes well, seems that 0.14.0 will bring async&#x2F;await https:&#x2F;&#x2F;gi... | Hacker News](https://news.ycombinator.com/item?id=40612642)
 - [\[Zig\] メインプロジェクトからサブプロジェクトのテストを一括実行する #ZIG - Qiita](https://qiita.com/ktz_alias/items/772c580a6d872a71766c)
