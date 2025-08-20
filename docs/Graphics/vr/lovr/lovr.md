@@ -5,6 +5,8 @@
 
 - [GitHub - bjornbytes/lovr: Lua Virtual Reality Framework](https://github.com/bjornbytes/lovr)
 
+- https://github.com/SpookySkeletons/lovr-playspace
+
 # Version
 
 ## 0.18 
