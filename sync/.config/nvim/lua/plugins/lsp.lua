@@ -1,6 +1,6 @@
 local opts = {}
 if vim.fn.has('win64') == 1 then
-  opts.ensure_installed = require('config.lsp').get_lsp_servers()
+  -- opts.ensure_installed = require('config.lsp').get_lsp_servers()
 end
 
 ---@type LazySpec[]
