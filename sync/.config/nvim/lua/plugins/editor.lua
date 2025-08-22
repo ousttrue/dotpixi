@@ -87,9 +87,9 @@ function setup()
       winbar = 500,
     },
     winbar = {
-      lualine_a = {
-        { "filename", path = 1 },
-      },
+      -- lualine_a = {
+      --   { "filename", path = 1 },
+      -- },
       lualine_b = {
         "aerial",
       },
@@ -130,14 +130,14 @@ function setup()
         "progress",
       },
     },
-    -- tabline = {
-    --   lualine_a = { "buffers" },
-    --   lualine_b = { "branch" },
-    --   lualine_c = { "filename" },
-    --   lualine_x = {},
-    --   lualine_y = {},
-    --   lualine_z = { "tabs" },
-    -- },
+    tabline = {
+      lualine_a = { "buffers" },
+      -- lualine_b = { "branch" },
+      -- lualine_c = { "filename" },
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = { "tabs" },
+    },
   }
 end
 
