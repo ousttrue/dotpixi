@@ -22,9 +22,9 @@ function M.setup()
   vim.keymap.set("n", "<M-l>", "<C-w>l", { noremap = true })
 
   -- vim.keymap.set("n", "q", "<cmd>:b#|bd#<CR>", { noremap = true })
+  vim.keymap.set('n', 'q', '<cmd>b#<cr><cmd>bd#<cr>', { noremap = true })
   vim.keymap.set('n', '<C-l>', '<cmd>bnext<cr>', { noremap = true, silent = true })
   vim.keymap.set('n', '<C-h>', '<cmd>bprevious<cr>', { noremap = true, silent = true })
-  vim.keymap.set('n', '<C-q>', '<cmd>b#<cr><cmd>bd#<cr>', { noremap = true })
 end
 
 return M
