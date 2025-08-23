@@ -142,7 +142,11 @@ local M = {
   {
     "petertriho/nvim-scrollbar", opts = {},
   },
-  { "tiagovla/scope.nvim", config = true },
+  -- { "tiagovla/scope.nvim", config = true },
+  {
+    "backdround/tabscope.nvim",
+    opts = {},
+  },
   {
     "nvim-lualine/lualine.nvim",
     dependencies = {

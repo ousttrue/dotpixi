@@ -25,6 +25,7 @@ function M.setup()
   vim.keymap.set('n', 'q', '<cmd>b#<cr><cmd>bd#<cr>', { noremap = true })
   vim.keymap.set('n', '<C-l>', '<cmd>bnext<cr>', { noremap = true, silent = true })
   vim.keymap.set('n', '<C-h>', '<cmd>bprevious<cr>', { noremap = true, silent = true })
+  vim.keymap.set('n', "<C-q>", '<cmd>tabclose<cr>', { noremap = true, silent = true })
 end
 
 return M
