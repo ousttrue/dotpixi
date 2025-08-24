@@ -58,6 +58,16 @@ local function skk_mode()
   end
 end
 
+local function makeprg()
+  if #vim.bo.makeprg > 0 then
+    return 'vim.bo:' .. vim.bo.makeprg
+  end
+  if #vim.o.makeprg > 0 then
+    return 'vim.o:' .. vim.o.makeprg
+  end
+  return 'no makeprg'
+end
+
 function setup()
   -- local function qf()
   --   if vim.api.nvim_buf_get_option(0, "filetype") == "qf" then
@@ -121,8 +131,13 @@ function setup()
     sections = {
       -- lualine_a = { "branch" },
       lualine_a = { "mode" },
-      -- lualine_b = { skk_mode },
-      -- lualine_c = { "diagnostics", },
+      lualine_b = {
+        makeprg,
+        -- skk_mode
+      },
+      lualine_c = {
+        -- "diagnostics",
+      },
       lualine_x = {
         lsp_names,
       },
