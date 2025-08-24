@@ -55,6 +55,7 @@ local function lsp_attach(args)
 
   -- formatter
   vim.keymap.set("n", "<space>f", function()
+    vim.cmd('nohlsearch')
     vim.lsp.buf.format { timeout_ms = 2000 }
   end, { noremap = true })
 
