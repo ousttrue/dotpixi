@@ -15,6 +15,25 @@
 | nvim    | `~/.config/nvim`    | `%XDG_CONFIG_HOME%/nvim` | 環境変数 `XDG_CONFIG_HOME`  |
 | yazi    | `~/.config/yazi`    | `%APPDATA%/yazi/config`  | 環境変数 `YAZI_CONFIG_HOME` |
 
+## setup
+
+- install pixi: https://pixi.sh/dev/installation/
+
+```
+$ pixi run start sync
+```
+
+## apps
+
+- ghq(go)
+- fzf(go)
+- lazygit(go)
+- fd(rust)
+- rg(rust)
+- yazi(rust)
+- zoxide(rust)
+- nvim
+
 ## term / multiplexer
 
 ### WezTerm
