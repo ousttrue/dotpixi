@@ -137,6 +137,10 @@ function setup()
       },
       lualine_c = {
         -- "diagnostics",
+        {
+          'filename',
+          path = 1,
+        }
       },
       lualine_x = {
         lsp_names,
