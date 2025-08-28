@@ -28,6 +28,16 @@ function M.setup()
   vim.keymap.set('n', '<C-h>', '<cmd>bprevious<cr>', { noremap = true, silent = true })
   vim.keymap.set('n', "<C-q>", '<cmd>tabclose<cr>', { noremap = true, silent = true })
   vim.keymap.set('n', "<space><space>", ':nohlsearch<CR><C-l>', { noremap = true, silent = true })
+
+  vim.keymap.set('i', "<cr>",
+    function()
+      return vim.fn.pumvisible() == 0 and '<cr>' or '<c-y>'
+    end,
+    { noremap = true, expr = true }
+  )
+
+  vim.keymap.set('n', '<LEFT>', '<cmd>colder<cr>', { noremap = true, silent = true })
+  vim.keymap.set('n', '<RIGHT>', '<cmd>cnewer<cr>', { noremap = true, silent = true })
 end
 
 return M

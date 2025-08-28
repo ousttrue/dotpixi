@@ -1,31 +1,14 @@
 ---@type LazySpec[]
 return {
-  -- fzf
-  {
-    "ibhagwan/fzf-lua",
-    -- optional for icon support
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    -- or if using mini.icons/mini.nvim
-    -- dependencies = { "echasnovski/mini.icons" },
-    config = function()
-      require("fzf-lua").setup()
-
-      -- vim.keymap.set("n", "<space>g", "<cmd>FzfLua live_grep<CR>", { noremap = true })
-      vim.keymap.set("n", "<space>g", "<cmd>FzfLua grep_cword<CR>", { noremap = true })
-      vim.keymap.set("n", "<space>b", "<cmd>FzfLua buffers<CR>", { noremap = true })
-      -- vim.keymap.set("n", "<space>f", "<cmd>FzfLua files<CR>", { noremap = true })
-      vim.keymap.set("n", "<space>l", "<cmd>FzfLua live_grep<CR>", { noremap = true })
-    end
-  },
-  {
-    'https://gitlab.com/itaranto/id3.nvim',
-    version = '*',
-    config = function()
-      require('id3').setup {
-        mp3_tool = 'id3lib',
-      }
-    end,
-  },
+  -- {
+  --   'https://gitlab.com/itaranto/id3.nvim',
+  --   version = '*',
+  --   config = function()
+  --     require('id3').setup {
+  --       mp3_tool = 'id3lib',
+  --     }
+  --   end,
+  -- },
   -- yazi
   {
     "rolv-apneseth/tfm.nvim",
