@@ -83,6 +83,8 @@ local config = {
     "--clang-tidy",
     "--background-index",
     "--offset-encoding=utf-8",
+    -- avoid stderr log message
+    "--log=error",
     "--compile-commands-dir=" .. (dir or "."),
   },
   root_markers = {
