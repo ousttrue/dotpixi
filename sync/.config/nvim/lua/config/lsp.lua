@@ -40,7 +40,7 @@ local function lsp_attach(args)
   end
 
   if client.name == "clangd" then
-    vim.keymap.set("n", "<space>h", function()
+    vim.keymap.set("n", "<C-h>", function()
       vim.cmd "LspClangdSwitchSourceHeader"
     end, { noremap = true })
   end
