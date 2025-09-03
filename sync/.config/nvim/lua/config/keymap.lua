@@ -24,10 +24,10 @@ function M.setup()
   -- vim.keymap.set("n", "q", "<cmd>:b#|bd#<CR>", { noremap = true })
   -- vim.keymap.set('n', 'q', '<cmd>b#<cr><cmd>bd#<cr>', { noremap = true })
   vim.keymap.set('n', 'q', '<cmd>bd<cr>', { noremap = true })
-  vim.keymap.set('n', '<C-l>', '<cmd>bnext<cr>', { noremap = true, silent = true })
-  vim.keymap.set('n', '<C-h>', '<cmd>bprevious<cr>', { noremap = true, silent = true })
   vim.keymap.set('n', "<C-q>", '<cmd>tabclose<cr>', { noremap = true, silent = true })
-  vim.keymap.set('n', "<space><space>", ':nohlsearch<CR><C-l>', { noremap = true, silent = true })
+  vim.keymap.set('n', '<C-.>', '<cmd>bnext<cr>', { noremap = true, silent = true })
+  vim.keymap.set('n', '<C-,>', '<cmd>bprevious<cr>', { noremap = true, silent = true })
+  vim.keymap.set('n', "<C-l>", ':nohlsearch<CR><C-l>', { noremap = true, silent = true })
 
   vim.keymap.set('i', "<cr>",
     function()
