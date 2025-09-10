@@ -1,5 +1,5 @@
 [mgr]
-sort_by = "none"
+# sort_by = "none"
 # sort_sensitive = true
 
 [opener]

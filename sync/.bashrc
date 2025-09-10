@@ -48,3 +48,4 @@ function fpac {
     sudo pacman -S ${selected}
   fi
 }
+export PATH="/home/ousttrue/.pixi/bin:$PATH"
