@@ -48,4 +48,12 @@ function fpac {
     sudo pacman -S ${selected}
   fi
 }
+
+function fapt {
+  local selected=$(apt list | cut -d "/" -f 1 | fzf --preview "apt-cache show {}")
+  if [[ ${selected} =~ [^\s] ]]; then
+    sudo apt install ${selected}
+  fi
+}
+
 export PATH="/home/ousttrue/.pixi/bin:$PATH"
