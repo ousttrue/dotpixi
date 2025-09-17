@@ -1,32 +1,44 @@
+# memo
+
+```
+funcname.tab: $(DEFUNS)
+```
+
 # wtf8
+
 - [The WTF-8 encoding](https://simonsapin.github.io/wtf-8/)
 
 ```
-content => buffer => display => term 
+content => buffer => display => term
 
 message => term
 ```
 
 # copy url
+
 - @2005 [w3m から url を X のクリップボードへコピー - (((memo)))](https://emacsjjj.hatenadiary.org/entry/20050625/p1)
+
 ```sh
 #!/bin/sh
 echo "$1" | tr -d '\n' | xclip
 ```
 
 # CESU-8
+
 サロゲートペア
+
 - Compatibility Encoding Scheme for UTF-16: 8-Bit (CESU-8)
 
 # Load
 
 ## file.c
+
 ```c:file.c
 Buffer *loadGeneralFile(
-	char *path, 
-	ParsedURL *volatile current, 
+	char *path,
+	ParsedURL *volatile current,
 	char *referer,
-	int flag, 
+	int flag,
 	FormList *volatile request);
 
 👇
@@ -34,7 +46,7 @@ Buffer *loadGeneralFile(
 static Buffer *loadSomething(
 	URLFile *f,
 	Buffer *(*loadproc)(
-		URLFile *, 
+		URLFile *,
 		Buffer *),
 	Buffer *defaultbuf);
 
@@ -43,19 +55,19 @@ static Buffer *loadSomething(
 // UTF-8 ?
 Buffer *loadBuffer(URLFile *uf, Buffer *volatile newBuf) {
 	while ((lineBuf2 = StrmyISgets(uf->stream))->length) {
-	
+
 		// WC_CES_UTF_8 => INTERNAL
 		lineBuf2 = convertLine(uf, lineBuf2, PAGER_MODE, &charset, doc_charset);
-	
+
 	}
 }
 
 👇
 
 Str convertLine(
-	URLFile *uf, 
-	Str line, 
-	int mode, 
+	URLFile *uf,
+	Str line,
+	int mode,
 	wc_ces *charset,
 	wc_ces doc_charset)
 {
@@ -64,17 +76,18 @@ Str convertLine(
 ```
 
 👇
+
 ## libwc
 
 ```c:conv.c
 Str wc_Str_conv_with_detect(
-	Str is, 
+	Str is,
 	wc_ces *f_ces, // from
-	wc_ces hint, 
+	wc_ces hint,
 	wc_ces t_ces) // to
 
 Str wc_Str_conv(
-	Str is, 
+	Str is,
 	wc_ces f_ces, // from
 	wc_ces t_ces) // to
 {
@@ -93,7 +106,7 @@ Str wc_Str_conv(
 //  UTF8 to WTF
 Str
 wc_conv_from_utf8(
-	Str is, 
+	Str is,
 	wc_ces _) // 未使用
 {
 
@@ -105,35 +118,36 @@ wc_conv_from_utf8(
 ```
 
 ## etc.c
+
 ```c
 Str checkType(Str s, Lineprop **oprop, Linecolor **ocolor) {
 
 ```
-
 
 HTMLlineproc0
 
 # Display
 
 ## display.c
+
 ```c
 static Line *redrawLine(
-	Buffer *buf, 
-	Line *l, 
+	Buffer *buf,
+	Line *l,
 	int i)
 
 👇
 
 void addMChar(
 	char *p, // 日本語
-	Lineprop mode, 
+	Lineprop mode,
 	size_t len); // 5 ? wtf に依存
 ```
 
 ```c
 void message(
-	char *s, 
-	int return_x, 
+	char *s,
+	int return_x,
 	int return_y);
 ```
 
@@ -155,6 +169,7 @@ void addnstr(char *s, int n) {
   }
 }
 ```
+
 ## libwc/wtf.cpp
 
 ```cpp
@@ -171,6 +186,7 @@ size_t wtf_len(wc_uchar *p)
 ```
 
 ## menu.cpp
+
 ```c
 void new_menu(Menu *menu, MenuItem *item)
 {
@@ -185,6 +201,7 @@ static int nextColumn(int n, char *p, Lineprop *pr) {
 ```
 
 ## libwc/putc.cpp
+
 ```c
 void
 	wc_putc(char *c, FILE *f)

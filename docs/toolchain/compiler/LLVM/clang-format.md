@@ -1,3 +1,12 @@
+```.clang-format
+BasedOnStyle: WebKit
+SortIncludes: false
+```
+
+```sh
+find foo/bar/ -iname '*.h' -o -iname '*.cpp' | xargs clang-format -i
+```
+
 - [clang-format configurator](https://zed0.co.uk/clang-format-configurator/)
 
 - [clang-format を イイ感じに設定する - def yasuharu519(self):](https://yasuharu519.hatenablog.com/entry/2015/12/13/210825)
@@ -17,10 +26,6 @@ TabWidth: 2
 AccessModifierOffset: -2
 PointerAlignment: Right
 AllowShortIfStatementsOnASingleLine: true
-```
-
-```.clang-format
-SortIncludes: false
 ```
 
 `.clang-format`
