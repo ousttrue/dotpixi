@@ -8,9 +8,9 @@ search ?
 
 | src  | dst  | note                     |
 | ---- | ---- | ------------------------ |
-| `1`  | `f1` | Mesh, SelectMode, vertex |
-| `2`  | `f2` | Mesh, SelectMode, edge   |
-| `3`  | `f3` | Mesh, selectMode, face   |
+| `1`  | `f1` | Mesh, Select Mode, vertex |
+| `2`  | `f2` | Mesh, Select Mode, edge   |
+| `3`  | `f3` | Mesh, select Mode, face   |
 | `f2` | `f4` | rename active item       |
 
 # navigation

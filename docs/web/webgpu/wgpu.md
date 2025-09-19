@@ -26,3 +26,9 @@ pub enum Backend {
 # c++
 
 - https://eliemichel.github.io/LearnWebGPU/
+
+# zig
+
+- `0.14` https://github.com/bronter/wgpu_native_zig
+    - https://github.com/HaraldWik/wgpu-zig-hello-triangle
+- `0.14` https://github.com/noxabellus/minimal-wgpu-zig-example
