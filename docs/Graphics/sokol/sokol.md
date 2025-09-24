@@ -36,3 +36,13 @@ fips に頼らない。
 ## CreateWindow
 
 ## openxr
+
+# articles
+
+- https://blog.42yeah.is/
+
+# backend
+
+## WebGPU
+
+- https://floooh.github.io/sokol-webgpu/
