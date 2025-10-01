@@ -1,6 +1,8 @@
 ```.clang-format
 BasedOnStyle: WebKit
 SortIncludes: false
+PointerAlignment: Right
+BreakBeforeBraces: Attach
 ```
 
 ```sh
