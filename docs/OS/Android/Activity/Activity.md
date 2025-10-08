@@ -1,0 +1,1 @@
+- @2014 [Activity のライフサイクル再確認 #Android - Qiita](https://qiita.com/calciolife/items/39b2696a9a03e8591d40)

@@ -106,3 +106,9 @@ def platformVersion = 24      // openGLES 3.2 min api level
 動いた
 - [ndk-samples/gles3jni at master · android/ndk-samples · GitHub](https://github.com/android/ndk-samples/tree/master/gles3jni/)
 - [ndk-samples/teapots at main · android/ndk-samples · GitHub](https://github.com/android/ndk-samples/tree/main/teapots)
+
+- https://github.com/brackeen/glfm
+- https://github.com/AlexMartinelle/PicoEngine
+- https://github.com/Samana/OpenGLSamples
+- https://github.com/RobertAldridge/purec
+- https://github.com/tuket/bare_apk

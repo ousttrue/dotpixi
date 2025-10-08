@@ -70,3 +70,6 @@ install cached
             ├─ WriteFile resources.arsc (+2 more reused dependencies)
             └─ zig-android-sdk jar (zip compress apk) (+2 more reused dependencies)
 ```
+
+
+- https://www.hanshq.net/command-line-android.html

@@ -30,7 +30,7 @@ function M.setup()
   vim.opt.splitkeep = "screen"
 
   vim.opt.signcolumn = "yes" -- Always show sign column
-  vim.opt.showtabline = 0
+  vim.opt.showtabline = 2
   -- vim.opt.laststatus = 3
   vim.opt.laststatus = 2
   -- vim.opt.cmdheight = 0

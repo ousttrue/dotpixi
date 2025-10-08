@@ -96,30 +96,31 @@ function setup()
       tabline = 1000,
       winbar = 500,
     },
-    tabline = {
-      lualine_a = { "buffers" },
-      -- lualine_b = { "branch" },
-      -- lualine_c = { "filename" },
-      -- lualine_x = {},
-      -- lualine_y = {},
-      lualine_z = { "tabs" },
-    }, winbar = {
-    lualine_a = {
-      --   { "filename", path = 1 },
-      "location",
-      -- "progress",
+    -- tabline = {
+    --   lualine_a = { "buffers" },
+    --   -- lualine_b = { "branch" },
+    --   -- lualine_c = { "filename" },
+    --   -- lualine_x = {},
+    --   -- lualine_y = {},
+    --   lualine_z = { "tabs" },
+    -- },
+    winbar = {
+      lualine_a = {
+        --   { "filename", path = 1 },
+        "location",
+        -- "progress",
+      },
+      lualine_b = {
+        "aerial",
+      },
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {
+        -- "diff",
+      },
+      lualine_z = {
+      },
     },
-    lualine_b = {
-      "aerial",
-    },
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {
-      -- "diff",
-    },
-    lualine_z = {
-    },
-  },
     inactive_winbar = {
       lualine_a = {},
       lualine_b = {},
@@ -158,13 +159,35 @@ function setup()
 end
 
 local M = {
-  {
-    "petertriho/nvim-scrollbar", opts = {},
-  },
+  { "petertriho/nvim-scrollbar", opts = {} },
+  -- {
+  --   'akinsho/bufferline.nvim',
+  --   version = "*",
+  --   dependencies = 'nvim-tree/nvim-web-devicons',
+  --   setup = function()
+  --     require('bufferline').setup {}
+  --   end,
+  -- },
   -- { "tiagovla/scope.nvim", config = true },
+  -- {
+  --   "backdround/tabscope.nvim",
+  --   opts = {},
+  -- },
   {
-    "backdround/tabscope.nvim",
-    opts = {},
+    'romgrk/barbar.nvim',
+    dependencies = {
+      'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
+      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+      'akinsho/bufferline.nvim',
+    },
+    -- init = function() vim.g.barbar_auto_setup = false end,
+    opts = {
+      -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+      animation = false,
+      -- insert_at_start = true,
+      -- …etc.
+    },
+    version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },
   {
     "nvim-lualine/lualine.nvim",

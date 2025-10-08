@@ -144,7 +144,7 @@ function M.clear_syntax_link(ev)
   vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "CmpItemKindKeyword" })
   vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
 
-  vim.api.nvim_set_hl(0, "lualine_a_buffers_active", { bg = "NONE", fg = "#FF0000" })
+  vim.api.nvim_set_hl(0, "lualine_a_buffers_active", { bg = "#FFFFFF", fg = "#000000" })
 end
 
 return M
