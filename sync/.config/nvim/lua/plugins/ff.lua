@@ -78,7 +78,10 @@ return {
       vim.keymap.set(
         "n",
         "<space>l",
-        "<cmd>FzfxLiveGrep<cr>",
+        function()
+          vim.cmd('cd %:p:h')
+          vim.cmd "FzfxLiveGrep"
+        end,
         { silent = true, noremap = true, desc = "Live grep" }
       )
       -- by visual select
@@ -92,7 +95,10 @@ return {
       vim.keymap.set(
         "n",
         "<space>wl",
-        "<cmd>FzfxLiveGrep cword<cr>",
+        function()
+          vim.cmd('cd %:p:h')
+          vim.cmd "FzfxLiveGrep cword"
+        end,
         { silent = true, noremap = true, desc = "Live grep by cursor word" }
       )
       -- by yank text

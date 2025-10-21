@@ -1,5 +1,9 @@
 https://zigtools.org/zls/install/
 
+# alter
+
+https://github.com/llogick
+
 # 設定
 
 https://github.com/zigtools/zls/blob/master/schema.json

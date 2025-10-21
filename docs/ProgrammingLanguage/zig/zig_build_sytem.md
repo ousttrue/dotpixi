@@ -1,5 +1,12 @@
 https://ziglang.org/learn/build-system/
 
+- https://smntin.github.io/blog/2025/zig-build-embed/
+
+- https://github.com/akunaakwei/zig-patch/blob/main/PatchStep.zig
+- https://github.com/allyourcodebase/libgit2/blob/main/ClarTestStep.zig
+- https://github.com/cbilz/gnu-m4-zig/blob/main/InsertHeaderSnippets.zig
+- https://github.com/geooot/zig-sokol-crossplatform-starter/blob/main/build/FetchFile.zig
+
 ```zig
 const std = @import("std");
 
@@ -44,6 +51,24 @@ exe.root_module.addAnonymousImport("person", .{
 
 # Mutating Source Files in Place
 
+# cache, manifest
+
+https://ziglang.org/documentation/0.15.1/std/#std.Build.Cache.Manifest
+
+```zig
+var man = b.graph.cache.obtain();
+defer man.deinit();
 ```
 
+## cacheHitAndWatch
+
+https://github.com/allyourcodebase/libgit2/blob/0a30de316f8455dfd0429bc90a6ab27d98d957df/ClarTestStep.zig#L56
+
+```zig
+// LazyPath from manifest
+    if (try step.cacheHitAndWatch(&man)) {
+        const digest = man.final();
+        patch.generated_directory.path = try b.cache_root.join(b.allocator, &.{ "o", &digest });
+        return;
+    }
 ```
