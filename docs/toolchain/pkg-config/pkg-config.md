@@ -6,3 +6,7 @@ https://people.freedesktop.org/~dbn/pkg-config-guide.html
 
 `PKG_CONFIG_PATH=/usr/lib/pkgconfig`
 
+# pkgconf
+
+- [GitHub - pkgconf/pkgconf: package compiler and linker metadata toolkit](https://github.com/pkgconf/pkgconf)
+  [pkg-config](./pkg-config) の後継？

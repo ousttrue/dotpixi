@@ -327,7 +327,7 @@ function vcenv()
       { 
         foreach ($e in $kv[1].Split(";"))
         {
-          addPath($e)
+          insertPath($e)
         }
       }
       "INCLUDE"
