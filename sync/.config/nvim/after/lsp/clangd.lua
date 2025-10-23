@@ -1,36 +1,48 @@
----@alias ToolType 'cmake' | 'meson' | 'zig'
+---@alias ToolType "cmake" | "meson"
+
+---@return uv.fs_readdir.entry[]|nil
+local function get_entries(dir)
+  local stat = vim.uv.fs_stat(dir)
+  if stat and stat.type == "directory" then
+    ---@diagnostic disable-next-line
+    local dir_t = vim.uv.fs_opendir(dir, nil, 1024)
+    assert(dir_t)
+    local items = vim.uv.fs_readdir(dir_t)
+    vim.uv.fs_closedir(dir_t)
+    return items;
+  end
+end
 
 -- */CMakeCache.txt: cmake
 -- */meson-info/: meson
 -- build.zig: zig build
+---@return ToolType?
+local function get_build_tool(items)
+  for _, item in ipairs(items) do
+    if item.type == "file" and item.name == "CMakeCache.txt" then
+      return "cmake"
+    end
+    if item.type == "directory" and item.name == "meson-info" then
+      return "meson"
+    end
+  end
+end
+
+--- return dir, tool
 ---@return string?
 ---@return ToolType?
-local function get_build_tool(dir, level)
+local function get_build_tool_recursive(dir, level)
   -- build/windows/debug
   if level > 3 then
     return
   end
-  local stat = vim.uv.fs_stat(dir)
-  if stat and stat.type == "directory" then
-    local dir_t = vim.uv.fs_opendir(dir, nil, 99)
-    assert(dir_t)
-    local items = vim.uv.fs_readdir(dir_t)
-    if not items then
-      return
-    end
-    -- assert(items)
-    -- print(dir, level, #items)
-    -- print("fs_stat", vim.inspect(items))
-    vim.uv.fs_closedir(dir_t)
 
+  local items = get_entries(dir)
+  if items then
     -- first search file
-    for _, item in ipairs(items) do
-      if item.type == "file" and item.name == "CMakeCache.txt" then
-        return dir, "cmake"
-      end
-      if item.type == "file" and item.name == "meson-info" then
-        return dir, "meson"
-      end
+    local tool = get_build_tool(items)
+    if tool then
+      return dir, tool
     end
 
     -- if not found search dir
@@ -38,9 +50,9 @@ local function get_build_tool(dir, level)
       if item.type == "directory" then
         -- recursive
         local nest = vim.fs.joinpath(dir, item.name)
-        local nest_dir, tool = get_build_tool(nest, level + 1)
-        if nest_dir then
-          return nest_dir, tool
+        local _, tool = get_build_tool_recursive(nest, level + 1)
+        if nest then
+          return nest, tool
         end
       end
     end
@@ -64,7 +76,7 @@ local function get_c_builddir()
   local cwd = vim.fn.getcwd()
   for _, root in ipairs(list) do
     if root then
-      local dir, tool = get_build_tool(vim.fs.joinpath(cwd, root), 0)
+      local dir, tool = get_build_tool_recursive(vim.fs.joinpath(cwd, root), 0)
       if tool then
         return dir, tool
       end
