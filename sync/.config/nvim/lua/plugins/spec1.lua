@@ -1,6 +1,14 @@
 ---@type LazySpec[]
 return {
   -- {
+  --   "emmanueltouzery/key-menu.nvim",
+  --   config = function()
+  --     vim.o.timeoutlen = 300
+  --     require 'key-menu'.set('n', '<Space>')
+  --     require 'key-menu'.set('n', 'g')
+  --   end,
+  -- },
+  -- {
   --   'https://gitlab.com/itaranto/id3.nvim',
   --   version = '*',
   --   config = function()

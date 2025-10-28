@@ -36,20 +36,20 @@ return {
 
       -- ======== files ========
 
-      -- by args
-      vim.keymap.set(
-        "n",
-        "<space>f",
-        "<cmd>FzfxFiles<cr>",
-        { silent = true, noremap = true, desc = "Find files" }
-      )
-      -- by visual select
-      vim.keymap.set(
-        "x",
-        "<space>f",
-        "<cmd>FzfxFiles visual<CR>",
-        { silent = true, noremap = true, desc = "Find files" }
-      )
+      -- -- by args
+      -- vim.keymap.set(
+      --   "n",
+      --   "<space>f",
+      --   "<cmd>FzfxFiles<cr>",
+      --   { silent = true, noremap = true, desc = "Find files" }
+      -- )
+      -- -- by visual select
+      -- vim.keymap.set(
+      --   "x",
+      --   "<space>f",
+      --   "<cmd>FzfxFiles visual<CR>",
+      --   { silent = true, noremap = true, desc = "Find files" }
+      -- )
       -- by cursor word
       vim.keymap.set(
         "n",

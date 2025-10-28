@@ -17,6 +17,7 @@ require("config.lsp").setup()
 require("config.markdown").setup()
 require("config.color").setup()
 require("config.grep").setup()
+require("project").setup()
 
 vim.cmd [[
 autocmd QuickfixCmdPost make,vimgrep copen

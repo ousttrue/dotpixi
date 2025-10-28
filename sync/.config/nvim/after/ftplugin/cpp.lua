@@ -1,1 +1,10 @@
-vim.o.errorformat = "%f:%l:%c: %trror: %m"
+-- vim.o.errorformat = "%f:%l:%c: %trror: %m"
+-- vim.o.errorformat = "%f(%l): %t*: %m"
+--
+-- vim.opt.errorformat = vim.fn.join({
+--   "%t%*[^:]:%*[ \t]%*[^:]:%*[ \t]%f:%l:%c:%*[ \t]%m",
+--   "%f:%l:%c:%*[ \t]%m",
+--   -- meson. ninja + msvc
+--   "%Dninja: Entering directory `%f'",
+--   "%f(%l): %t%*[^ ] %m",
+-- }, ",")
