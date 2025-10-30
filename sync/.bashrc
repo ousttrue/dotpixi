@@ -20,7 +20,9 @@ PS1='[\u@\h \W]\$ '
 
 export PROMPT_COMMAND='history -a; history -r'
 
-eval "$(zoxide init bash)"
+if which zoxide > /dev/null; then
+   eval "$(zoxide init bash)"
+fi
 
 export FZF_DEFAULT_OPTS="--layout=reverse --preview-window down:70%"
 export FZF_DEFAULT_COMMAND="fd --type f -H -E .git"
@@ -34,11 +36,6 @@ function gg {
     z ${selected}
   fi
 }
-
-export PATH="$HOME/local/bin:$PATH"
-
-# Created by `pipx` on 2025-07-27 06:39:41
-export PATH="$PATH:/home/ousttrue/.local/bin"
 
 export SDL_AUDIODRIVER=jack
 
@@ -56,4 +53,8 @@ function fapt {
   fi
 }
 
-export PATH="/home/ousttrue/.pixi/bin:$PATH"
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Created by `pipx` on 2025-07-27 06:39:41
+export PATH="$PATH:/home/ousttrue/.local/bin"
+
