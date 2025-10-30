@@ -1,7 +1,7 @@
-surface3
-[* boot]
-https://support.microsoft.com/ja-jp/help/4023511/surface-boot-surface-from-a-usb-device
-http://songoku.shenron.jp/Windows/Windows022/Windows022-004.html
+# surface3
+
+- https://support.microsoft.com/ja-jp/help/4023511/surface-boot-surface-from-a-usb-device
+- http://songoku.shenron.jp/Windows/Windows022/Windows022-004.html
 
 ```
 １: Surface をシャットダウン。
@@ -11,4 +11,4 @@ http://songoku.shenron.jp/Windows/Windows022/Windows022-004.html
 Surface UEFI が表示されるので。次のいずれかを実行。
 ```
 
-#linux_surface_pro3
+# linux_surface_pro3

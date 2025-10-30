@@ -18,3 +18,8 @@ done
 LIN=${PATH//:/ }
 WIN=${PATH//;/ }
 ```
+
+# File
+
+## exists
+[

@@ -2,12 +2,6 @@
 
 - [Downloads – Gentoo Linux](https://www.gentoo.org/downloads/)
 
-# profile
-
-## default/linux/amd64/23.0
-
-## default/linux/amd64/17.1
-
 # WSL
 
 [[OS/Linux/wsl]]

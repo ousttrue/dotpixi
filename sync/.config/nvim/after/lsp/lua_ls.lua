@@ -2,7 +2,7 @@
 local config = {
   cmd = { vim.fn.exepath "lua-language-server" },
   filetypes = { "lua" },
-  root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
+  root_markers = { "wezterm.lua", ".luarc.json", ".luarc.jsonc", ".git" },
   settings = {
     -- https://zenn.dev/uga_rosa/articles/afe384341fc2e1
     Lua = {
@@ -16,6 +16,7 @@ local config = {
           "${3rd}/luv/library",
           "${3rd}/busted/library",
           "${3rd}/luassert/library",
+          vim.fn.stdpath("data") .. "/lazy/wezterm-types/lua/wezterm/types",
         }),
         checkThirdParty = "Disable",
       },

@@ -1,5 +1,7 @@
 https://pipewire.org/
 
+- https://wiki.gentoo.org/wiki/PipeWire/ja
+
 - @2025 [PipeWire徹底解説：LinuxマルチメディアアーキテクチャをOSエンジニアリングの観点から読み解く #pulseaudio - Qiita](https://qiita.com/shinonome_taku/items/d7b396de3174d5c24404)
 
 `libpipewire-module-portal`

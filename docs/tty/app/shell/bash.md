@@ -22,6 +22,15 @@ if [ -v hoge ]; then # 👈 無い
 fi
 ```
 
+# bashrc
+
+```sh
+if [[ $- != *i* ]] ; then
+        # Shell is non-interactive.  Be done now!
+        return
+fi
+```
+
 # 関数
 
 - @2020 [bashで関数を書く - やってみる](https://ytyaru.hatenablog.com/entry/2020/06/14/000000)

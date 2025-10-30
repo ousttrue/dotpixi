@@ -76,7 +76,7 @@ local function evel_lualine()
       lualine_c = {
         {
           'filename',
-          path = 2,
+          path = 1,
         }
       }
     },
