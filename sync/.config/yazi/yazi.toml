@@ -1,6 +1,7 @@
 [mgr]
 # sort_by = "none"
 # sort_sensitive = true
+show_hidden = true
 
 [opener]
 play = [

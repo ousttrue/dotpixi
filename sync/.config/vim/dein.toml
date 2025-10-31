@@ -1,0 +1,85 @@
+#
+# Required:
+#
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+#
+# ColorScheme
+#
+[[plugins]]
+repo = 'tyrannicaltoucan/vim-deep-space'
+hook_add = '''
+set background=dark
+let g:color_scheme = 'deep-space'
+'''
+
+#
+# Minimum
+#
+[[plugins]]
+repo = 'cespare/vim-toml'
+[[plugins]]
+repo = "Shougo/context_filetype.vim"
+[[plugins]]
+repo = "osyo-manga/vim-precious"
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
+hook_add='''
+nmap <C-_> :Commentary<CR>
+vmap <C-_> :Commentary<CR>
+nmap <C-/> :Commentary<CR>
+vmap <C-/> :Commentary<CR>
+'''
+
+[[plugins]]
+repo = "tpope/vim-surround"
+
+[[plugins]]
+repo= 'vim-airline/vim-airline'
+hook_add='''
+nnoremap ( :bp<CR>
+nnoremap ) :bn<CR>
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='behelit'
+'''
+
+[[plugins]]
+repo= 'vim-airline/vim-airline-themes'
+
+# [[plugins]]
+# repo = 'Chiel92/vim-autoformat'
+# hook_add='''
+# vmap <S-f> :Autoformat<CR>
+# let g:formatters_python = ['black']
+# let g:formatters_html = ['prettier']
+# '''
+
+[[plugins]]
+repo = 'prettier/vim-prettier'
+hook_add='''
+let g:prettier#exec_cmd_path = '/C/Users/' . $USER . '/AppData/Roaming/npm/prettier'
+nmap ff :Prettier<CR>
+'''
+
+[[plugins]]
+repo = 'preservim/nerdtree'
+hook_add='''
+nmap <C-e> :NERDTreeVCS<CR>
+'''
+
+# [[plugins]]
+# repo = "christoomey/vim-tmux-navigator"
+
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+hook_add='''
+let g:ctrlp_map = '<space><space>'
+let g:ctrlp_show_hidden = 1
+'''
+
