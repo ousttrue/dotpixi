@@ -1,0 +1,39 @@
+keymap q CLOSE_TAB
+keymap Q QUIT
+keymap ? HELP
+keymap : COMMAND
+keymap ( PREV_TAB
+keymap ) NEXT_TAB
+keymap M TAB_LINK
+keymap T TAB_GOTO ~/.w3m/bookmark.html
+keymap 0 LINE_BEGIN
+keymap * DICT_WORD_AT
+
+keymap TAB NEXT_LINK
+keymap S-TAB PREV_LINK
+keymap B PREV
+keymap F NEXT
+keymap y BEGIN
+keymap Y END
+
+keymap b PREV_WORD
+#keymap b PREV_PAGE
+keymap S-SPACE PREV_PAGE
+keymap i PREV_PAGE
+keymap SPC NEXT_PAGE
+keymap > UP
+keymap < DOWN
+
+
+keymap j MOVE_DOWN1
+keymap k MOVE_UP1
+#keymap H NEXT_LEFT
+keymap C-m GOTO_LINK
+keymap C-j NEXT_DOWN 
+# same enter
+keymap C-k NEXT_UP
+#keymap L NEXT_RIGHT
+
+keymap x EXTERN
+keymap ";" MARK_URL
+

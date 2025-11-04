@@ -9,10 +9,12 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias v='nvim'
 alias y='yazi'
+alias w='w3m'
 function p {
   cd $HOME/dotpixi
   v
 }
+alias world='sudo emerge --ask --verbose --update --deep --changed-use @world'
 
 export EDITOR="nvim"
 

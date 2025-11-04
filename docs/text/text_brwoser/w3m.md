@@ -4,6 +4,15 @@
 funcname.tab: $(DEFUNS)
 ```
 
+# dict
+
+- [Linux のコマンドラインでオフライン英和辞書 #Linux - Qiita](https://qiita.com/yubais/items/21cac44d71c30edd22c9)
+- https://github.com/ayu-mushi/cui-dict-kaizen
+- https://scrapbox.io/ayu-mushi/CUI%E8%8B%B1%E8%AA%9E%E8%BE%9E%E6%9B%B8
+- https://ayapin-film.sakura.ne.jp/LJ/Docs/19th.pdf
+
+> Linux look
+
 # wtf8
 
 - [The WTF-8 encoding](https://simonsapin.github.io/wtf-8/)
