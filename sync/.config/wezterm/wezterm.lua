@@ -14,16 +14,25 @@ config.initial_rows = 60
 config.font_size = 12
 config.enable_kitty_graphics = true
 
-local themes = {}
-for k, v in pairs(wezterm.color.get_builtin_schemes()) do
-  table.insert(themes, k)
-end
-table.sort(themes, function(c1, c2)
-  return c1 < c2
-end)
+-- local themes = {}
+-- for k, v in pairs(wezterm.color.get_builtin_schemes()) do
+--   table.insert(themes, k)
+-- end
+-- table.sort(themes, function(c1, c2)
+--   return c1 < c2
+-- end)
+
+-- for k, v in pairs(wezterm.color.get_builtin_schemes()) do
+--   local keys = ''
+--   for kk, vv in pairs(v) do
+--     keys = keys .. ',' .. kk
+--   end
+--   wezterm.log_info('keys', keys)
+--   break
+-- end
 
 local home = os.getenv('HOME') or os.getenv("USERPROFILE")
-local themes_file_name = string.format("%s/.config/wezterm/themes.txt", home)
+local themes_file_name = string.format("%s/.config/wezterm/themes.json", home)
 
 local f = io.open(themes_file_name, 'r')
 if f then
@@ -32,16 +41,24 @@ if f then
 else
   f = io.open(themes_file_name, 'w')
   if f then
-    for i, theme in ipairs(themes) do
-      f:write(theme .. '\n')
+    local schemes = {}
+    for k, v in pairs(wezterm.color.get_builtin_schemes()) do
+      table.insert(schemes, {
+        name = k,
+        foreground = v.foreground,
+        background = v.background,
+      })
     end
+    table.sort(schemes, function(l, r)
+      return l.name < r.name
+    end)
+    f:write(wezterm.json_encode(schemes))
     f:close()
     wezterm.log_info("write", themes_file_name)
   else
     wezterm.log_warn("fail to open", themes_file_name)
   end
 end
-
 
 -- local ps_script = string.format(
 --   "%s | fzf | [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes",

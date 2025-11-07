@@ -370,18 +370,31 @@ function vcenv()
   # Write-Output $v.stdout
 }
 
-function weztheme($color_scheme, $pane_id)
+function weztheme($color_scheme)
 {
-  # echo $color_scheme
+  echo $color_scheme
   echo "$([char]27)]1337;SetUserVar=color_scheme=$([Convert]::ToBase64String([Text.Encoding]::Ascii.GetBytes($color_scheme.Trim())))$([char]7)"
-  wezterm cli activate-pane --pane-id $pane_id
+}
+
+function color_entry($entry)
+{
+  $fr=[convert]::ToInt32($entry.foreground.substring(1, 2), 16)
+  $fg=[convert]::ToInt32($entry.foreground.substring(3, 2), 16)
+  $fb=[convert]::ToInt32($entry.foreground.substring(5, 2), 16)
+  $br=[convert]::ToInt32($entry.background.substring(1, 2), 16)
+  $bg=[convert]::ToInt32($entry.background.substring(3, 2), 16)
+  $bb=[convert]::ToInt32($entry.background.substring(5, 2), 16)
+  $name=$entry.name
+  "`e[38;2;${fr};${fg};${fb}m`e[48;2;${br};${bg};${bb}m${name}"
 }
 
 # color_scheme
 function fztheme($pane_id)
 {
-  $this_pane_id=wezterm cli list-clients --format=json | Join-String | ConvertFrom-Json | % { $_.focused_pane_id }
-  $color_scheme=$(Get-Content ~/.config/wezterm/themes.txt | fzf --preview-window=bottom,1 --preview "wezterm cli split-pane --pane-id ${pane_id} --bottom --percent 1 -- pwsh -c weztheme '{}' ${this_pane_id}")
-  exit
+  # $this_pane_id=wezterm cli list-clients --format=json | Join-String | ConvertFrom-Json | % { $_.focused_pane_id }
+  $color_scheme=$(Get-Content -Raw ~/.config/wezterm/themes.json | ConvertFrom-Json | %{ color_entry $_ } | fzf --ansi )
+  # $color_scheme=[regex]::Replace($color_scheme, '(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]', '')
+  weztheme($color_scheme)
+  # exit
 }
 
