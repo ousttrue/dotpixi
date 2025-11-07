@@ -1,0 +1,1 @@
+- [第39回　UNIXを用いたシステム構築から誕生したGopher](http://www.tomo.gr.jp/root/9806.html)

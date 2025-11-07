@@ -370,4 +370,18 @@ function vcenv()
   # Write-Output $v.stdout
 }
 
+function weztheme($color_scheme, $pane_id)
+{
+  # echo $color_scheme
+  echo "$([char]27)]1337;SetUserVar=color_scheme=$([Convert]::ToBase64String([Text.Encoding]::Ascii.GetBytes($color_scheme.Trim())))$([char]7)"
+  wezterm cli activate-pane --pane-id $pane_id
+}
+
+# color_scheme
+function fztheme($pane_id)
+{
+  $this_pane_id=wezterm cli list-clients --format=json | Join-String | ConvertFrom-Json | % { $_.focused_pane_id }
+  $color_scheme=$(Get-Content ~/.config/wezterm/themes.txt | fzf --preview-window=bottom,1 --preview "wezterm cli split-pane --pane-id ${pane_id} --bottom --percent 1 -- pwsh -c weztheme '{}' ${this_pane_id}")
+  exit
+}
 

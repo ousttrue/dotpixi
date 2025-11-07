@@ -91,11 +91,18 @@
 
 local function get_compile_commands_json_dir()
   local dir = vim.fn.expand('%:p:h')
+
   local pixi_root = vim.fs.root(dir, { "pixi.toml" })
   if pixi_root then
     local name = vim.fn.expand('%:p:t')
     return vim.fs.joinpath(pixi_root, 'build', name)
   end
+
+  local zig_root = vim.fs.root(dir, { "build.zig" })
+  if zig_root then
+    return zig_root
+  end
+
   return dir
 end
 
@@ -104,6 +111,8 @@ local config = {
   ---@param dispatchers vim.lsp.rpc.Dispatchers
   ---@param config vim.lsp.ClientConfig
   cmd = function(dispatchers, config)
+    local dir = get_compile_commands_json_dir()
+    print('get_compile_commands_json_dir => ' .. dir)
     --- lazy cmd
     local config_cmd = {
       vim.fn.exepath "clangd",
@@ -113,7 +122,7 @@ local config = {
       "--offset-encoding=utf-8",
       -- avoid stderr log message
       "--log=error",
-      "--compile-commands-dir=" .. (get_compile_commands_json_dir() or "."),
+      "--compile-commands-dir=" .. dir,
     }
     return vim.lsp.rpc.start(config_cmd, dispatchers, {
       cwd = config.cmd_cwd,
@@ -128,6 +137,7 @@ local config = {
     "compile_commands.json",
     "builddir/compile_commands.json",
     "build_android/compile_commands.json",
+    "build.zig",
   },
   filetypes = { "c", "cpp" },
 }
