@@ -14,58 +14,16 @@ config.initial_rows = 60
 config.font_size = 12
 config.enable_kitty_graphics = true
 
--- local themes = {}
--- for k, v in pairs(wezterm.color.get_builtin_schemes()) do
---   table.insert(themes, k)
--- end
--- table.sort(themes, function(c1, c2)
---   return c1 < c2
--- end)
-
--- for k, v in pairs(wezterm.color.get_builtin_schemes()) do
---   local keys = ''
---   for kk, vv in pairs(v) do
---     keys = keys .. ',' .. kk
---   end
---   wezterm.log_info('keys', keys)
---   break
--- end
-
-local home = os.getenv('HOME') or os.getenv("USERPROFILE")
-local themes_file_name = string.format("%s/.config/wezterm/themes.json", home)
-
-local f = io.open(themes_file_name, 'r')
-if f then
-  -- already exists. skip
-  f:close()
-else
-  f = io.open(themes_file_name, 'w')
-  if f then
-    local schemes = {}
-    for k, v in pairs(wezterm.color.get_builtin_schemes()) do
-      table.insert(schemes, {
-        name = k,
-        foreground = v.foreground,
-        background = v.background,
-      })
-    end
-    table.sort(schemes, function(l, r)
-      return l.name < r.name
-    end)
-    f:write(wezterm.json_encode(schemes))
-    f:close()
-    wezterm.log_info("write", themes_file_name)
-  else
-    wezterm.log_warn("fail to open", themes_file_name)
-  end
+local choices = {}
+for k, v in pairs(wezterm.color.get_builtin_schemes()) do
+  table.insert(choices, {
+    id = k,
+    label = wezterm.format({
+      { Foreground = { Color = v.foreground } },
+      { Background = { Color = v.background } },
+      { Text = k }, }),
+  })
 end
-
--- local ps_script = string.format(
---   "%s | fzf | [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes",
---   wezterm.shell_quote_arg(themes))
---   '$([char]27)]1337;SetUserVar=color_scheme=$(($(echo ' ..
---   themes .. ' | fzf)))$([char]7)'
--- wezterm.log_info(ps_script)
 
 config.keys = {
   { mods = "ALT",  key = "c",          action = wezterm.action { SpawnTab = "CurrentPaneDomain" } },
@@ -85,27 +43,19 @@ config.keys = {
     mods = "ALT",
     key = 'F12',
     action = wezterm.action_callback(function(win, pane)
-      win:perform_action(wezterm.action.SplitPane({
-        direction = "Right",
-        size = { Percent = 25 },
-        command = {
-          args = { "pwsh", "-c", "fztheme", tostring(pane:pane_id()) },
-        },
+      win:perform_action(wezterm.action.InputSelector({
+        title   = 'color_scheme',
+        choices = choices,
+        action  = wezterm.action_callback(function(inner_window, _, id)
+          inner_window:set_config_overrides {
+            color_scheme = id,
+          }
+        end),
+        fuzzy   = true,
       }), pane)
     end),
   }
 }
-
--- wezterm.on('window-focus-changed', function(window, pane)
---   local name = pane:get_domain_name()
---   local overrides = window:get_config_overrides() or {}
---   if name == 'local' then
---     overrides.color_scheme = 'Adventure'
---   else
---     overrides.color_scheme = 'Sagelight (base16)'
---   end
---   window:set_config_overrides(overrides)
--- end)
 
 wezterm.on('user-var-changed', function(window, pane, name, value)
   local x = ''
