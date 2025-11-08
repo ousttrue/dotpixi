@@ -25,14 +25,14 @@ function M.setup()
 autocmd FileType markdown hi link markdownError NONE
 ]]
 
-  if vim.fn.has('win64') == 1 then
-    vim.o.bg = "dark"
-    vim.cmd "colorschem retrobox"
-  else
-    vim.o.bg = "light"
-    -- vim.cmd "colorschem tokyonight"
-    vim.cmd "colorschem rose-pine"
-  end
+  -- if vim.fn.has('win64') == 1 then
+  --   vim.o.bg = "dark"
+  --   vim.cmd "colorschem retrobox"
+  -- else
+  --   vim.o.bg = "light"
+  --   -- vim.cmd "colorschem tokyonight"
+  --   vim.cmd "colorschem rose-pine"
+  -- end
 
   -- Background colors for active vs inactive windows
 

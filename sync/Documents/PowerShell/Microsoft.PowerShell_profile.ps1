@@ -372,8 +372,8 @@ function vcenv()
 
 function weztheme($color_scheme)
 {
-  echo $color_scheme
-  echo "$([char]27)]1337;SetUserVar=color_scheme=$([Convert]::ToBase64String([Text.Encoding]::Ascii.GetBytes($color_scheme.Trim())))$([char]7)"
+  # echo $color_scheme
+  Write-Host -NoNewLine "$([char]27)]1337;SetUserVar=color_scheme=$([Convert]::ToBase64String([Text.Encoding]::Ascii.GetBytes($color_scheme.Trim())))$([char]7)"
 }
 
 function color_entry($entry)
@@ -392,9 +392,11 @@ function color_entry($entry)
 function fztheme($pane_id)
 {
   # $this_pane_id=wezterm cli list-clients --format=json | Join-String | ConvertFrom-Json | % { $_.focused_pane_id }
-  $color_scheme=$(Get-Content -Raw ~/.config/wezterm/themes.json | ConvertFrom-Json | %{ color_entry $_ } | fzf --ansi )
-  # $color_scheme=[regex]::Replace($color_scheme, '(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]', '')
-  weztheme($color_scheme)
+  $arr=$(Get-Content -Raw ~/.config/wezterm/themes.json | ConvertFrom-Json)
+  $arr=$(Get-Random $arr -Count $arr.Length)
+  $color_scheme=$($arr | %{ color_entry $_ } | fzf --ansi)
+  weztheme $color_scheme
   # exit
+  # wezterm cli send-text --pane-id $pane_id "#${color_scheme}`n"
 }
 

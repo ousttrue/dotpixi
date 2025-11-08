@@ -83,7 +83,7 @@ config.keys = {
 
   {
     mods = "ALT",
-    key = 't',
+    key = 'F12',
     action = wezterm.action_callback(function(win, pane)
       win:perform_action(wezterm.action.SplitPane({
         direction = "Right",

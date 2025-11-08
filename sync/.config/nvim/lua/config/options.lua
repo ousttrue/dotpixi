@@ -37,7 +37,9 @@ function M.setup()
   vim.opt.number = false
 
   -- for tmux
-  vim.opt.termguicolors = true -- Enable colors in terminal
+  -- vim.opt.termguicolors = true -- Enable colors in terminal
+  -- use ANSI 16 colors
+  vim.opt.termguicolors = false
 
   -- buffer
   vim.opt.fileformats = { "unix", "dos" }

@@ -15,7 +15,8 @@ require("config.clipboard").setup()
 require("config.keymap").setup()
 require("config.lsp").setup()
 require("config.markdown").setup()
-require("config.color").setup()
+-- require("config.color").setup()
+vim.cmd "colorschem ansi"
 require("config.grep").setup()
 require("project").setup()
 
