@@ -12,6 +12,7 @@ https://kmiya-culti.github.io/RLogin/ctrlcode.html#OSC
 | ----- | ----------------- | --- |
 | 0,1,2 | set wndow title   |     |
 | 4     | set color pallete |     |
+| 10,11     |  f |     |
 | 52    | clipboard         |     |
 | 1337  | set user var      |     |
 

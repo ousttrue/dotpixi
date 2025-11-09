@@ -10,7 +10,10 @@ return {
     },
     main = "nvim-treesitter.configs",
     opts = {
-      highlight = { enable = true },
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
       indent = { enable = true },
       -- https://qiita.com/ysmb-wtsg/items/2c9eaf444c60ca172588
       textobjects = {

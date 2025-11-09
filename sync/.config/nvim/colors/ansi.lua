@@ -1,11 +1,24 @@
+-- https://www.reddit.com/r/neovim/comments/t3nm8j/lua_vimhighlightclear/
+local function hl_clear()
+  vim.cmd("hi clear")
+
+  -- clear ts specific
+  local defs = vim.api.nvim_get_hl(0, {});
+  for hl_name, v in pairs(defs) do
+    if string.sub(hl_name, 1, 1) == "@" then
+      vim.api.nvim_set_hl(0, hl_name, {})
+    end
+  end
+end
+
 -- https://hamvocke.com/blog/ansi-vim-color-scheme/
 local function define()
-  -- vim.o.background = "dark" -- or "light"
-  vim.cmd("hi clear")
+  vim.opt.termguicolors = false
   local colors_name = 'ansi'
   vim.g.colors_name = colors_name
   vim.cmd("colorscheme " .. colors_name)
-  vim.cmd("hi clear")
+
+  hl_clear()
 
   -- This color scheme relies on ANSI colors only. It automatically inherits
   -- the 16 colors of your terminal color scheme. You can change the colors of
@@ -57,7 +70,7 @@ local function define()
   vim.api.nvim_set_hl(0, "FoldColumn", { ctermfg = 7 })
   vim.api.nvim_set_hl(0, "Folded", { ctermfg = 12 })
   vim.api.nvim_set_hl(0, "WildMenu", { ctermbg = 0, ctermfg = 15, })
-  vim.api.nvim_set_hl(0, "SpecialKey", { ctermfg = 0 })
+  vim.api.nvim_set_hl(0, "SpacialKey", { ctermfg = 0 })
   vim.api.nvim_set_hl(0, "IncSearch", { ctermbg = 1, ctermfg = 0 })
   vim.api.nvim_set_hl(0, "CurSearch", { ctermbg = 3, ctermfg = 0 })
   vim.api.nvim_set_hl(0, "Search", { ctermbg = 11, ctermfg = 0 })
@@ -98,23 +111,40 @@ local function define()
   vim.api.nvim_set_hl(0, "healthSuccess", { ctermfg = 2 })
   vim.api.nvim_set_hl(0, "healthWarning", { ctermfg = 3 })
 
+  --
   -- Syntax
+  --
   vim.api.nvim_set_hl(0, "Hlargs", { ctermfg = 1, bold = true })
 
-  vim.api.nvim_set_hl(0, "Comment", { ctermfg = 8, italic = true })
+  -- comment
+  vim.api.nvim_set_hl(0, "Comment", { ctermfg = 8, italic = true, })
+  vim.api.nvim_set_hl(0, "SpecialComment", { link = "Comment" })
+  vim.api.nvim_set_hl(0, "@comment", { link = "Comment" })
   vim.api.nvim_set_hl(0, "@markup.quote", { link = "Comment" })
-  -- compile time
-  vim.api.nvim_set_hl(0, "Constant", { ctermfg = 3 })
-  vim.api.nvim_set_hl(0, "Type", { link = "Constant" })
-  vim.api.nvim_set_hl(0, "@type.builtin.cpp", { link = "Constant" })
-  vim.api.nvim_set_hl(0, "@keyword.modifier.cpp", { link = "Constant" })
-  vim.api.nvim_set_hl(0, "Define", { link = "Constant" })
-  vim.api.nvim_set_hl(0, "Structure", { link = "Constant" })
 
   -- keyword
   vim.api.nvim_set_hl(0, "Keyword", { ctermfg = 5 })
+  vim.api.nvim_set_hl(0, "@keyword", { link = "Keyword" })
   vim.api.nvim_set_hl(0, "Operator", { link = "Keyword" })
   vim.api.nvim_set_hl(0, "Delimiter", { link = "Keyword" })
+  vim.api.nvim_set_hl(0, "@punctuation", { link = "Keyword" })
+  vim.api.nvim_set_hl(0, "@operator", { link = "Keyword" })
+  vim.api.nvim_set_hl(0, "@keyword.type", { link = "Keyword" })
+
+  -- const / compile time
+  vim.api.nvim_set_hl(0, "Constant", { ctermfg = 3 })
+  vim.api.nvim_set_hl(0, "Type", { link = "Constant" })
+  vim.api.nvim_set_hl(0, "Define", { link = "Constant" })
+  vim.api.nvim_set_hl(0, "Structure", { link = "Constant" })
+  vim.api.nvim_set_hl(0, "@type", { link = "Constant" })
+  vim.api.nvim_set_hl(0, "@keyword.modifier.cpp", { link = "Constant" })
+
+  -- literal
+  vim.api.nvim_set_hl(0, "String", { ctermfg = 4 })
+  vim.api.nvim_set_hl(0, "@string", { link = "String" })
+  vim.api.nvim_set_hl(0, "@boolean", { link = "String" })
+  vim.api.nvim_set_hl(0, "@markup.link", { link = "String" })
+  vim.api.nvim_set_hl(0, "@number", { link = "String" })
 
   -- id
   vim.api.nvim_set_hl(0, "Identifier", { ctermfg = 2 })
@@ -122,23 +152,17 @@ local function define()
   vim.api.nvim_set_hl(0, "@markup.heading", { link = "Identifier" })
   vim.api.nvim_set_hl(0, "@variable", { link = "Identifier" })
   -- vim.api.nvim_set_hl(0, "@function.call", { link = "Constant" })
-  -- literal
-  vim.api.nvim_set_hl(0, "String", { ctermfg = 4 })
-  vim.api.nvim_set_hl(0, "@string.regexp", { link = "String" })
-  vim.api.nvim_set_hl(0, "@boolean", { link = "String" })
-  vim.api.nvim_set_hl(0, "@markup.link", { link = "String" })
-  vim.api.nvim_set_hl(0, "@number", { link = "String" })
-  vim.api.nvim_set_hl(0, "@number.float", { link = "String" })
 
   vim.api.nvim_set_hl(0, "Error", { ctermfg = 1 })
   vim.api.nvim_set_hl(0, "Boolean", { ctermfg = 3 })
   vim.api.nvim_set_hl(0, "Label", { ctermfg = 14 })
-  vim.api.nvim_set_hl(0, "@keyword.type", { link = "Keyword" })
   vim.api.nvim_set_hl(0, "Exception", { ctermfg = 5 })
   vim.api.nvim_set_hl(0, "Conditional", { ctermfg = 5 })
   vim.api.nvim_set_hl(0, "Statement", { ctermfg = 5 })
   vim.api.nvim_set_hl(0, "StorageClass", { ctermfg = 11 })
   vim.api.nvim_set_hl(0, "Todo", { ctermfg = 0, ctermbg = 9, bold = true })
+
+  -- statement
   vim.api.nvim_set_hl(0, "Special", { link = "Statement" })
   vim.api.nvim_set_hl(0, "PreProc", { link = "Statement" })
   vim.api.nvim_set_hl(0, "Include", { link = "Statement" })

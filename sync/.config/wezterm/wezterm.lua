@@ -14,15 +14,36 @@ config.initial_rows = 60
 config.font_size = 12
 config.enable_kitty_graphics = true
 
+
+local function make_pallete(ansi)
+  local SGR = '\x1b['
+  local str = ''
+  for _, v in ipairs(ansi) do
+    local r = tonumber(v:sub(2, 3), 16)
+    local g = tonumber(v:sub(4, 5), 16)
+    local b = tonumber(v:sub(6, 7), 16)
+    local add = string.format("%s48;2;%d;%d;%dm ", SGR, r, g, b)
+    str = str .. add
+  end
+  return str
+end
+
 local choices = {}
 for k, v in pairs(wezterm.color.get_builtin_schemes()) do
-  table.insert(choices, {
-    id = k,
-    label = wezterm.format({
-      { Foreground = { Color = v.foreground } },
-      { Background = { Color = v.background } },
-      { Text = k }, }),
-  })
+  if v.background == v.ansi[9] then
+    -- skip. invisible comment
+  else
+    table.insert(choices, {
+      id = k,
+      label = wezterm.format({
+        { Text = make_pallete(v.ansi) },
+        { Text = make_pallete(v.brights) },
+        { Text = '\x1b[0m ' },
+        { Foreground = { Color = v.foreground } },
+        { Background = { Color = v.background } },
+        { Text = k }, }),
+    })
+  end
 end
 
 config.keys = {
@@ -47,9 +68,11 @@ config.keys = {
         title   = 'color_scheme',
         choices = choices,
         action  = wezterm.action_callback(function(inner_window, _, id)
-          inner_window:set_config_overrides {
-            color_scheme = id,
-          }
+          if id then
+            inner_window:set_config_overrides {
+              color_scheme = id,
+            }
+          end
         end),
         fuzzy   = true,
       }), pane)
