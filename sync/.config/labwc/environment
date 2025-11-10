@@ -6,3 +6,4 @@ DefaultIMModule=fcitx
 # SHELL=$HOME/.dotnet/tools/pwsh
 # XKB_DEFAULT_LAYOUT=us
 # XKB_DEFAULT_OPTIONS=caps:ctrl
+PATH=${HOME}/.cargo/bin:${HOME}/go/bin:${HOME}/local/bin:${HOME}/local/go/bin:${PATH}
