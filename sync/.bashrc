@@ -22,10 +22,6 @@ PS1='[\u@\h \W]\$ '
 
 export PROMPT_COMMAND='history -a; history -r'
 
-if which zoxide > /dev/null; then
-   eval "$(zoxide init bash)"
-fi
-
 export FZF_DEFAULT_OPTS="--layout=reverse --preview-window down:70%"
 export FZF_DEFAULT_COMMAND="fd --type f -H -E .git"
 function gg {
@@ -35,7 +31,7 @@ function gg {
   fi
   local selected=$(ghq list -p | fzf ${arg} --reverse +m)
   if [[ ${selected} =~ [^\s] ]]; then
-    z ${selected}
+    cd ${selected}
   fi
 }
 
