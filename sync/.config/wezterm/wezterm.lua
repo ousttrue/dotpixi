@@ -28,11 +28,39 @@ local function make_pallete(ansi)
   return str
 end
 
+---@alias Pallete {
+---  foreground: string,
+---  background: string,
+---  ansi: string[],
+---  brights: string[],
+---}
+---@param k string
+---@param v Pallete
+---@return nil | string
+---@return nil | Pallete
+local function filter_color_scheme(k, v)
+  if not v.ansi then
+    return
+  end
+  if v.background == v.ansi[9] then
+    -- skip. invisible comment
+    return
+  end
+  local is_gogh = k:find("%(Gogh%)$")
+  local is_base16 = k:find("%(base16%)$")
+  -- if is_gogh then
+  --   return
+  -- end
+  if not is_base16 then
+    return
+  end
+
+  return k, v
+end
 local choices = {}
 for k, v in pairs(wezterm.color.get_builtin_schemes()) do
-  if not v.ansi or v.background == v.ansi[9] then
-    -- skip. invisible comment
-  else
+  k, v = filter_color_scheme(k, v) ---@diagnostic disable-line
+  if k and v then
     table.insert(choices, {
       id = k,
       label = wezterm.format({
@@ -93,6 +121,20 @@ wezterm.on('user-var-changed', function(window, pane, name, value)
       color_scheme = value
     }
   end
+end)
+
+wezterm.on('format-window-title', function(tab, pane, tabs, panes, config)
+  local zoomed = ''
+  if tab.active_pane.is_zoomed then
+    zoomed = '[Z] '
+  end
+
+  local index = ''
+  if #tabs > 1 then
+    index = string.format('[%d/%d] ', tab.tab_index + 1, #tabs)
+  end
+
+  return zoomed .. index .. tab.active_pane.title
 end)
 
 wezterm.log_info('reloaded')

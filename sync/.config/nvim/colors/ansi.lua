@@ -73,7 +73,7 @@ local function define()
   vim.api.nvim_set_hl(0, "SpacialKey", { ctermfg = 0 })
   vim.api.nvim_set_hl(0, "IncSearch", { ctermbg = 1, ctermfg = 0 })
   vim.api.nvim_set_hl(0, "CurSearch", { ctermbg = 3, ctermfg = 0 })
-  vim.api.nvim_set_hl(0, "Search", { ctermbg = 11, ctermfg = 0 })
+  vim.api.nvim_set_hl(0, "Search", { ctermbg = 13, ctermfg = 0 })
   vim.api.nvim_set_hl(0, "Directory", { ctermfg = 4 })
   vim.api.nvim_set_hl(0, "MatchParen", { ctermbg = 0, ctermfg = 3, underline = true })
   vim.api.nvim_set_hl(0, "SpellBad", { undercurl = true })
@@ -115,12 +115,12 @@ local function define()
   -- Syntax
   --
   vim.api.nvim_set_hl(0, "Hlargs", { ctermfg = 1, bold = true })
+  vim.api.nvim_set_hl(0, "@text.strong", { ctermfg = 0, ctermbg = 2 })
 
   -- comment
   vim.api.nvim_set_hl(0, "Comment", { ctermfg = 8, italic = true, })
   vim.api.nvim_set_hl(0, "SpecialComment", { link = "Comment" })
   vim.api.nvim_set_hl(0, "@comment", { link = "Comment" })
-  vim.api.nvim_set_hl(0, "@markup.quote", { link = "Comment" })
 
   -- keyword
   vim.api.nvim_set_hl(0, "Keyword", { ctermfg = 5 })

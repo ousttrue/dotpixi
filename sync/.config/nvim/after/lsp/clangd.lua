@@ -112,7 +112,7 @@ local config = {
   ---@param config vim.lsp.ClientConfig
   cmd = function(dispatchers, config)
     local dir = get_compile_commands_json_dir()
-    print('get_compile_commands_json_dir => ' .. dir)
+    -- print('get_compile_commands_json_dir => ' .. dir)
     --- lazy cmd
     local config_cmd = {
       vim.fn.exepath "clangd",

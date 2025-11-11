@@ -2,6 +2,14 @@ vim.g.lazygit_floating_window_scaling_factor = 1.0
 
 return {
   {
+    "sindrets/diffview.nvim",
+    config = function()
+      vim.keymap.set("n", "<space>d", "<cmd>DiffviewOpen HEAD<CR>", { silent = true })
+      -- vim.keymap.set("n", "<space>d", "<cmd>DiffviewOpen HEAD~1<CR>", { silent = true })
+      -- vim.keymap.set("n", "<space>d", "<cmd>DiffviewFileHistory %<CR>", { silent = true })
+    end,
+  },
+  {
     "lewis6991/gitsigns.nvim",
     dependencies = { "tpope/vim-fugitive" },
     opts = {
