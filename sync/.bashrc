@@ -7,9 +7,9 @@
 
 # http://iandeth.dyndns.org/mt/ian/archives/000651.html
 function share_history {
-    history -a
-    history -c
-    history -r
+  history -a
+  history -c
+  history -r
 }
 PROMPT_COMMAND='share_history'
 shopt -u histappend
@@ -45,7 +45,7 @@ function gg {
   fi
 }
 
-export SDL_AUDIODRIVER=jack
+# export SDL_AUDIODRIVER=pulse
 
 function fpac {
   local selected=$(pacman -Sl | cut -d " " -f 2 | fzf --preview "pacman -Si {}")
@@ -76,64 +76,64 @@ export HTTP_HOME='~/dotfiles/home.html'
 export XDG_MUSIC_DIR=$HOME/Music
 if [ -v MSYSTEM ]; then
 
-	export XDG_DATA_HOME=$HOME/.local/share
-	export XDG_CONFIG_HOME=$HOME/.config
-	export XDG_MUSIC_DIR=$HOME//home/oustt/Music
-	export XDG_CACHE_HOME=$HOME/.cache
-	export XDG_STATE_HOME=$HOME/.local/state
-	export MSYS=winsymlinks:nativestrict
-	export GHQ_ROOT=$HOME/ghq
+  export XDG_DATA_HOME=$HOME/.local/share
+  export XDG_CONFIG_HOME=$HOME/.config
+  export XDG_MUSIC_DIR=$HOME//home/oustt/Music
+  export XDG_CACHE_HOME=$HOME/.cache
+  export XDG_STATE_HOME=$HOME/.local/state
+  export MSYS=winsymlinks:nativestrict
+  export GHQ_ROOT=$HOME/ghq
 
-	if grep -qi msys2 /etc/os-release >/dev/null 2>&1; then
-		PLATFORM=$MSYSTEM
-		if [[ $MSYSTEM == "MSYS" ]]; then
-			SYSTEM_COLOR="black"
-			ICON=🦉
-		elif [[ $MSYSTEM == "MINGW64" ]]; then
-			SYSTEM_COLOR="yellow"
-			ICON=🐐
-		elif [[ $MSYSTEM == "UCRT64" ]]; then
-			SYSTEM_COLOR="yellow"
-			ICON=🛸
-		elif [[ $MSYSTEM == "CLANG64" ]]; then
-			SYSTEM_COLOR="yellow"
-			ICON=🐉
-		else
-			SYSTEM_COLOR="gray"
-			ICON=🥚
-		fi
-	else
-		SYSTEM_COLOR="white"
-		PLATFORM=MSYSGIT
-		ICON=🍄
-	fi
-else
-	if grep -qi "Arch Linux" /etc/os-release; then
-		SYSTEM_COLOR="cyan"
-		PLATFORM=LINUX
-        DIST="arch"
-		ICON=󰣇 
-	elif grep -qi "Ubuntu" /etc/os-release; then
-		SYSTEM_COLOR="red"
-		PLATFORM=LINUX
-        DIST="ubunts"
-		ICON= 
-	else
-		SYSTEM_COLOR="green"
-		PLATFORM=LINUX
-		ICON=🐧
-	fi
-
-    BUILD_ROOT=${HOME}/build/gcc
-    BUILD_ROOT_LIB=${BUILD_ROOT}/lib
-    export LD_LIBRARY_PATH=${BUILD_ROOT_LIB}
-    export PKG_CONFIG_PATH=${BUILD_ROOT_LIB}/pkgconfig
-    export PYTHONPATH=${HOME}/prefix/lib/python3.10/site-packages
-
-	if grep -qi microsoft /proc/version; then
-        IS_WSL=1
-		ICON=🚇
+  if grep -qi msys2 /etc/os-release >/dev/null 2>&1; then
+    PLATFORM=$MSYSTEM
+    if [[ $MSYSTEM == "MSYS" ]]; then
+      SYSTEM_COLOR="black"
+      ICON=🦉
+    elif [[ $MSYSTEM == "MINGW64" ]]; then
+      SYSTEM_COLOR="yellow"
+      ICON=🐐
+    elif [[ $MSYSTEM == "UCRT64" ]]; then
+      SYSTEM_COLOR="yellow"
+      ICON=🛸
+    elif [[ $MSYSTEM == "CLANG64" ]]; then
+      SYSTEM_COLOR="yellow"
+      ICON=🐉
+    else
+      SYSTEM_COLOR="gray"
+      ICON=🥚
     fi
+  else
+    SYSTEM_COLOR="white"
+    PLATFORM=MSYSGIT
+    ICON=🍄
+  fi
+else
+  if grep -qi "Arch Linux" /etc/os-release; then
+    SYSTEM_COLOR="cyan"
+    PLATFORM=LINUX
+    DIST="arch"
+    ICON=󰣇
+  elif grep -qi "Ubuntu" /etc/os-release; then
+    SYSTEM_COLOR="red"
+    PLATFORM=LINUX
+    DIST="ubunts"
+    ICON=
+  else
+    SYSTEM_COLOR="green"
+    PLATFORM=LINUX
+    ICON=🐧
+  fi
+
+  BUILD_ROOT=${HOME}/build/gcc
+  BUILD_ROOT_LIB=${BUILD_ROOT}/lib
+  export LD_LIBRARY_PATH=${BUILD_ROOT_LIB}
+  export PKG_CONFIG_PATH=${BUILD_ROOT_LIB}/pkgconfig
+  export PYTHONPATH=${HOME}/prefix/lib/python3.10/site-packages
+
+  if grep -qi microsoft /proc/version; then
+    IS_WSL=1
+    ICON=🚇
+  fi
 fi
 
 #
@@ -190,118 +190,117 @@ C256_BLACK="0;0;0m"
 B_CURRENT='\e[49m'
 
 BG() {
-	printf '\e[48;2;'$1
-	B_CURRENT='\e[38;2;'$1
+  printf '\e[48;2;'$1
+  B_CURRENT='\e[38;2;'$1
 }
 
 FG() {
-	printf '\e[38;2;'$1
+  printf '\e[38;2;'$1
 }
 
 PL() {
-	printf " ${B_CURRENT}"
-	BG $2
-	printf " "
-	FG $1
+  printf " ${B_CURRENT}"
+  BG $2
+  printf " "
+  FG $1
 }
 
 PL_END() {
-	printf " "
-	FG ${B_CURRENT}
-	printf '\e[49m'
+  printf " "
+  FG ${B_CURRENT}
+  printf '\e[49m'
 }
 
 FB() {
-	FG $1
-	BG $2
+  FG $1
+  BG $2
 }
 
 GetPwd() {
-	local pwdInfo=$(pwd)
-	if [[ "$pwdInfo" =~ ^.*/ghq/github.com/(.*)$ ]]; then
-		printf " /${BASH_REMATCH[1]}"
-	elif [[ "$pwdInfo" =~ ^"$HOME"(/|$) ]]; then
-		printf "🏠${pwdInfo#$HOME}"
-	else
-		printf "📂${pwdInfo}"
-	fi
+  local pwdInfo=$(pwd)
+  if [[ "$pwdInfo" =~ ^.*/ghq/github.com/(.*)$ ]]; then
+    printf " /${BASH_REMATCH[1]}"
+  elif [[ "$pwdInfo" =~ ^"$HOME"(/|$) ]]; then
+    printf "🏠${pwdInfo#$HOME}"
+  else
+    printf "📂${pwdInfo}"
+  fi
 }
 
 ColorArrow() {
-	if [ "$1" = "0" ]; then
-		printf "${F_CYAN}>${F_DEFAULT}"
-	else
-		printf "${F_RED}>${F_DEFAULT}"
-	fi
+  if [ "$1" = "0" ]; then
+    printf "${F_CYAN}>${F_DEFAULT}"
+  else
+    printf "${F_RED}>${F_DEFAULT}"
+  fi
 }
 
 GetBranch() {
-	if [[ "$(uname -r)" == *microsoft* && "$pwdInfo" =~ ^/mnt/ ]]; then
-		# Git is too slow in WSLdir
-		:
-	else
-		git branch --show-current 2>/dev/null
-	fi
+  if [[ "$(uname -r)" == *microsoft* && "$pwdInfo" =~ ^/mnt/ ]]; then
+    # Git is too slow in WSLdir
+    :
+  else
+    git branch --show-current 2>/dev/null
+  fi
 }
 
 TmuxHeader() {
-	FB ${C256_WHITE} ${C256_BLACK}
-	printf ${ICON}
+  FB ${C256_WHITE} ${C256_BLACK}
+  printf ${ICON}
 
-	PL ${C256_BLACK} ${C256_GRAY}
-	printf $(GetPwd)
+  PL ${C256_BLACK} ${C256_GRAY}
+  printf $(GetPwd)
 
-	local branch=$(GetBranch)
-	if [ ! -z ${branch} ]; then
-		local git_log=$(git log --pretty="format:%cr   %s" -n 1)
-		tmux selectp -T" ${branch}   ${git_log}" -t $TMUX_PANE
-	else
-		tmux selectp -T"🎴" -t $TMUX_PANE
-	fi
+  local branch=$(GetBranch)
+  if [ ! -z ${branch} ]; then
+    local git_log=$(git log --pretty="format:%cr   %s" -n 1)
+    tmux selectp -T" ${branch}   ${git_log}" -t $TMUX_PANE
+  else
+    tmux selectp -T"🎴" -t $TMUX_PANE
+  fi
 
-	PL_END
+  PL_END
 }
 
 Header() {
-	FB ${C256_WHITE} ${C256_BLACK}
-	printf ${ICON}
+  FB ${C256_WHITE} ${C256_BLACK}
+  printf ${ICON}
 
-	PL ${C256_BLACK} ${C256_GRAY}
-	printf $(GetPwd)
+  PL ${C256_BLACK} ${C256_GRAY}
+  printf $(GetPwd)
 
-	local branch=$(GetBranch)
-	if [ ! -z ${branch} ]; then
-		PL ${C256_RED} ${C256_YELLOW}
-		printf " ${branch}"
+  local branch=$(GetBranch)
+  if [ ! -z ${branch} ]; then
+    PL ${C256_RED} ${C256_YELLOW}
+    printf " ${branch}"
 
-		PL ${C256_BLUE} ${C256_WHITE}
-		git log --pretty=format:%s -n 1
+    PL ${C256_BLUE} ${C256_WHITE}
+    git log --pretty=format:%s -n 1
 
-		PL ${C256_BLUE} ${C256_YELLOW}
-		printf "status"
-		# git status --ignore-submodules
-	fi
+    PL ${C256_BLUE} ${C256_YELLOW}
+    printf "status"
+    # git status --ignore-submodules
+  fi
 
-	PL_END
+  PL_END
 }
 
 Prompt() {
-	share_history
+  share_history
 
-	if [ -v TMUX ]; then
-		if [ "$1" = "0" ]; then
-			PS1="$(TmuxHeader)\n\[${F_CYAN}\]>\[${F_DEFAULT}\] "
-		else
-			PS1="$(TmuxHeader)\n\[${F_RED}\]>\[${F_DEFAULT}\] "
-		fi
-	else
-		if [ "$1" = "0" ]; then
-			PS1="$(Header)\n\[${F_CYAN}\]>\[${F_DEFAULT}\] "
-		else
-			PS1="$(Header)\n\[${F_RED}\]>\[${F_DEFAULT}\] "
-		fi
-	fi
+  if [ -v TMUX ]; then
+    if [ "$1" = "0" ]; then
+      PS1="$(TmuxHeader)\n\[${F_CYAN}\]>\[${F_DEFAULT}\] "
+    else
+      PS1="$(TmuxHeader)\n\[${F_RED}\]>\[${F_DEFAULT}\] "
+    fi
+  else
+    if [ "$1" = "0" ]; then
+      PS1="$(Header)\n\[${F_CYAN}\]>\[${F_DEFAULT}\] "
+    else
+      PS1="$(Header)\n\[${F_RED}\]>\[${F_DEFAULT}\] "
+    fi
+  fi
 }
 
 PROMPT_COMMAND='Prompt $?'
-

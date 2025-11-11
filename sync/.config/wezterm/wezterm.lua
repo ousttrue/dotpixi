@@ -30,7 +30,7 @@ end
 
 local choices = {}
 for k, v in pairs(wezterm.color.get_builtin_schemes()) do
-  if v.background == v.ansi[9] then
+  if not v.ansi or v.background == v.ansi[9] then
     -- skip. invisible comment
   else
     table.insert(choices, {
