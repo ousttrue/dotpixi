@@ -1,11 +1,37 @@
-https://wiki.gentoo.org/wiki/Useful_Portage_tools
-
-- [Gentoo 基本操作](https://zenn.dev/oto/articles/107a316362eb0f)
-
 # keyword
 
 ```
 --autounmask=y --autounmask-write
+```
+
+# install 後
+
+## euse
+
+- app-portage/gentoolkit
+- https://wiki.gentoo.org/wiki/Euse
+
+## git化
+
+- [GentooのPortageのアップデートをrsyncからgitにした](https://zenn.dev/minervajuppiter/articles/a1d15e757ef0f8)
+- eselect repository
+- https://wiki.gentoo.org/wiki/Eselect/Repository
+
+`/var/db/repos/gentoo` に clone される。
+
+## eix
+
+```sh
+euse -E sqlite -p eix
+```
+
+## cron daily
+
+`/etc/cron.daily/sync.sh`
+
+```sh
+#!/bin/sh
+eix-sync
 ```
 
 # unmet requirements.
@@ -14,23 +40,9 @@ https://wiki.gentoo.org/wiki/Required_USE_flags
 
 # use flags
 
-## euse
-
-`gentoolkit`
-
-- https://wiki.gentoo.org/wiki/Euse
-
 # overlay
 
 https://wiki.gentoo.org/wiki/Project:Overlays/Overlays_guide
-
-## eselect repository
-
-`removed layman`
-
-https://wiki.gentoo.org/wiki/Eselect/Repository
-
-- https://wiki.gentoo.org/wiki/Eselect/Repository/ja
 
 ### mirror
 

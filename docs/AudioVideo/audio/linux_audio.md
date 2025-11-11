@@ -1,0 +1,2 @@
+- @2023 [Linuxで(不毛な)「良い音」を目指す設定 - Chienomi](https://chienomi.org/articles/linux/202304-goodsound-with-jack.html)
+- @2021 [PipeWire + ALSA (PulseAudio) Ubuntu 20.04でやってみた: LinuxでCD音楽再生 Ubuntu/Arch編](http://kanzou4.seesaa.net/article/483837138.html)

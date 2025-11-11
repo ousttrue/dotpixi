@@ -1,13 +1,27 @@
-[ディスプレイマネージャ - ArchWiki](https://wiki.archlinux.jp/index.php/%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3)
+- [ディスプレイマネージャ - ArchWiki](https://wiki.archlinux.jp/index.php/%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3)
+- https://wiki.gentoo.org/wiki/Greetd
 
-[[LoginManager]]
-[[OS/X11/X11]]
-[[PulseAudio]]
-[[elogind]]
+|        | console | X11 | wayland | logind   |
+| ------ | ------- | --- | ------- | -------- |
+| ly     | ok      |     |         | not used |
+| greetd |         |     | ok      |          |
 
-|     | console | X11 | wayland | logind   |
-| --- | ------- | --- | ------- | -------- |
-| ly  | ok      |     |         | not used |
+# greetd
+
+## tui
+
+```toml title="/etc/greetd/config.toml"
+[terminal]
+vt = 7
+
+[default_session]
+command = "tuigreet --cmd bash --login -c tmux"
+user = "greetd"
+```
+
+## gtk
+
+https://wiki.gentoo.org/wiki/User:Librecat/gtkgreet_with_Cage_backend
 
 # platform
 
@@ -48,4 +62,3 @@ user-session=xubuntu
 # greetd
 
 [[greetd]]
-

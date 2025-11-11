@@ -1,5 +1,12 @@
 - [“完璧”なカラー設定「Solarized」の魅力は、計算し尽くされたものだった | WIRED.jp](https://wired.jp/2019/07/09/very-mathematical-history-perfect-color-combination/)
 
+# 分類
+
+- dark / light
+- bg hsv 色相
+
+# colors
+
 https://learn.microsoft.com/ja-jp/windows/console/console-virtual-terminal-sequences#screen-colors
 
 ## 16

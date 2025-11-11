@@ -1,15 +1,59 @@
-[[Linux]]
-[[PulseAudio]]
+https://www.alsa-project.org/wiki/Main_Page
 
-https://gist.github.com/fd0/ddc3ad21e1ae77242628
+# asoundrc
 
-# pacman
+https://www.alsa-project.org/wiki/Asoundrc
 
-- https://wiki.archlinux.jp/index.php/Advanced_Linux_Sound_Architecture
+`/etc/asound.conf` or `~/.asoundrc`
+
+## card & device
+
+`hw:0,0`
 
 ```sh
-$ sudo pacman -S alsa-utils
+cat /proc/asound/cards
+ 0 [PCH            ]: HDA-Intel - HDA Intel PCH
+                      HDA Intel PCH at 0xdf240000 irq 137
+ 1 [NVidia         ]: HDA-Intel - HDA NVidia
+                      HDA NVidia at 0xdf080000 irq 17
+ 2 [AMPLIFIER      ]: USB-Audio - PERSONAL AMPLIFIER
+                      FOSTER Elec. CO., LTD PERSONAL AMPLIFIER at usb-0000:00:14.0-6, full speed
 ```
+
+```alias
+pcm.primary {
+	type hw
+	card 0
+	device 0
+}
+```
+
+```
+pcm.!default {
+	type hw
+	card 0
+}
+
+ctl.!default {
+	type hw           
+	card 0
+}
+```
+
+`!default` は predefined な名前。
+`default` とすれば通常の名前。
+
+```
+# /etc/asound.conf
+# ~/.asoundrc
+defaults.pcm.!card pulse
+defaults.pcm.!device 0
+defaults.ctl.!card pulse
+```
+
+- https://gist.github.com/fd0/ddc3ad21e1ae77242628
+
+
 
 ## test
 
@@ -39,4 +83,3 @@ $ aplay --list-devices
 
 - alsamixer `M` でミュート切り替え
 
-# mpd
