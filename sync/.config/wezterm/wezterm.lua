@@ -14,7 +14,6 @@ config.initial_rows = 60
 config.font_size = 12
 config.enable_kitty_graphics = true
 
-
 local function make_pallete(ansi)
   local SGR = '\x1b['
   local str = ''
@@ -123,18 +122,39 @@ wezterm.on('user-var-changed', function(window, pane, name, value)
   end
 end)
 
-wezterm.on('format-window-title', function(tab, pane, tabs, panes, config)
-  local zoomed = ''
-  if tab.active_pane.is_zoomed then
-    zoomed = '[Z] '
-  end
+wezterm.on('format-window-title', function(
+    tab, ---@param tab TabInformation
+    pane, ---@param pane PaneInformation
+    tabs, ---@param tabs TabInformation[]
+    panes, ---@param panes PaneInformation[]
+    _config ---@param _config Config
+)
+  -- wezterm.log_info("window => %d", tab.tab_id)
+  -- wezterm.log_info("pane => %d", pane.pane_id)
 
+  local active_tab_index = 0
+  for i, item in ipairs(tabs) do
+    if item.tab_id == tab.tab_id then
+      active_tab_index = i
+    end
+  end
   local index = ''
   if #tabs > 1 then
-    index = string.format('[%d/%d] ', tab.tab_index + 1, #tabs)
+    index = string.format('[%d/%d] ', active_tab_index, #tabs)
   end
 
-  return zoomed .. index .. tab.active_pane.title
+  local title = ''
+  local zoomed = ''
+  for _, pane_info in ipairs(panes) do
+    if pane_info.pane_id == pane.pane_id then
+      title = pane_info.title
+      if pane_info.is_zoomed then
+        zoomed = '[Z] '
+      end
+    end
+  end
+
+  return zoomed .. index .. title
 end)
 
 wezterm.log_info('reloaded')
