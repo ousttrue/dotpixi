@@ -1,10 +1,55 @@
--- https://wezterm.org/
+-- https://wezterm.org/config/lua/general.html
+-- https://www.lua.org/manual/5.4/
 ---@type Wezterm
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
-local state = require 'state'
 
-config.color_scheme = state.color_scheme
+local DEFAULT_COLOR_SCHEME = {
+  windows = 'Black Metal (Mayhem) (base16)',
+  linux = 'Gruvbox light, medium (base16)',
+}
+
+---@class State
+---@field color_scheme string?
+---@field host nil | 'windows' | 'wsl' | 'linux'
+
+if not wezterm.GLOBAL.state then
+  ---@diagnostic disable-next-line
+  wezterm.GLOBAL.state = {
+  }
+end
+
+---@return State
+function get_state()
+  return wezterm.GLOBAL.state
+end
+
+---@return string
+function get_host_icon()
+  local host = get_state().host
+  if host == 'windows' then
+    return '🪟'
+  elseif host == 'wsl' then
+    return '⛺'
+  elseif host == 'linux' then
+    return '🐦'
+  end
+
+  return '❓'
+end
+
+---@param window Window
+---@param color_scheme string
+function set_color_scheme(window, color_scheme)
+  wezterm.log_info('set_color_scheme', color_scheme)
+  get_state().color_scheme = color_scheme
+  window:set_config_overrides {
+    color_scheme = color_scheme
+  }
+  window:copy_to_clipboard(color_scheme)
+end
+
+config.color_scheme = get_state().color_scheme
 
 config.automatically_reload_config = true
 
@@ -109,7 +154,7 @@ config.keys = {
         choices = choices,
         action  = wezterm.action_callback(function(inner_window, _, id)
           if id then
-            state:set_color_scheme(inner_window, id)
+            set_color_scheme(inner_window, id)
           end
         end),
         fuzzy   = true,
@@ -120,14 +165,41 @@ config.keys = {
 
 wezterm.on('gui-attached', function(domain)
   ---@diagnostic disable-next-line
-  local domain_name = domain:name()
-  wezterm.log_info('domain_name:', domain_name)
-  if domain_name:find("^WSL:") then
-    state.host = '⛺'
-  end
+  -- local domain_name = domain:name()
+  -- wezterm.log_info('domain_name:', domain_name)
+  -- if domain_name:find("^WSL:") then
+  --   get_state().host = 'wsl'
+  -- end
 end)
 
----@diagnostic disable-next-line
+wezterm.on('window-focus-changed', function(window, pane)
+  local domain_name = pane:get_domain_name()
+  local host = nil
+  if domain_name == 'local' then
+    if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+      host = 'windows'
+    else
+      host = 'linux'
+    end
+  elseif domain_name:find("^WSL:") then
+    host = 'wsl'
+  end
+
+  local m = domain_name:match("^SSH to (%g+)")
+  if m then
+    host = 'linux'
+  end
+
+  wezterm.log_info('domain_name:', domain_name, host)
+  local state = get_state()
+  state.host = host
+  local color_scheme = DEFAULT_COLOR_SCHEME[host]
+  if color_scheme then
+    set_color_scheme(window, color_scheme)
+  end
+  wezterm.GLOBAL.state = state ---@diagnostic disable-line
+end)
+
 wezterm.on('user-var-changed', function(window, pane, name, value)
   local x = ''
   for i = 1, #value do
@@ -136,7 +208,7 @@ wezterm.on('user-var-changed', function(window, pane, name, value)
   wezterm.log_info(name, '=>', value, x)
 
   if name == 'host' then
-    state.host = value
+    get_state().host = value
   end
 end)
 
@@ -151,16 +223,16 @@ wezterm.on('format-window-title', function(
   -- wezterm.log_info("window => %d", tab.tab_id)
   -- wezterm.log_info("pane => %d", pane.pane_id)
 
-  local active_tab_index = 0
-  for i, item in ipairs(tabs) do
-    if item.tab_id == tab.tab_id then
-      active_tab_index = i
-    end
-  end
-  local index = ''
-  if #tabs > 1 then
-    index = string.format('[%d/%d] ', active_tab_index, #tabs)
-  end
+  -- local active_tab_index = 0
+  -- for i, item in ipairs(tabs) do
+  --   if item.tab_id == tab.tab_id then
+  --     active_tab_index = i
+  --   end
+  -- end
+  -- local index = ''
+  -- if #tabs > 1 then
+  --   index = string.format('[%d/%d] ', active_tab_index, #tabs)
+  -- end
 
   local title = ''
   local zoomed = ''
@@ -173,7 +245,7 @@ wezterm.on('format-window-title', function(
     end
   end
 
-  return state.host .. '[' .. state.color_scheme .. ']' .. zoomed .. '▶ ' .. title
+  return zoomed .. get_host_icon() .. title .. '  [' .. (get_state().color_scheme or 'default') .. ']'
 end)
 
 wezterm.log_info('reloaded')
