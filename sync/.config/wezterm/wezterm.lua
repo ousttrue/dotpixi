@@ -6,6 +6,7 @@ local config = wezterm.config_builder()
 
 local DEFAULT_COLOR_SCHEME = {
   windows = 'Black Metal (Mayhem) (base16)',
+  -- windows = 'Nebula (Mayhem) (base16)',
   linux = 'Gruvbox light, medium (base16)',
 }
 
@@ -43,6 +44,10 @@ end
 function set_color_scheme(window, color_scheme)
   wezterm.log_info('set_color_scheme', color_scheme)
   local state = get_state()
+  if state.color_scheme == color_scheme then
+    return
+  end
+
   state.color_scheme = color_scheme
   wezterm.GLOBAL.state = state ---@diagnostic disable-line
   window:set_config_overrides {
