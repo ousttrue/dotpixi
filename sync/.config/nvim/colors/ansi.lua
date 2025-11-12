@@ -123,7 +123,7 @@ local function define()
   vim.api.nvim_set_hl(0, "@comment", { link = "Comment" })
 
   -- keyword
-  vim.api.nvim_set_hl(0, "Keyword", { ctermfg = 5 })
+  vim.api.nvim_set_hl(0, "Keyword", { ctermfg = 4 })
   vim.api.nvim_set_hl(0, "@keyword", { link = "Keyword" })
   vim.api.nvim_set_hl(0, "Operator", { link = "Keyword" })
   vim.api.nvim_set_hl(0, "Delimiter", { link = "Keyword" })
@@ -140,7 +140,7 @@ local function define()
   vim.api.nvim_set_hl(0, "@keyword.modifier.cpp", { link = "Constant" })
 
   -- literal
-  vim.api.nvim_set_hl(0, "String", { ctermfg = 4 })
+  vim.api.nvim_set_hl(0, "String", { ctermfg = 7 })
   vim.api.nvim_set_hl(0, "@string", { link = "String" })
   vim.api.nvim_set_hl(0, "@boolean", { link = "String" })
   vim.api.nvim_set_hl(0, "@markup.link", { link = "String" })

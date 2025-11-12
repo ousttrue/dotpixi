@@ -42,7 +42,9 @@ end
 ---@param color_scheme string
 function set_color_scheme(window, color_scheme)
   wezterm.log_info('set_color_scheme', color_scheme)
-  get_state().color_scheme = color_scheme
+  local state = get_state()
+  state.color_scheme = color_scheme
+  wezterm.GLOBAL.state = state ---@diagnostic disable-line
   window:set_config_overrides {
     color_scheme = color_scheme
   }
