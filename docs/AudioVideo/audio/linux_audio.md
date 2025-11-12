@@ -1,2 +1,29 @@
-- @2023 [Linuxで(不毛な)「良い音」を目指す設定 - Chienomi](https://chienomi.org/articles/linux/202304-goodsound-with-jack.html)
-- @2021 [PipeWire + ALSA (PulseAudio) Ubuntu 20.04でやってみた: LinuxでCD音楽再生 Ubuntu/Arch編](http://kanzou4.seesaa.net/article/483837138.html)
+
+# 構成
+
+いろんな構成がある
+
+- 排他(hw alsa)
+- hw device の activate 問題(boot, login, desktop session...etc). systemd
+
+## alsa 直
+
+```
++----+       +---+
+|alsa|<-alsa-|app|
++----+       +---+
+```
+
+## alsa(dmix): pipewire: pulseaudio
+
+```
++----+        +- user systemd -+
+|alsa|dmix <- |+--------+      |    +---+
++----+        ||pipewire|pulse | <- |app|
+              |+--------+      |    +---+
+              +----------------+
+```
+
+```sh
+systemctl --user enable wireplumber pipewire pipewire-pulse
+```

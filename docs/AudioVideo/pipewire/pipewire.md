@@ -1,3 +1,55 @@
+https://pipewire.org/
+
+- https://docs.pipewire.org/
+
+# version
+
+- https://blogs.gnome.org/uraeus/2020/09/04/pipewire-late-summer-update-2020/
+
+## 1.4 @202511
+
+## 1.2
+
+# xdg-desktop-portal
+
+https://wiki.gentoo.org/wiki/XDG/xdg-desktop-portal
+
+# bluetooth
+
+- LDAC、aptX
+
+# libpipewire
+
+> ユーザーセッションごとに1つのPipeWireデーモンが存在し、Unixドメインソケット
+
+- Unixソケット上のIPC（カスタムプロトコルを使用）を介してデーモンと通信
+
+# objects
+
+Device、Factory
+
+## node
+
+### AudioSource
+
+### AudioSink
+
+- Bluetoothヘッドセット
+
+### AudioStream
+
+### VideoCapture
+
+# session manager
+
+## pipewire-media-session.service
+
+> 現在は非推奨となり、WirePlumberに取って代わられました
+
+# libpipewire-module-portal
+
+# pipewire-pulse
+
 # sink を決める
 
 https://www.katsuster.net/index.php?arg_act=cmd_show_diary&arg_date=20251011
@@ -17,9 +69,8 @@ https://forums.gentoo.org/viewtopic-t-1168313-start-0.html
 ```sh
 pactl info | grep "Server Name"
 ```
+
 https://bbs.archlinux.org/viewtopic.php?id=296995
-
-
 
 ```sh
 $ systemctl --user enable --now pipewire-pulse.socket
@@ -43,4 +94,3 @@ Cookie: 6fa4:3fff
 ```
 
 # alsa (pipewire backend)
-

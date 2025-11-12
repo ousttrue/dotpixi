@@ -81,6 +81,7 @@ config.keys = {
   { mods = "ALT",  key = ".",          action = wezterm.action { ActivateTabRelative = 1 } },
   { mods = "ALT",  key = "LeftArrow",  action = wezterm.action { MoveTabRelative = -1 } },
   { mods = "ALT",  key = "RightArrow", action = wezterm.action { MoveTabRelative = 1 } },
+  { mods = "CTRL", key = 'Enter',      action = wezterm.action.TogglePaneZoomState },
 
   { mods = 'CTRL', key = 'R',          action = wezterm.action.ReloadConfiguration },
 
