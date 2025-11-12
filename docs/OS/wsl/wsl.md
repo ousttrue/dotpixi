@@ -1,3 +1,5 @@
+- [The Windows Subsystem for Linux is now open source - Windows Developer Blog](https://blogs.windows.com/windowsdeveloper/2025/05/19/the-windows-subsystem-for-linux-is-now-open-source/)
+
 - [WSLのWindowsのフォルダの色が見づらいのを直す - 新しいことにはウェルカム](https://www.kwbtblog.com/entry/2019/04/27/023411)
 
 # Version

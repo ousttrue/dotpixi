@@ -2,12 +2,25 @@
 ---@type Wezterm
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
+local state = require 'state'
+
+config.color_scheme = state.color_scheme
+
+config.automatically_reload_config = true
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   -- We are running on Windows; maybe we emit different
   -- key assignments here?
   config.default_prog = { "pwsh", "-nologo" }
+  state.host = '🪟'
 end
+
+local wsl_domains = wezterm.default_wsl_domains()
+for idx, dom in ipairs(wsl_domains) do
+  wezterm.log_info("wsl_domain", dom.name, dom.default_prog)
+  default_cwd = "~"
+end
+config.wsl_domains = wsl_domains
 
 config.initial_cols = 120
 config.initial_rows = 60
@@ -45,7 +58,7 @@ local function filter_color_scheme(k, v)
     -- skip. invisible comment
     return
   end
-  local is_gogh = k:find("%(Gogh%)$")
+  -- local is_gogh = k:find("%(Gogh%)$")
   local is_base16 = k:find("%(base16%)$")
   -- if is_gogh then
   --   return
@@ -97,9 +110,7 @@ config.keys = {
         choices = choices,
         action  = wezterm.action_callback(function(inner_window, _, id)
           if id then
-            inner_window:set_config_overrides {
-              color_scheme = id,
-            }
+            state:set_color_scheme(inner_window, id)
           end
         end),
         fuzzy   = true,
@@ -108,6 +119,16 @@ config.keys = {
   }
 }
 
+wezterm.on('gui-attached', function(domain)
+  ---@diagnostic disable-next-line
+  local domain_name = domain:name()
+  wezterm.log_info('domain_name:', domain_name)
+  if domain_name == 'wsl' then
+    state.host = '⛺'
+  end
+end)
+
+---@diagnostic disable-next-line
 wezterm.on('user-var-changed', function(window, pane, name, value)
   local x = ''
   for i = 1, #value do
@@ -115,11 +136,8 @@ wezterm.on('user-var-changed', function(window, pane, name, value)
   end
   wezterm.log_info(name, '=>', value, x)
 
-  if name == 'color_scheme' then
-    -- local overrides = window:get_config_overrides() or {}
-    window:set_config_overrides {
-      color_scheme = value
-    }
+  if name == 'host' then
+    state.host = value
   end
 end)
 
@@ -128,6 +146,7 @@ wezterm.on('format-window-title', function(
     pane, ---@param pane PaneInformation
     tabs, ---@param tabs TabInformation[]
     panes, ---@param panes PaneInformation[]
+    ---@diagnostic disable-next-line
     _config ---@param _config Config
 )
   -- wezterm.log_info("window => %d", tab.tab_id)
@@ -155,7 +174,7 @@ wezterm.on('format-window-title', function(
     end
   end
 
-  return zoomed .. index .. title
+  return state.host .. '[' .. state.color_scheme .. ']' .. zoomed .. '▶ ' .. title
 end)
 
 wezterm.log_info('reloaded')
