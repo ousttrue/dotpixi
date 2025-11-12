@@ -12,15 +12,14 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   -- We are running on Windows; maybe we emit different
   -- key assignments here?
   config.default_prog = { "pwsh", "-nologo" }
-  state.host = '🪟'
 end
 
-local wsl_domains = wezterm.default_wsl_domains()
-for idx, dom in ipairs(wsl_domains) do
-  wezterm.log_info("wsl_domain", dom.name, dom.default_prog)
-  default_cwd = "~"
-end
-config.wsl_domains = wsl_domains
+-- local wsl_domains = wezterm.default_wsl_domains()
+-- for idx, dom in ipairs(wsl_domains) do
+--   wezterm.log_info("wsl_domain", dom.name, dom.default_prog)
+--   default_cwd = "~"
+-- end
+-- config.wsl_domains = wsl_domains
 
 config.initial_cols = 120
 config.initial_rows = 60
@@ -123,7 +122,7 @@ wezterm.on('gui-attached', function(domain)
   ---@diagnostic disable-next-line
   local domain_name = domain:name()
   wezterm.log_info('domain_name:', domain_name)
-  if domain_name == 'wsl' then
+  if domain_name:find("^WSL:") then
     state.host = '⛺'
   end
 end)

@@ -3,7 +3,7 @@ local wezterm = require 'wezterm' ---@diagnostic disable-line
 
 local M = {
   color_scheme = 'Sandcastle (base16)',
-  host = '🐤',
+  host = '🪟',
 }
 
 ---@param window Window
