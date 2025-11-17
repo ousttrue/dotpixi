@@ -5,9 +5,12 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 local DEFAULT_COLOR_SCHEME = {
-  windows = 'Black Metal (Mayhem) (base16)',
+  -- windows = 'Black Metal (Mayhem) (base16)',
+  windows = 'Black Metal (Gorgoroth) (base16)',
   -- windows = 'Nebula (Mayhem) (base16)',
-  linux = 'Gruvbox light, medium (base16)',
+  -- linux = 'Gruvbox light, medium (base16)',
+  -- linux = 'Brush Trees (base16)',
+  linux = 'Atelier Savanna Light (base16)',
 }
 
 ---@class State

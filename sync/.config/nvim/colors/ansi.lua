@@ -3,9 +3,14 @@ local function hl_clear()
   vim.cmd("hi clear")
 
   -- clear ts specific
-  local defs = vim.api.nvim_get_hl(0, {});
+  local defs = vim.api.nvim_get_hl(0, { link = true, create = true });
   for hl_name, v in pairs(defs) do
-    if string.sub(hl_name, 1, 1) == "@" then
+    -- if string.match(hl_name, "^@%a+%.[%a%.]+$") then
+    --   -- print('clear', hl_name)
+    --   vim.api.nvim_set_hl(0, hl_name, {})
+    -- end
+    if string.match(hl_name, "^@") then
+      -- print('clear', hl_name)
       vim.api.nvim_set_hl(0, hl_name, {})
     end
   end
@@ -131,6 +136,10 @@ local function define()
   vim.api.nvim_set_hl(0, "@punctuation", { link = "Keyword" })
   vim.api.nvim_set_hl(0, "@operator", { link = "Keyword" })
   vim.api.nvim_set_hl(0, "@keyword.type", { link = "Keyword" })
+  -- const etc
+  vim.api.nvim_set_hl(0, "@keyword.modifier.cpp", { link = "Keyword" })
+  vim.api.nvim_set_hl(0, "@constant", { link = "Keyword" })
+  -- this
 
   -- const / compile time
   vim.api.nvim_set_hl(0, "Constant", { ctermfg = 3 })
@@ -138,7 +147,10 @@ local function define()
   vim.api.nvim_set_hl(0, "Define", { link = "Constant" })
   vim.api.nvim_set_hl(0, "Structure", { link = "Constant" })
   vim.api.nvim_set_hl(0, "@type", { link = "Constant" })
-  vim.api.nvim_set_hl(0, "@keyword.modifier.cpp", { link = "Constant" })
+  vim.api.nvim_set_hl(0, "@type.builtin", { link = "Constant" })
+  vim.api.nvim_set_hl(0, "@module", { link = "Constant" })
+  vim.api.nvim_set_hl(0, "Function", { link = "Constant" })
+  vim.api.nvim_set_hl(0, "@function", { link = "Function" })
 
   -- literal
   vim.api.nvim_set_hl(0, "String", { ctermfg = 7 })
@@ -149,9 +161,10 @@ local function define()
 
   -- id
   vim.api.nvim_set_hl(0, "Identifier", { ctermfg = 2 })
-  vim.api.nvim_set_hl(0, "Function", { link = "Identifier" })
   vim.api.nvim_set_hl(0, "@markup.heading", { link = "Identifier" })
   vim.api.nvim_set_hl(0, "@variable", { link = "Identifier" })
+  vim.api.nvim_set_hl(0, "@variable.builtin", { link = "Keyword" })
+  vim.api.nvim_set_hl(0, "@property", { link = "Identifier" })
   -- vim.api.nvim_set_hl(0, "@function.call", { link = "Constant" })
 
   vim.api.nvim_set_hl(0, "Error", { ctermfg = 1 })

@@ -38,6 +38,45 @@ Set-PSReadLineOption -Colors @{ InlinePrediction = "`e[38;5;238m" }
 # [System.Console]::ReadKey()
 Set-PSReadlineKeyHandler -Key 'Ctrl+Oem4' -Function RevertLine
 
+# https://qiita.com/AWtnb/items/5551fcc762ed2ad92a81
+#
+# module
+# default not required
+# Import-Module -Verbose -Name CompletionPredictor
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadlineOption -HistoryNoDuplicates
+Set-PSReadLineOption -WordDelimiters ";:,.[]{}()/\|^&*-=+'`" !?@#$%&_<>「」（）『』『』［］、，。：；／"
+Set-PSReadlineOption -AddToHistoryHandler {
+  param ($command)
+  switch -regex ($command)
+  {
+    "SKIPHISTORY"
+    {
+      return $false
+    }
+    "^[a-z]$"
+    {
+      return $false
+    }
+    "exit"
+    {
+      return $false
+    }
+  }
+  return $true
+}
+# Import-Module -Verbose posh-git
+# $GitPromptSettings.EnableFileStatus = $false
+# Import-Module -Verbose -Name Terminal-Icons
+
+Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
+  param($wordToComplete, $commandAst, $cursorPosition)
+  dotnet complete --position $cursorPosition "$commandAst" | ForEach-Object {
+    [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+  }
+}
+
 #
 # platform
 #
@@ -370,33 +409,194 @@ function vcenv()
   # Write-Output $v.stdout
 }
 
-function weztheme($color_scheme)
-{
-  # echo $color_scheme
-  Write-Host -NoNewLine "$([char]27)]1337;SetUserVar=color_scheme=$([Convert]::ToBase64String([Text.Encoding]::Ascii.GetBytes($color_scheme.Trim())))$([char]7)"
+#
+# prompt
+#
+$IconMap = @{
+  dotfiles             = " "
+  obsidian             = "📚"
+  rtc_memo             = "⚡"
+  UniVRM               = " "
+  minixr               = " "
+  "ousttrue.github.io" = " "
+  cmake_book           = "📙"
+  blender_book         = "📙"
+  lbsm                 = "🐵"
+  "gltf-samples"       = "🗿"
 }
 
-function color_entry($entry)
+$BLENDER = Join-Path $HOME "AppData\Roaming\Blender Foundation\Blender" 
+
+function get_git_status()
 {
-  $fr=[convert]::ToInt32($entry.foreground.substring(1, 2), 16)
-  $fg=[convert]::ToInt32($entry.foreground.substring(3, 2), 16)
-  $fb=[convert]::ToInt32($entry.foreground.substring(5, 2), 16)
-  $br=[convert]::ToInt32($entry.background.substring(1, 2), 16)
-  $bg=[convert]::ToInt32($entry.background.substring(3, 2), 16)
-  $bb=[convert]::ToInt32($entry.background.substring(5, 2), 16)
-  $name=$entry.name
-  "`e[38;2;${fr};${fg};${fb}m`e[48;2;${br};${bg};${bb}m${name}"
+  git rev-parse --is-inside-work-tree 2>$null
+  if (!$?)
+  {
+    return $false
+  }
+
+  $lines = @(git status --porcelain --branch)
+  $sync = ""
+  if ($lines[0] -match "\[([^]]+)\]")
+  {
+    $splits = $Matches[1].split(', ')
+    for ($i = 0; $i -lt $splits.Length; $i++)
+    {
+      if ($splits[$i] -match "(\w+)\s+(\d+)")
+      {
+        $sync_status = $matches[1]
+        $n = $matches[2]
+        if ($sync_status -eq "behind")
+        {
+          $sync += " ${n}"
+        } elseif ($sync_status -eq "ahead")
+        {
+          $sync += " ${n}"
+        }
+      }
+    }
+  } else
+  {
+    $sync = " "
+  }
+
+  # A, M, D, ?, U, !, C, R
+  $status = @{
+  }
+  $iconMap = @{
+    "?" = " "
+    "M" = " "
+    "D" = " "
+    "R" = "↷ "
+  }
+  for ($i = 1; $i -lt $lines.Length; $i++)
+  {
+    $line = $lines[$i]
+    $key = $line.Substring(1, 1)
+    $status[$key] += 1
+  }
+  foreach ($key in $status.Keys)
+  {
+    $icon = $iconMap[$key]
+    if ([string]::IsNullOrWhiteSpace($icon))
+    {
+      $icon = $key
+    }
+    $sync += "${icon}$($status[$key])"
+  } 
+ 
+  return $sync
 }
 
-# color_scheme
-function fztheme($pane_id)
+function replacePrefix($full, $prefix, $to)
 {
-  # $this_pane_id=wezterm cli list-clients --format=json | Join-String | ConvertFrom-Json | % { $_.focused_pane_id }
-  $arr=$(Get-Content -Raw ~/.config/wezterm/themes.json | ConvertFrom-Json)
-  $arr=$(Get-Random $arr -Count $arr.Length)
-  $color_scheme=$($arr | %{ color_entry $_ } | fzf --ansi)
-  weztheme $color_scheme
-  # exit
-  # wezterm cli send-text --pane-id $pane_id "#${color_scheme}`n"
+  if ($full -eq $prefix)
+  {
+    return $to
+  } 
+
+  if($full -is [string])
+  {
+    return $to + $full.Substring($prefix.Length)
+  }
+
+  return $to + $full.FullName.Substring($prefix.Length)
+}
+
+function prompt()
+{
+  # TODO: git status
+  # TODO: project kind
+  # - dotfiles
+  # - ghq
+  # - lang
+  $color = $? ? "32" : "31";
+
+  $prefix = "🤔"
+  if ($IsWindows)
+  {
+    $prefix = " "
+  } elseif ($IsLinux)
+  {
+    $prefix = " "
+  } elseif ($IsMacOS)
+  {
+    $prefix = " "
+  }
+
+  $location = (Get-Item -force (Get-Location));
+  $title = $location.Name
+  if ($GHQ_ROOT -and $location.FullName.StartsWith($GHQ_ROOT.FullName + $SEP))
+  {
+    $location = $location.FullName.Substring($GHQ_ROOT.FullName.Length + 1)
+    if ($location.StartsWith( "github.com${SEP}"))
+    {
+      $location = $location.Substring("github.com${SEP}".Length)
+      if ($location.StartsWith("ousttrue"))
+      {
+        $location = replacePrefix $location "ousttrue" " "
+      } else
+      {
+        $location = " " + $location
+      }
+    } else
+    {
+      $location = " " + $location
+    }
+  } elseif($location.FullName.StartsWith($BLENDER))
+  {
+    $location = replacePrefix $location $BLENDER "󰂫 "
+  } elseif ($location.FullName.StartsWith($HOME))
+  {
+    $location = replacePrefix $location $HOME " "
+  } 
+
+  # wezterm only
+  if ($env:TERM -eq "tmux-256color")
+  {
+    if ($IconMap[$title])
+    {
+      tmux rename-window $IconMap[$title]
+    } else
+    {
+      tmux rename-window $title
+    }
+  } else
+  {
+    if ($IconMap[$title])
+    {
+      $title = $IconMap[$title]
+    }
+  }
+
+  $sync = (get_git_status)
+  if ($sync)
+  {
+    $branch = $(git branch --show-current)
+    if ($branch)
+    {
+      $log = $(git log "--pretty=format:#%h  %cr   %s" -n 1)
+      $ref = (git rev-parse --abbrev-ref origin/HEAD).Split("/", 2)[1]
+      $branch_color = "`e[30m`e[42m";
+      if ($branch -ne $ref)
+      {
+        # red
+        $branch_color = "`e[30m`e[41m";
+      }
+      $branch = "${branch_color}  ${branch} `e[0m ${sync} ${log}"
+    }
+  } 
+
+  # https://learn.microsoft.com/en-us/windows/terminal/tutorials/new-tab-same-directory
+  $loc = $executionContext.SessionState.Path.CurrentLocation;
+  $out = "";
+  if ($loc.Provider.Name -eq "FileSystem")
+  {
+    $out += "`e]9;9;`"$($loc.ProviderPath)`"`e$([char]0x5c)"
+  }
+
+  # OSC7
+  # https://wezfurlong.org/wezterm/shell-integration.html#osc-7-on-windows-with-cmdexe
+  "${out} `e]2;${title}$([char]0x07)${prefix}`e[7m${location}`e[0m${branch}`n`e[${color}m>`e[0m "
 }
 

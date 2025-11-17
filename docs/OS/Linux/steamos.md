@@ -10,3 +10,6 @@ https://store.steampowered.com/steamos/
 - [驚きの電池持ち。Asusの携帯ゲームPC｢ROG Ally X｣は動きサクサク | ギズモード・ジャパン](https://www.gizmodo.jp/2024/08/asus-rog-ally-x-review.html)
 - [新しい操作方法にリッチなディスプレイ。｢Legion Go｣に可能性を感じたところ | ギズモード・ジャパン](https://www.gizmodo.jp/2023/12/legion-go-portable-gaming-pc.html)
 
+# download
+
+- https://steamdeck-images.steamos.cloud/steamdeck/
