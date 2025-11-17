@@ -87,39 +87,44 @@ if [ -v MSYSTEM ]; then
   if grep -qi msys2 /etc/os-release >/dev/null 2>&1; then
     PLATFORM=$MSYSTEM
     if [[ $MSYSTEM == "MSYS" ]]; then
-      SYSTEM_COLOR="black"
+      SYSTEM_COLOR="BLACK"
       ICON=🦉
     elif [[ $MSYSTEM == "MINGW64" ]]; then
-      SYSTEM_COLOR="yellow"
+      SYSTEM_COLOR="YELLOW"
       ICON=🐐
     elif [[ $MSYSTEM == "UCRT64" ]]; then
-      SYSTEM_COLOR="yellow"
+      SYSTEM_COLOR="YELLOW"
       ICON=🛸
     elif [[ $MSYSTEM == "CLANG64" ]]; then
-      SYSTEM_COLOR="yellow"
+      SYSTEM_COLOR="YELLOW"
       ICON=🐉
     else
-      SYSTEM_COLOR="gray"
+      SYSTEM_COLOR="GRAY"
       ICON=🥚
     fi
   else
-    SYSTEM_COLOR="white"
+    SYSTEM_COLOR="WHITE"
     PLATFORM=MSYSGIT
     ICON=🍄
   fi
 else
   if grep -qi "Arch Linux" /etc/os-release; then
-    SYSTEM_COLOR="cyan"
+    SYSTEM_COLOR="CYAN"
     PLATFORM=LINUX
     DIST="arch"
     ICON=󰣇
   elif grep -qi "Ubuntu" /etc/os-release; then
-    SYSTEM_COLOR="red"
+    SYSTEM_COLOR="RED"
     PLATFORM=LINUX
     DIST="ubunts"
     ICON=
+  elif grep -qi "Gentoo" /etc/os-release; then
+    SYSTEM_COLOR="MAGENTA"
+    PLATFORM=LINUX
+    DIST="gentoo"
+    ICON=
   else
-    SYSTEM_COLOR="green"
+    SYSTEM_COLOR="GREEN"
     PLATFORM=LINUX
     ICON=🐧
   fi
@@ -137,78 +142,83 @@ else
 fi
 
 #
-# ANSI COLOR
-#
-F_BLACK='\e[30m'
-F_RED='\e[31m'
-F_GREEN='\e[32m'
-F_YELLOW='\e[33m'
-F_BLUE='\e[34m'
-F_MAGENTA='\e[35m'
-F_CYAN='\e[36m'
-F_WHITE='\e[37m'
-F_RGB='\e[38;2;'
-F_256='\e[38;5;'
-F_DEFAULT='\e[39m'
-
-B_BLACK='\e[40m'
-B_RED='\e[41m'
-B_GREEN='\e[42m'
-B_YELLOW='\e[43m'
-B_BLUE='\e[44m'
-B_MAGENTA='\e[45m'
-B_CYAN='\e[46m'
-B_WHITE='\e[47m'
-B_RGB='\e[48;2;'
-B_256='\e[48;5;'
-B_DEFAULT='\e[49m'
-
-#
 # decoration
 #
-E_BOLD='\e[0m'
-E_LIGHT='\e[1m'
-E_ITALIC='\e[2m'
-E_UNDERLINE='\e[3m'
-E_BLINK='\e[4m'
-E_HIBLINK='\e[5m'
-E_REVERSE='\e[6m'
-E_HIDE='\e[7m'
-E_STRIKE='\e[8m'
-E_STRIKE='\e[9m'
+# CSI='\e['
 
-C256_RED="255;0;15m"
-C256_GREEN="0;145;64m"
-C256_YELLOW="250;191;20m"
-C256_BLUE="0;0;255m"
-C256_MAGENTA="146;7;131m"
-C256_CYAN="0;160;233m"
-C256_GRAY="229;229;229m"
-C256_WHITE="255;255;255m"
-C256_BLACK="0;0;0m"
+SGR() {
+  case $1 in
+  'RESET') printf '\e[0m' ;;
+  'BOLD') printf '\e[1m' ;;
+  'LIGHT') printf '\e[2m' ;;
+  'ITALIC') printf '\e[3m' ;;
+  'UNDERLINE') printf '\e[4m' ;;
+  'BLINK') printf '\e[5m' ;;
+  'HIBLINK') printf '\e[6m' ;;
+  'REVERSE') printf '\e[7m' ;;
+  'HIDE') printf '\e[8m' ;;
+  'STRIKE') printf '\e[9m' ;;
+  esac
+}
 
-B_CURRENT='\e[49m'
+B_CURRENT='DEFAULT'
+# FG => GRAY, BG=> WHITE
 
 BG() {
-  printf '\e[48;2;'$1
-  B_CURRENT='\e[38;2;'$1
+  B_CURRENT=$1
+  case $1 in
+  'GRAY') printf '\e[40m' ;;
+  'RED') printf '\e[41m' ;;
+  'GREEN') printf '\e[42m' ;;
+  'YELLOW') printf '\e[43m' ;;
+  'BLUE') printf '\e[44m' ;;
+  'MAGENTA') printf '\e[45m' ;;
+  'CYAN') printf '\e[46m' ;;
+  'WHITE') printf '\e[47m' ;;
+  'DEFAULT') printf '\e[49m' ;;
+  'BLACK') printf '\e[100m' ;;
+  *) printf "BG($1)" ;;
+  esac
+  # bright 100-109
 }
 
 FG() {
-  printf '\e[38;2;'$1
+  # bright 90-99
+  case $1 in
+  'GRAY') printf '\e[30m' ;;
+  'RED') printf '\e[31m' ;;
+  'GREEN') printf '\e[32m' ;;
+  'YELLOW') printf '\e[33m' ;;
+  'BLUE') printf '\e[34m' ;;
+  'MAGENTA') printf '\e[35m' ;;
+  'CYAN') printf '\e[36m' ;;
+  'WHITE') printf '\e[37m' ;;
+  'DEFAULT') printf '\e[39m' ;;
+  'BLACK') printf '\e[90m' ;;
+  *) printf "FG($1)" ;;
+  esac
 }
 
 PL() {
-  printf " ${B_CURRENT}"
-  BG $2
-  printf " "
-  FG $1
+  if [ $2 = $B_CURRENT ]; then
+    printf " > "
+  else
+    if [ $B_CURRENT = "DEFAULT" ]; then
+      FG "GRAY"
+    else
+      FG ${B_CURRENT}
+    fi
+    printf " "
+    BG $2
+    printf " "
+    FG $1
+  fi
 }
 
 PL_END() {
-  printf " "
   FG ${B_CURRENT}
-  printf '\e[49m'
+  printf " "
+  BG "DEFAULT"
 }
 
 FB() {
@@ -229,9 +239,9 @@ GetPwd() {
 
 ColorArrow() {
   if [ "$1" = "0" ]; then
-    printf "${F_CYAN}>${F_DEFAULT}"
+    printf "$(FG CYAN)>$(FG DEFAULT)"
   else
-    printf "${F_RED}>${F_DEFAULT}"
+    printf "$(FG RED)>$(FG DEFAULT)"
   fi
 }
 
@@ -244,63 +254,64 @@ GetBranch() {
   fi
 }
 
-TmuxHeader() {
-  FB ${C256_WHITE} ${C256_BLACK}
-  printf ${ICON}
-
-  PL ${C256_BLACK} ${C256_GRAY}
-  printf $(GetPwd)
-
-  local branch=$(GetBranch)
-  if [ ! -z ${branch} ]; then
-    local git_log=$(git log --pretty="format:%cr   %s" -n 1)
-    tmux selectp -T" ${branch}   ${git_log}" -t $TMUX_PANE
-  else
-    tmux selectp -T"🎴" -t $TMUX_PANE
-  fi
-
-  PL_END
-}
+# TmuxHeader() {
+#   FB "WHITE" "BLACK"
+#   printf ${ICON}
+#
+#   PL "BLACK" "GRAY"
+#   printf $(GetPwd)
+#
+#   local branch=$(GetBranch)
+#   if [ ! -z ${branch} ]; then
+#     local git_log=$(git log --pretty="format:%cr   %s" -n 1)
+#     tmux selectp -T" ${branch}   ${git_log}" -t $TMUX_PANE
+#   else
+#     tmux selectp -T"🎴" -t $TMUX_PANE
+#   fi
+#
+#   PL_END
+# }
 
 Header() {
-  FB ${C256_WHITE} ${C256_BLACK}
-  printf ${ICON}
+  FB "${SYSTEM_COLOR}" "DEFAULT"
+  printf "${ICON}"
 
-  PL ${C256_BLACK} ${C256_GRAY}
-  printf $(GetPwd)
+  FG "DEFAULT"
+  printf " > $(GetPwd)"
 
   local branch=$(GetBranch)
   if [ ! -z ${branch} ]; then
-    PL ${C256_RED} ${C256_YELLOW}
+    PL "RED" "YELLOW"
     printf " ${branch}"
 
-    PL ${C256_BLUE} ${C256_WHITE}
+    PL "BLUE" "WHITE"
     git log --pretty=format:%s -n 1
 
-    PL ${C256_BLUE} ${C256_YELLOW}
-    printf "status"
+    # PL "BLUE" "YELLOW"
+    # printf "status"
     # git status --ignore-submodules
   fi
 
-  PL_END
+  PL ${B_CURRENT} "DEFAULT"
+  # PL_END
 }
 
 Prompt() {
   share_history
 
-  if [ -v TMUX ]; then
-    if [ "$1" = "0" ]; then
-      PS1="$(TmuxHeader)\n\[${F_CYAN}\]>\[${F_DEFAULT}\] "
-    else
-      PS1="$(TmuxHeader)\n\[${F_RED}\]>\[${F_DEFAULT}\] "
-    fi
+  # if [ -v TMUX ]; then
+  #   if [ "$1" = "0" ]; then
+  #     PS1="$(TmuxHeader)\n\[$(FG CYAN)\]>\[$(FG DEFAULT)\] "
+  #   else
+  #     PS1="$(TmuxHeader)\n\[$(FG RED)\]>\[$(FG DEFAULT)\] "
+  #   fi
+  # else
+  if [ "$1" = "0" ]; then
+    PS1="$(Header)\n\[$(FG CYAN)\]>\[$(FG DEFAULT)\] "
   else
-    if [ "$1" = "0" ]; then
-      PS1="$(Header)\n\[${F_CYAN}\]>\[${F_DEFAULT}\] "
-    else
-      PS1="$(Header)\n\[${F_RED}\]>\[${F_DEFAULT}\] "
-    fi
+    PS1="$(Header)\n\[$(FG RED)\]>\[$(FG DEFAULT)\] "
   fi
+  # fi
 }
 
 PROMPT_COMMAND='Prompt $?'
