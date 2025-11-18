@@ -74,8 +74,15 @@ end
 -- config.wsl_domains = wsl_domains
 
 config.initial_cols = 120
-config.initial_rows = 60
+
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  config.initial_rows = 60
+else
+  config.use_ime = true
+  config.initial_rows = 40
+end
 config.font_size = 12
+
 config.enable_kitty_graphics = true
 
 local function make_pallete(ansi)
@@ -177,6 +184,13 @@ wezterm.on('gui-attached', function(domain)
   -- if domain_name:find("^WSL:") then
   --   get_state().host = 'wsl'
   -- end
+
+  local gui = wezterm.gui
+  if gui then
+    local screens = gui.screens()
+    wezterm.log_info("screens", screens)
+  end
+  -- config.initial_rows = screens.height / 12 - 2
 end)
 
 wezterm.on('window-focus-changed', function(window, pane)
