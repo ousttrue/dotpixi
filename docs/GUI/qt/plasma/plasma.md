@@ -1,9 +1,5 @@
-最近の KDE
+# version
 
-- `2023` [KDE Plasmaの埋もれた機能を使い倒す - KDE 日本語フォーラム 🥷🍣 - KDE Discuss](https://discuss.kde.org/t/kde-plasma/1552)
+## 6.5
 
-# arch install
-
-```sh
-pacman -S seatd plasma konsole
-```
+- https://gihyo.jp/article/2025/10/daily-linux-251022

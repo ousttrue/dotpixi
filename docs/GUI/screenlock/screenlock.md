@@ -3,3 +3,15 @@
 # plasma
 
 https://invent.kde.org/plasma/kscreenlocker
+
+# ext-session-lock-v1
+
+https://wayland.app/protocols/ext-session-lock-v1
+
+## plasma
+
+- https://www.reddit.com/r/kde/comments/11na3ej/swaylock_on_wayland_and_plasma_5272/
+
+> Kwin does not yet implement ext-session-lock-v1, so this isn't possible.
+
+compositer が impl するということ？

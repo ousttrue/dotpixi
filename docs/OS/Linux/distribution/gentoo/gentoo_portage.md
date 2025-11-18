@@ -1,15 +1,23 @@
+- https://wiki.gentoo.org/wiki/Gentoo_Cheat_Sheet/ja
+
 # keyword
 
 ```
 --autounmask=y --autounmask-write
 ```
+# gentoolkit
 
-# install 後
+- app-portage/gentoolkit
 
 ## euse
 
-- app-portage/gentoolkit
 - https://wiki.gentoo.org/wiki/Euse
+
+## equery
+
+- https://wiki.gentoo.org/wiki/Equery/ja
+
+# install 後
 
 ## git化
 

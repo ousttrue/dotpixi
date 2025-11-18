@@ -10,7 +10,8 @@ local DEFAULT_COLOR_SCHEME = {
   -- windows = 'Nebula (Mayhem) (base16)',
   -- linux = 'Gruvbox light, medium (base16)',
   -- linux = 'Brush Trees (base16)',
-  linux = 'Atelier Savanna Light (base16)',
+  -- linux = 'Atelier Savanna Light (base16)',
+  linux = 'Solarized Light (Gogh)',
 }
 
 ---@class State
@@ -61,7 +62,7 @@ end
 
 config.color_scheme = get_state().color_scheme
 
-config.automatically_reload_config = true
+-- config.automatically_reload_config = true
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   -- We are running on Windows; maybe we emit different
@@ -112,14 +113,14 @@ local function filter_color_scheme(k, v)
     -- skip. invisible comment
     return
   end
-  -- local is_gogh = k:find("%(Gogh%)$")
+  local is_gogh = k:find("%(Gogh%)$")
   local is_base16 = k:find("%(base16%)$")
-  -- if is_gogh then
-  --   return
-  -- end
-  if not is_base16 then
+  if not is_gogh then
     return
   end
+  -- if not is_base16 then
+  --   return
+  -- end
 
   return k, v
 end

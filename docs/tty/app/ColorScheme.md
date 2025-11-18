@@ -1,4 +1,9 @@
 - [“完璧”なカラー設定「Solarized」の魅力は、計算し尽くされたものだった | WIRED.jp](https://wired.jp/2019/07/09/very-mathematical-history-perfect-color-combination/)
+https://mofu.kemo.no/@sayunu/112489898859186078
+
+gogh
+
+https://blog.ce9e.org/posts/2019-06-24-terminal-colors/
 
 # 分類
 
