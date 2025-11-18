@@ -152,7 +152,7 @@ local function define()
   vim.api.nvim_set_hl(0, "Function", { link = "Identifier" })
   vim.api.nvim_set_hl(0, "@markup.heading", { link = "Identifier" })
   vim.api.nvim_set_hl(0, "@variable", { link = "Identifier" })
-  -- vim.api.nvim_set_hl(0, "@function.call", { link = "Constant" })
+  vim.api.nvim_set_hl(0, "@function", { link = "Identifier" })
 
   vim.api.nvim_set_hl(0, "Error", { ctermfg = 1 })
   vim.api.nvim_set_hl(0, "Boolean", { ctermfg = 3 })

@@ -1,4 +1,4 @@
-[[wslg]] [[RDP]] [[KMS]]
+https://wayland.app/protocols/
 
 - [Wayland](https://wayland.freedesktop.org/docs/html/index.html)
 
