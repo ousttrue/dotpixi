@@ -24,7 +24,6 @@ function p {
   cd $HOME/dotpixi
   v
 }
-alias world='sudo emerge --ask --verbose --update --deep --changed-use @world'
 
 export EDITOR="nvim"
 
@@ -32,7 +31,7 @@ PS1='[\u@\h \W]\$ '
 
 export PROMPT_COMMAND='history -a; history -r'
 
-export FZF_DEFAULT_OPTS="--layout=reverse --preview-window down:70%"
+export FZF_DEFAULT_OPTS="--layout=reverse --preview-window down:70%:wrap"
 export FZF_DEFAULT_COMMAND="fd --type f -H -E .git"
 function gg {
   local arg=""
@@ -88,45 +87,60 @@ if [ -v MSYSTEM ]; then
     PLATFORM=$MSYSTEM
     if [[ $MSYSTEM == "MSYS" ]]; then
       SYSTEM_COLOR="BLACK"
-      ICON=🦉
+      ICON="🦉"
     elif [[ $MSYSTEM == "MINGW64" ]]; then
       SYSTEM_COLOR="YELLOW"
-      ICON=🐐
+      ICON="🐐"
     elif [[ $MSYSTEM == "UCRT64" ]]; then
       SYSTEM_COLOR="YELLOW"
-      ICON=🛸
+      ICON="🛸"
     elif [[ $MSYSTEM == "CLANG64" ]]; then
       SYSTEM_COLOR="YELLOW"
-      ICON=🐉
+      ICON="🐉"
     else
       SYSTEM_COLOR="GRAY"
-      ICON=🥚
+      ICON="🥚"
     fi
   else
     SYSTEM_COLOR="WHITE"
     PLATFORM=MSYSGIT
-    ICON=🍄
+    ICON="🍄"
   fi
 else
   if grep -qi "Arch Linux" /etc/os-release; then
     SYSTEM_COLOR="CYAN"
     PLATFORM=LINUX
     DIST="arch"
-    ICON=󰣇
+    ICON="󰣇 "
+
   elif grep -qi "Ubuntu" /etc/os-release; then
     SYSTEM_COLOR="RED"
     PLATFORM=LINUX
     DIST="ubunts"
-    ICON=
+    ICON=" "
+
   elif grep -qi "Gentoo" /etc/os-release; then
     SYSTEM_COLOR="MAGENTA"
     PLATFORM=LINUX
     DIST="gentoo"
-    ICON=
+    ICON=" "
+
+    alias world='sudo emerge --ask --verbose --update --deep --changed-use @world'
+    alias etcup='sudo etc-update --automode -3'
+
+    function efz {
+      pushd /var/db/repos/gentoo
+      local selected=$(find * -mindepth 1 -maxdepth 1 -type d | fzf --preview "eix -e --color=always {}")
+      popd
+      if [[ ${selected} =~ [^\s] ]]; then
+        sudo emerge -av --autounmask=y --autounmask-license=y --autounmask-write=y ${selected}
+      fi
+    }
+
   else
     SYSTEM_COLOR="GREEN"
     PLATFORM=LINUX
-    ICON=🐧
+    ICON=" "
   fi
 
   BUILD_ROOT=${HOME}/build/gcc
@@ -137,7 +151,7 @@ else
 
   if grep -qi microsoft /proc/version; then
     IS_WSL=1
-    ICON=🚇
+    ICON="🚇"
   fi
 fi
 
@@ -315,3 +329,48 @@ Prompt() {
 }
 
 PROMPT_COMMAND='Prompt $?'
+
+ANSI_COLORS=(
+  "       Black  "
+  "       Red    "
+  "       Green  "
+  "       Yellow "
+  "       Blue   "
+  "       Magenta"
+  "       Cyan   "
+  "       White  "
+)
+LIGHT_COLORS=(
+  " Light Black  "
+  " Light Red    "
+  " Light Green  "
+  " Light Yellow "
+  " Light Blue   "
+  " Light Magenta"
+  " Light Cyan   "
+  " Light White  "
+)
+# Background colors
+function palette {
+  echo -e "\
+FG\\BG \
+  49:default  \
+  40:black    \
+  47:white    \
+"
+
+  for ix in 7 0 1 2 3 4 5 6; do
+    echo -e "\
+3${ix}   \
+\033[49m\033[3${ix}m${ANSI_COLORS[ix]}\033[0m\
+\033[40m\033[3${ix}m${ANSI_COLORS[ix]}\033[0m\
+\033[47m\033[3${ix}m${ANSI_COLORS[ix]}\033[0m\
+"
+    echo -e "\
+9${ix}   \
+\033[49m\033[9${ix}m${LIGHT_COLORS[ix]}\033[0m\
+\033[40m\033[9${ix}m${LIGHT_COLORS[ix]}\033[0m\
+\033[47m\033[9${ix}m${LIGHT_COLORS[ix]}\033[0m\
+"
+  done
+}
