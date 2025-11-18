@@ -31,7 +31,7 @@ PS1='[\u@\h \W]\$ '
 
 export PROMPT_COMMAND='history -a; history -r'
 
-export FZF_DEFAULT_OPTS="--layout=reverse --preview-window down:70%"
+export FZF_DEFAULT_OPTS="--layout=reverse --preview-window down:70%:wrap"
 export FZF_DEFAULT_COMMAND="fd --type f -H -E .git"
 function gg {
   local arg=""
@@ -130,7 +130,7 @@ else
 
     function efz {
       pushd /var/db/repos/gentoo
-      local selected=$(find * -mindepth 1 -maxdepth 1 -type d | fzf --preview "emerge --pretend {}")
+      local selected=$(find * -mindepth 1 -maxdepth 1 -type d | fzf --preview "eix -e --color=always {}")
       popd
       if [[ ${selected} =~ [^\s] ]]; then
         sudo emerge -av --autounmask=y --autounmask-license=y --autounmask-write=y ${selected}
