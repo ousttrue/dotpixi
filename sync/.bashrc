@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 #
 # ~/.bashrc
 #
@@ -119,6 +120,13 @@ else
     PLATFORM=LINUX
     DIST="ubunts"
     ICON=" "
+
+    function afz {
+      local selected=$(apt list | cut -d "/" -f 1 | fzf --preview "apt-cache show {}")
+      if [[ ${selected} =~ [^\s] ]]; then
+        sudo apt install ${selected}
+      fi
+    }
 
   elif grep -qi "Gentoo" /etc/os-release; then
     SYSTEM_COLOR="MAGENTA"
@@ -375,3 +383,4 @@ FG\\BG \
 "
   done
 }
+export PATH="/home/ousttrue/.pixi/bin:$PATH"
