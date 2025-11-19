@@ -159,6 +159,7 @@ else
   export PYTHONPATH=${HOME}/prefix/lib/python3.10/site-packages
 
   if grep -qi microsoft /proc/version; then
+    SYSTEM_COLOR="BLUE"
     IS_WSL=1
     ICON="󰻀 "
   fi
@@ -256,7 +257,7 @@ GetPwd() {
   elif [[ "$pwdInfo" =~ ^"$HOME"(/|$) ]]; then
     printf "🏠${pwdInfo#$HOME}"
   else
-    printf "📂${pwdInfo}"
+    printf "${pwdInfo}"
   fi
 }
 
@@ -295,7 +296,13 @@ GetBranch() {
 #   PL_END
 # }
 
+function print_osc7() {
+  printf "\033]7;file://$HOSTNAME/$PWD\033\\"
+}
+
 Header() {
+  print_osc7
+
   FB "${SYSTEM_COLOR}" "DEFAULT"
   printf "${ICON}"
 
