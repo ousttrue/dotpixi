@@ -136,10 +136,9 @@ local function define()
   vim.api.nvim_set_hl(0, "@punctuation", { link = "Keyword" })
   vim.api.nvim_set_hl(0, "@operator", { link = "Keyword" })
   vim.api.nvim_set_hl(0, "@keyword.type", { link = "Keyword" })
-  -- const etc
   vim.api.nvim_set_hl(0, "@keyword.modifier.cpp", { link = "Keyword" })
   vim.api.nvim_set_hl(0, "@constant", { link = "Keyword" })
-  -- this
+  vim.api.nvim_set_hl(0, "@variable.builtin", { link = "Keyword" })
 
   -- const / compile time
   vim.api.nvim_set_hl(0, "Constant", { ctermfg = 3 })
@@ -163,9 +162,8 @@ local function define()
   vim.api.nvim_set_hl(0, "Identifier", { ctermfg = 2 })
   vim.api.nvim_set_hl(0, "@markup.heading", { link = "Identifier" })
   vim.api.nvim_set_hl(0, "@variable", { link = "Identifier" })
-  vim.api.nvim_set_hl(0, "@variable.builtin", { link = "Keyword" })
   vim.api.nvim_set_hl(0, "@property", { link = "Identifier" })
-  -- vim.api.nvim_set_hl(0, "@function.call", { link = "Constant" })
+  vim.api.nvim_set_hl(0, "@function", { link = "Identifier" })
 
   vim.api.nvim_set_hl(0, "Error", { ctermfg = 1 })
   vim.api.nvim_set_hl(0, "Boolean", { ctermfg = 3 })

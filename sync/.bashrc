@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 #
 # ~/.bashrc
 #
@@ -72,6 +73,7 @@ export PATH="$PATH:/home/ousttrue/.local/bin"
 # local DSPCOLOR="reset"
 export LUA_PATH="$HOME/lua/?.lua;$HOME/lua/?/init.lua"
 export HTTP_HOME='~/dotfiles/home.html'
+export XDG_DATA_DIRS="${HOME}/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share"
 export XDG_MUSIC_DIR=$HOME/Music
 if [ -v MSYSTEM ]; then
 
@@ -119,6 +121,13 @@ else
     DIST="ubunts"
     ICON=" "
 
+    function afz {
+      local selected=$(apt list | cut -d "/" -f 1 | fzf --preview "apt-cache show {}")
+      if [[ ${selected} =~ [^\s] ]]; then
+        sudo apt install ${selected}
+      fi
+    }
+
   elif grep -qi "Gentoo" /etc/os-release; then
     SYSTEM_COLOR="MAGENTA"
     PLATFORM=LINUX
@@ -150,8 +159,9 @@ else
   export PYTHONPATH=${HOME}/prefix/lib/python3.10/site-packages
 
   if grep -qi microsoft /proc/version; then
+    SYSTEM_COLOR="BLUE"
     IS_WSL=1
-    ICON="🚇"
+    ICON="󰻀 "
   fi
 fi
 
@@ -247,7 +257,7 @@ GetPwd() {
   elif [[ "$pwdInfo" =~ ^"$HOME"(/|$) ]]; then
     printf "🏠${pwdInfo#$HOME}"
   else
-    printf "📂${pwdInfo}"
+    printf "${pwdInfo}"
   fi
 }
 
@@ -286,7 +296,13 @@ GetBranch() {
 #   PL_END
 # }
 
+function print_osc7() {
+  printf "\033]7;file://$HOSTNAME/$PWD\033\\"
+}
+
 Header() {
+  print_osc7
+
   FB "${SYSTEM_COLOR}" "DEFAULT"
   printf "${ICON}"
 
@@ -374,3 +390,4 @@ FG\\BG \
 "
   done
 }
+export PATH="/home/ousttrue/.pixi/bin:$PATH"
