@@ -11,6 +11,7 @@ local DEFAULT_COLOR_SCHEME = {
   wsl = 'Atelier Plateau Light (base16)',
 }
 
+
 ---@class State
 ---@field color_scheme string?
 ---@field host nil | 'windows' | 'wsl' | 'linux'
@@ -42,7 +43,7 @@ end
 
 ---@param window Window
 ---@param color_scheme string
-function set_color_scheme(window, color_scheme)
+function set_color_scheme(window, color_scheme, use_clipboard)
   wezterm.log_info('set_color_scheme', color_scheme)
   local state = get_state()
   if state.color_scheme == color_scheme then
@@ -54,7 +55,9 @@ function set_color_scheme(window, color_scheme)
   window:set_config_overrides {
     color_scheme = color_scheme
   }
-  window:copy_to_clipboard(color_scheme)
+  if use_clipboard then
+    window:copy_to_clipboard(color_scheme)
+  end
 end
 
 config.color_scheme = get_state().color_scheme
@@ -146,7 +149,17 @@ for k, v in pairs(wezterm.color.get_builtin_schemes()) do
 end
 
 config.keys = {
-  { mods = "ALT",  key = "c",          action = wezterm.action { SpawnTab = "CurrentPaneDomain" } },
+  {
+    mods = 'ALT',
+    key = 'c',
+    action = wezterm.action_callback(function(win, pane)
+      -- if get_state().host == 'wsl' then
+      --   win:perform_action(wezterm.action.SpawnCommandInNewTab { cwd = '~' }, pane)
+      -- else
+      win:perform_action(wezterm.action.SpawnTab { DomainName = pane:get_domain_name() }, pane)
+      -- end
+    end)
+  },
   { mods = "ALT",  key = "LeftArrow",  action = wezterm.action { MoveTabRelative = -1 } },
   { mods = "ALT",  key = "RightArrow", action = wezterm.action { MoveTabRelative = 1 } },
   { mods = "ALT",  key = ",",          action = wezterm.action { ActivateTabRelative = -1 } },
@@ -169,7 +182,7 @@ config.keys = {
         choices = choices,
         action  = wezterm.action_callback(function(inner_window, _, id)
           if id then
-            set_color_scheme(inner_window, id)
+            set_color_scheme(inner_window, id, true)
           end
         end),
         fuzzy   = true,
@@ -189,7 +202,7 @@ wezterm.on('gui-attached', function(domain)
   local gui = wezterm.gui
   if gui then
     local screens = gui.screens()
-    wezterm.log_info("screens", screens)
+    -- wezterm.log_info("screens", screens)
   end
   -- config.initial_rows = screens.height / 12 - 2
 end)
