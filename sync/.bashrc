@@ -152,7 +152,7 @@ else
 
   if grep -qi microsoft /proc/version; then
     IS_WSL=1
-    ICON="🚇"
+    ICON="󰻀 "
   fi
 fi
 

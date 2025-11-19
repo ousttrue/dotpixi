@@ -8,6 +8,7 @@ local DEFAULT_COLOR_SCHEME = {
   windows = 'Black Metal (Mayhem) (base16)',
   -- windows = 'Nebula (Mayhem) (base16)',
   linux = 'Gruvbox light, medium (base16)',
+  wsl = 'Atelier Plateau Light (base16)',
 }
 
 ---@class State
