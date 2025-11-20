@@ -23,6 +23,10 @@ https://kmiya-culti.github.io/RLogin/ctrlcode.html#OSC
 
 # <ST> = `{0x1B}{0x5C}` (<ESC><BackSlash>) or `{0x07}` (<BEL>)
 
+# OSC 133
+
+- [Windows ターミナルのシェル統合 | Microsoft Learn](https://learn.microsoft.com/ja-jp/windows/terminal/tutorials/shell-integration)
+
 # brokenLinuxOSC
 
 `not terminate`

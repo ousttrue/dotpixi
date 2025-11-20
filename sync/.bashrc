@@ -297,12 +297,18 @@ GetBranch() {
 #   PL_END
 # }
 
-OSC(){
-  printf "\033]$1;$2\033\\"
+OSC() {
+  if [ -n $3 ]; then
+    printf "\033]$1;$2;$3\033\\"
+  else
+    printf "\033]$1;$2\033\\"
+  fi
 }
 
 Header() {
-  OSC 133 D
+  if [ -n $1 ]; then
+    OSC 133 D $1
+  fi
   OSC 7 "file://$HOSTNAME/$PWD"
 
   FB "${SYSTEM_COLOR}" "DEFAULT"
@@ -345,9 +351,9 @@ Prompt() {
   # else
   # printf '\e]133;A\e\\'
   if [ "$1" = "0" ]; then
-    PS1="$(Header)\n\[$(FG CYAN)\]$(OSC 133 A)>\[$(FG DEFAULT)\] $(OSC 133 B)"
+    PS1="$(Header 0)\n\[$(FG CYAN)\]$(OSC 133 A)>\[$(FG DEFAULT)\] $(OSC 133 B)"
   else
-    PS1="$(Header)\n\[$(FG RED)\]$(OSC 133 A)>\[$(FG DEFAULT)\] $(OSC 133 B)"
+    PS1="$(Header 1)\n\[$(FG RED)\]$(OSC 133 A)>\[$(FG DEFAULT)\] $(OSC 133 B)"
   fi
   # fi
 }

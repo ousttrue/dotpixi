@@ -30,17 +30,17 @@ function M.setup()
       },
     }
   else
-    vim.g.clipboard = {
-      name = "OSC 52 / linux",
-      copy = {
-        ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-        ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-      },
-      paste = {
-        ["+"] = paste,
-        ["*"] = paste,
-      },
-    }
+    -- vim.g.clipboard = {
+    --   name = "OSC 52 / linux",
+    --   copy = {
+    --     ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+    --     ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    --   },
+    --   paste = {
+    --     ["+"] = paste,
+    --     ["*"] = paste,
+    --   },
+    -- }
   end
 
   -- require xclip ? xsel ?

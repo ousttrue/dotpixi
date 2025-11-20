@@ -42,7 +42,11 @@ Categories=System;TerminalEmulator;Utility;
 Terminal=false
 ```
 
-## application icon
+# application icon
+
+https://wiki.archlinux.jp/index.php/%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3
+
+`xdg-icon-resource install`
 
 1.  `$HOME/.icons` (後方互換性のため)
 2.  `$XDG_DATA_DIRS/icons`
@@ -50,3 +54,4 @@ Terminal=false
 
 - [Changing openbox's alt+tab menu icon / Applications & Desktop Environments / Arch Linux Forums](https://bbs.archlinux.org/viewtopic.php?pid=2014805#p2014805)
   OpenBox ookisugiru icon
+
