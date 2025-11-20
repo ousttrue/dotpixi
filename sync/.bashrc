@@ -169,6 +169,7 @@ fi
 # decoration
 #
 # CSI='\e['
+# OSI='\033]'
 
 SGR() {
   case $1 in
@@ -296,12 +297,13 @@ GetBranch() {
 #   PL_END
 # }
 
-function print_osc7() {
-  printf "\033]7;file://$HOSTNAME/$PWD\033\\"
+OSC(){
+  printf "\033]$1;$2\033\\"
 }
 
 Header() {
-  print_osc7
+  OSC 133 D
+  OSC 7 "file://$HOSTNAME/$PWD"
 
   FB "${SYSTEM_COLOR}" "DEFAULT"
   printf "${ICON}"
@@ -326,6 +328,11 @@ Header() {
   # PL_END
 }
 
+# OSC133 https://gitlab.freedesktop.org/Per_Bothner/specifications/blob/master/proposals/semantic-prompts.md
+#
+# A(prompt)B(user_input)C
+# (command_output)
+# D
 Prompt() {
   share_history
 
@@ -336,10 +343,11 @@ Prompt() {
   #     PS1="$(TmuxHeader)\n\[$(FG RED)\]>\[$(FG DEFAULT)\] "
   #   fi
   # else
+  # printf '\e]133;A\e\\'
   if [ "$1" = "0" ]; then
-    PS1="$(Header)\n\[$(FG CYAN)\]>\[$(FG DEFAULT)\] "
+    PS1="$(Header)\n\[$(FG CYAN)\]$(OSC 133 A)>\[$(FG DEFAULT)\] $(OSC 133 B)"
   else
-    PS1="$(Header)\n\[$(FG RED)\]>\[$(FG DEFAULT)\] "
+    PS1="$(Header)\n\[$(FG RED)\]$(OSC 133 A)>\[$(FG DEFAULT)\] $(OSC 133 B)"
   fi
   # fi
 }

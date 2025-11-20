@@ -136,8 +136,8 @@ local function define()
   vim.api.nvim_set_hl(0, "@punctuation", { link = "Keyword" })
   vim.api.nvim_set_hl(0, "@operator", { link = "Keyword" })
   vim.api.nvim_set_hl(0, "@keyword.type", { link = "Keyword" })
-  vim.api.nvim_set_hl(0, "@keyword.modifier.cpp", { link = "Keyword" })
   vim.api.nvim_set_hl(0, "@constant", { link = "Keyword" })
+  vim.api.nvim_set_hl(0, "@constant.builtin", { link = "Keyword" })
   vim.api.nvim_set_hl(0, "@variable.builtin", { link = "Keyword" })
 
   -- const / compile time
@@ -150,6 +150,9 @@ local function define()
   vim.api.nvim_set_hl(0, "@module", { link = "Constant" })
   vim.api.nvim_set_hl(0, "Function", { link = "Constant" })
   vim.api.nvim_set_hl(0, "@function", { link = "Function" })
+  vim.api.nvim_set_hl(0, "@keyword.modifier", { link = "Constant" })
+  vim.api.nvim_set_hl(0, "@keyword.modifier.c", { link = "@keyword.modifier" })
+  vim.api.nvim_set_hl(0, "@keyword.modifier.cpp", { link = "@keyword.modifier" })
 
   -- literal
   vim.api.nvim_set_hl(0, "String", { ctermfg = 7 })

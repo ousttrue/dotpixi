@@ -11,11 +11,13 @@ local DEFAULT_COLOR_SCHEME = {
   -- linux = 'Gruvbox light, medium (base16)',
   -- linux = 'Brush Trees (base16)',
   -- linux = 'Atelier Savanna Light (base16)',
-  linux = 'Solarized Light (Gogh)',
+  -- linux = 'Solarized Light (Gogh)',
+  -- Linux = 'Solarized Dark (Gogh)',
+  Linux = 'Rosé Pine Moon (Gogh)',
+
   -- linux = 'Gruvbox light, medium (base16)',
   wsl = 'Atelier Plateau Light (base16)',
 }
-
 
 ---@class State
 ---@field color_scheme string?
@@ -66,25 +68,14 @@ function set_color_scheme(window, color_scheme, use_clipboard)
 end
 
 config.color_scheme = get_state().color_scheme
+-- config.canonicalize_pasted_newlines = 'LineFeed'
 
 -- config.automatically_reload_config = true
-
-if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
-  -- We are running on Windows; maybe we emit different
-  -- key assignments here?
-  config.default_prog = { "pwsh", "-nologo" }
-end
-
--- local wsl_domains = wezterm.default_wsl_domains()
--- for idx, dom in ipairs(wsl_domains) do
---   wezterm.log_info("wsl_domain", dom.name, dom.default_prog)
---   default_cwd = "~"
--- end
--- config.wsl_domains = wsl_domains
 
 config.initial_cols = 120
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  config.default_prog = { "pwsh", "-nologo" }
   config.initial_rows = 60
 else
   config.use_ime = true
@@ -204,12 +195,12 @@ wezterm.on('gui-attached', function(domain)
   --   get_state().host = 'wsl'
   -- end
 
-  local gui = wezterm.gui
-  if gui then
-    local screens = gui.screens()
-    -- wezterm.log_info("screens", screens)
-  end
-  -- config.initial_rows = screens.height / 12 - 2
+  -- local gui = wezterm.gui
+  -- if gui then
+  --   local screens = gui.screens()
+  --   -- wezterm.log_info("screens", screens)
+  -- end
+  -- -- config.initial_rows = screens.height / 12 - 2
 end)
 
 wezterm.on('window-focus-changed', function(window, pane)
@@ -238,6 +229,31 @@ wezterm.on('window-focus-changed', function(window, pane)
     set_color_scheme(window, color_scheme)
   end
   wezterm.GLOBAL.state = state ---@diagnostic disable-line
+
+  -- OSC133
+  -- https://zenn.dev/ymotongpoo/scraps/ec945f11b2b750
+  local copy_mode = nil
+  if wezterm.gui then
+    wezterm.log_info('setup osc133')
+    copy_mode = wezterm.gui.default_key_tables().copy_mode
+    table.insert(
+      copy_mode,
+      -- move the cursor backwards to the start of the current zone, or to the prior zone if already at the start
+      { key = 'z', mods = 'NONE', action = wezterm.action.CopyMode { MoveBackwardZoneOfType = 'Prompt' } }
+    )
+
+    table.insert(
+      copy_mode,
+      -- move the cursor forwards to the start of the next zone
+      { key = 'Z', mods = 'NONE', action = wezterm.action.CopyMode { MoveForwardZoneOfType = 'Prompt' } }
+    )
+
+    window:set_config_overrides {
+      key_tables = {
+        copy_mode = copy_mode,
+      },
+    }
+  end
 end)
 
 wezterm.on('user-var-changed', function(window, pane, name, value)

@@ -13,7 +13,7 @@ end
 local M = {}
 
 function M.setup()
-  vim.opt.clipboard:append { "unnamedplus" }
+  vim.opt.clipboard = "unnamedplus"
 
   if vim.fn.has('win64') == 1 then
     vim.g.clipboard = {
