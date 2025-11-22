@@ -12,9 +12,9 @@ local DEFAULT_COLOR_SCHEME = {
   -- linux = 'Brush Trees (base16)',
   -- linux = 'Atelier Savanna Light (base16)',
   -- linux = 'Solarized Light (Gogh)',
-  -- Linux = 'Solarized Dark (Gogh)',
-  Linux = 'Rosé Pine Moon (Gogh)',
-
+  -- linux = 'Solarized Dark (Gogh)',
+  linux = 'Rosé Pine Moon (Gogh)',
+  -- linux = 'Vaughn (Gogh)',
   -- linux = 'Gruvbox light, medium (base16)',
   wsl = 'Atelier Plateau Light (base16)',
 }
@@ -53,9 +53,9 @@ end
 function set_color_scheme(window, color_scheme, use_clipboard)
   wezterm.log_info('set_color_scheme', color_scheme)
   local state = get_state()
-  if state.color_scheme == color_scheme then
-    return
-  end
+  -- if state.color_scheme == color_scheme then
+  --   return
+  -- end
 
   state.color_scheme = color_scheme
   wezterm.GLOBAL.state = state ---@diagnostic disable-line
@@ -70,7 +70,7 @@ end
 config.color_scheme = get_state().color_scheme
 -- config.canonicalize_pasted_newlines = 'LineFeed'
 
--- config.automatically_reload_config = true
+config.automatically_reload_config = false
 
 config.initial_cols = 120
 
@@ -145,6 +145,11 @@ for k, v in pairs(wezterm.color.get_builtin_schemes()) do
 end
 
 config.keys = {
+  {
+    mods = 'SHIFT',
+    key = 'Insert',
+    action = wezterm.action.PasteFrom 'Clipboard',
+  },
   {
     mods = 'ALT',
     key = 'c',
@@ -221,7 +226,7 @@ wezterm.on('window-focus-changed', function(window, pane)
     host = 'linux'
   end
 
-  wezterm.log_info('domain_name:', domain_name, host)
+  wezterm.log_info(string.format('domain_name: "%s" "%s"', domain_name, host))
   local state = get_state()
   state.host = host
   local color_scheme = DEFAULT_COLOR_SCHEME[host]
@@ -229,31 +234,6 @@ wezterm.on('window-focus-changed', function(window, pane)
     set_color_scheme(window, color_scheme)
   end
   wezterm.GLOBAL.state = state ---@diagnostic disable-line
-
-  -- OSC133
-  -- https://zenn.dev/ymotongpoo/scraps/ec945f11b2b750
-  local copy_mode = nil
-  if wezterm.gui then
-    wezterm.log_info('setup osc133')
-    copy_mode = wezterm.gui.default_key_tables().copy_mode
-    table.insert(
-      copy_mode,
-      -- move the cursor backwards to the start of the current zone, or to the prior zone if already at the start
-      { key = 'z', mods = 'NONE', action = wezterm.action.CopyMode { MoveBackwardZoneOfType = 'Prompt' } }
-    )
-
-    table.insert(
-      copy_mode,
-      -- move the cursor forwards to the start of the next zone
-      { key = 'Z', mods = 'NONE', action = wezterm.action.CopyMode { MoveForwardZoneOfType = 'Prompt' } }
-    )
-
-    window:set_config_overrides {
-      key_tables = {
-        copy_mode = copy_mode,
-      },
-    }
-  end
 end)
 
 wezterm.on('user-var-changed', function(window, pane, name, value)
@@ -304,6 +284,63 @@ wezterm.on('format-window-title', function(
   return zoomed .. get_host_icon() .. title .. '  [' .. (get_state().color_scheme or 'default') .. ']'
 end)
 
-wezterm.log_info('reloaded')
+-- OSC133
+-- https://zenn.dev/ymotongpoo/scraps/ec945f11b2b750
+local copy_mode = nil
+if wezterm.gui then
+  wezterm.log_info('## setup osc133 ##')
+  copy_mode = wezterm.gui.default_key_tables().copy_mode
+  table.insert(
+    copy_mode,
+    -- move the cursor backwards to the start of the current zone, or to the prior zone if already at the start
+    { key = 'z', mods = 'NONE', action = wezterm.action.CopyMode { MoveBackwardZoneOfType = 'Prompt' } }
+  )
+
+  table.insert(
+    copy_mode,
+    -- move the cursor forwards to the start of the next zone
+    { key = 'Z', mods = 'NONE', action = wezterm.action.CopyMode { MoveForwardZoneOfType = 'Prompt' } }
+  )
+
+  -- local found = false
+  -- local yank_action = wezterm.action.Multiple({
+  --   { CopyTo = 'Clipboard' },
+  --   wezterm.action.Multiple({
+  --     'ScrollToBottom',
+  --     { CopyMode = 'Close' },
+  --   }),
+
+  local yank_action = wezterm.action.Multiple { { CopyTo = 'Clipboard' }, { Multiple = { 'ScrollToBottom', { CopyMode = 'Close' } } } }
+
+  -- for i, k in ipairs(copy_mode) do
+  --   if k.key == 'y' then
+  --     found = true
+  --     k.action = yank_action
+  --   end
+  -- end
+  -- if not found then
+  table.insert(
+    copy_mode,
+    {
+      key = 'y',
+      mods = 'NONE',
+      -- action = yank_action,
+      action = { CopyTo = 'Clipboard' },
+      -- action = wezterm.action_callback(function(w, p)
+      --   wezterm.log_info("y")
+      --   window:perform_action(wezterm.action.CopyTo 'Clipboard', p)
+      -- end
+    }
+  )
+  -- end
+
+  -- window:set_config_overrides {
+  config.key_tables = {
+    copy_mode = copy_mode,
+  }
+  -- }
+end
+
+wezterm.log_info('## reloaded ##')
 
 return config

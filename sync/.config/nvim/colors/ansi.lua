@@ -167,6 +167,7 @@ local function define()
   vim.api.nvim_set_hl(0, "@variable", { link = "Identifier" })
   vim.api.nvim_set_hl(0, "@property", { link = "Identifier" })
   vim.api.nvim_set_hl(0, "@function", { link = "Identifier" })
+  vim.api.nvim_set_hl(0, "@function.builtin", { link = "Identifier" })
 
   vim.api.nvim_set_hl(0, "Error", { ctermfg = 1 })
   vim.api.nvim_set_hl(0, "Boolean", { ctermfg = 3 })
