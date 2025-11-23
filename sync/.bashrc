@@ -179,16 +179,16 @@ B_CURRENT='DEFAULT'
 BG() {
   B_CURRENT=$1
   case $1 in
-  'GRAY') printf '\e[40m' ;;
-  'RED') printf '\e[41m' ;;
-  'GREEN') printf '\e[42m' ;;
-  'YELLOW') printf '\e[43m' ;;
-  'BLUE') printf '\e[44m' ;;
-  'MAGENTA') printf '\e[45m' ;;
-  'CYAN') printf '\e[46m' ;;
-  'WHITE') printf '\e[47m' ;;
-  'DEFAULT') printf '\e[49m' ;;
-  'BLACK') printf '\e[100m' ;;
+  'GRAY') printf '\[\e[40m\]' ;;
+  'RED') printf '\[\e[41m\]' ;;
+  'GREEN') printf '\[\e[42m\]' ;;
+  'YELLOW') printf '\[\e[43m\]' ;;
+  'BLUE') printf '\[\e[44m\]' ;;
+  'MAGENTA') printf '\[\e[45m\]' ;;
+  'CYAN') printf '\[\e[46m\]' ;;
+  'WHITE') printf '\[\e[47m\]' ;;
+  'DEFAULT') printf '\[\e[49m\]' ;;
+  'BLACK') printf '\[\e[100m\]' ;;
   *) printf "BG($1)" ;;
   esac
   # bright 100-109
@@ -197,16 +197,16 @@ BG() {
 FG() {
   # bright 90-99
   case $1 in
-  'GRAY') printf '\e[30m' ;;
-  'RED') printf '\e[31m' ;;
-  'GREEN') printf '\e[32m' ;;
-  'YELLOW') printf '\e[33m' ;;
-  'BLUE') printf '\e[34m' ;;
-  'MAGENTA') printf '\e[35m' ;;
-  'CYAN') printf '\e[36m' ;;
-  'WHITE') printf '\e[37m' ;;
-  'DEFAULT') printf '\e[39m' ;;
-  'BLACK') printf '\e[90m' ;;
+  'GRAY') printf '\[\e[30m\]' ;;
+  'RED') printf '\[\e[31m\]' ;;
+  'GREEN') printf '\[\e[32m\]' ;;
+  'YELLOW') printf '\[\e[33m\]' ;;
+  'BLUE') printf '\[\e[34m\]' ;;
+  'MAGENTA') printf '\[\e[35m\]' ;;
+  'CYAN') printf '\[\e[36m\]' ;;
+  'WHITE') printf '\[\e[37m\]' ;;
+  'DEFAULT') printf '\[\e[39m\]' ;;
+  'BLACK') printf '\[\e[90m\]' ;;
   *) printf "FG($1)" ;;
   esac
 }
@@ -286,9 +286,9 @@ GetBranch() {
 
 OSC() {
   if [ -n $3 ]; then
-    printf "\033]$1;$2;$3\033\\"
+    printf '\[\e]$1;$2;$3\a\]'
   else
-    printf "\033]$1;$2\033\\"
+    printf '\[\e]$1;$2\a\]'
   fi
 }
 
@@ -338,9 +338,9 @@ Prompt() {
   # else
   # printf '\e]133;A\e\\'
   if [ "$1" = "0" ]; then
-    PS1="$(Header 0)\n\[$(FG CYAN)\]$(OSC 133 A)>\[$(FG DEFAULT)\] $(OSC 133 B)"
+    PS1="$(Header 0)\n$(FG CYAN)$(OSC 133 A)>$(FG DEFAULT)$(OSC 133 B) "
   else
-    PS1="$(Header 1)\n\[$(FG RED)\]$(OSC 133 A)>\[$(FG DEFAULT)\] $(OSC 133 B)"
+    PS1="$(Header 1)\n$(FG RED)$(OSC 133 A)>$(FG DEFAULT)$(OSC 133 B) "
   fi
   # fi
 }
