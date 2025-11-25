@@ -52,7 +52,7 @@ export PATH="$PATH:/home/ousttrue/.local/bin"
 # https://qiita.com/GunseiKPaseri/items/e594c8e261905e3d0281
 # local DSPCOLOR="reset"
 export LUA_PATH="$HOME/lua/?.lua;$HOME/lua/?/init.lua"
-export HTTP_HOME='~/dotfiles/home.html'
+export HTTP_HOME='~/.w3m/bookmark.html'
 export XDG_DATA_DIRS="${HOME}/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share"
 export XDG_MUSIC_DIR=$HOME/Music
 if [ -v MSYSTEM ]; then

@@ -7,3 +7,7 @@ if [[ -f ~/.bashrc ]] ; then
 fi
 
 export PATH="${HOME}/.cargo/bin:${HOME}/go/bin:${HOME}/local/bin:${HOME}/local/go/bin:${PATH}"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

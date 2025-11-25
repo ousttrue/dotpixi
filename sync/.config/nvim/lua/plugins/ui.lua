@@ -77,7 +77,8 @@ local function evel_lualine()
         {
           'filename',
           path = 1,
-        }
+        },
+        { 'aerial' },
       }
     },
   }
@@ -652,6 +653,7 @@ local M = {
     "nvim-lualine/lualine.nvim",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
+      "stevearc/aerial.nvim",
     },
     config = function()
       -- setup()

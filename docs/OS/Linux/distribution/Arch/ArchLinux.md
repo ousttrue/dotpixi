@@ -58,7 +58,21 @@ grub> initrd /boot/initrd.img # initrd
 grub> boot
 ```
 
-## dhcpcd
+## ip
+### static
+
+```ini title="/etc/systemd/networkd/lan.network"
+```
+
+```sh
+# systemctl enable --now systemd-resolved
+# systemctl enable --now systemd-networkd # ?
+
+# resolvectl
+# networkctl
+```
+
+### dhcpcd
 
 ```sh
 $ pacman -S dhcpcd
