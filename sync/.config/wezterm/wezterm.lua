@@ -29,14 +29,42 @@ if not wezterm.GLOBAL.state then
   }
 end
 
----@return State
-function get_state()
-  return wezterm.GLOBAL.state
+---@param _win_id integer
+---@param key string
+---@return string?
+local function get_state(_win_id, key)
+  local win_id = tostring(_win_id)
+  local state = wezterm.GLOBAL.state
+  local win_state = state[win_id]
+  if win_state then
+    wezterm.log_info(win_id, key, "<-", win_state[key])
+    return win_state[key]
+  else
+    wezterm.log_info(win_id, 'no_win_state', key)
+  end
 end
 
+---@param win_id integer
+---@param key string
+---@param value string
+local function set_state(_win_id, key, value)
+  local win_id = tostring(_win_id)
+  wezterm.log_info(win_id, key, "=>", value)
+  local state = wezterm.GLOBAL.state
+  ---@type State
+  local win_state = state[win_id]
+  if not win_state then
+    state[win_id] = {}
+    win_state = state[win_id]
+  end
+  win_state[key] = value
+  ---@diagnostic disable-next-line
+  wezterm.GLOBAL.state = state
+end
+
+---@param host string
 ---@return string
-function get_host_icon()
-  local host = get_state().host
+local function get_host_icon(host)
   if host == 'windows' then
     return '🪟'
   elseif host == 'wsl' then
@@ -50,24 +78,22 @@ end
 
 ---@param window Window
 ---@param color_scheme string
-function set_color_scheme(window, color_scheme, use_clipboard)
-  wezterm.log_info('set_color_scheme', color_scheme)
-  local state = get_state()
-  -- if state.color_scheme == color_scheme then
-  --   return
-  -- end
-
-  state.color_scheme = color_scheme
-  wezterm.GLOBAL.state = state ---@diagnostic disable-line
-  window:set_config_overrides {
-    color_scheme = color_scheme
-  }
+---@param use_clipboard boolean?
+local function set_color_scheme(window, color_scheme, use_clipboard)
+  wezterm.log_info(tostring(window:window_id()), 'set_color_scheme', color_scheme)
+  local current_color_scheme = get_state(window:window_id(), 'color_scheme')
+  if color_scheme ~= current_color_scheme then
+    set_state(window:window_id(), 'color_scheme', color_scheme)
+    window:set_config_overrides {
+      color_scheme = color_scheme
+    }
+  end
   if use_clipboard then
     window:copy_to_clipboard(color_scheme)
   end
 end
 
-config.color_scheme = get_state().color_scheme
+-- config.color_scheme = get_state().color_scheme
 -- config.canonicalize_pasted_newlines = 'LineFeed'
 
 config.automatically_reload_config = false
@@ -194,8 +220,8 @@ config.keys = {
 
 wezterm.on('gui-attached', function(domain)
   ---@diagnostic disable-next-line
-  -- local domain_name = domain:name()
-  -- wezterm.log_info('domain_name:', domain_name)
+  local domain_name = domain:name()
+  wezterm.log_info('domain_name:', domain_name)
   -- if domain_name:find("^WSL:") then
   --   get_state().host = 'wsl'
   -- end
@@ -226,14 +252,14 @@ wezterm.on('window-focus-changed', function(window, pane)
     host = 'linux'
   end
 
-  wezterm.log_info(string.format('domain_name: "%s" "%s"', domain_name, host))
-  local state = get_state()
-  state.host = host
-  local color_scheme = DEFAULT_COLOR_SCHEME[host]
-  if color_scheme then
-    set_color_scheme(window, color_scheme)
+  wezterm.log_info(window:window_id(), 'domain_name=>', domain_name, 'host=>', host)
+  if host then
+    set_state(window:window_id(), 'host', host)
+    local color_scheme = get_state(window:window_id(), 'color_scheme')
+    if not color_scheme then
+      set_color_scheme(window, DEFAULT_COLOR_SCHEME[host])
+    end
   end
-  wezterm.GLOBAL.state = state ---@diagnostic disable-line
 end)
 
 wezterm.on('user-var-changed', function(window, pane, name, value)
@@ -241,10 +267,10 @@ wezterm.on('user-var-changed', function(window, pane, name, value)
   for i = 1, #value do
     x = x .. ',' .. string.format("%d", string.byte(value:sub(i, i)))
   end
-  wezterm.log_info(name, '=>', value, x)
+  wezterm.log_info(window:window_id(), name, '=>', value, x)
 
   if name == 'host' then
-    get_state().host = value
+    set_state(window:window_id(), 'host', value)
   end
 end)
 
@@ -281,7 +307,9 @@ wezterm.on('format-window-title', function(
     end
   end
 
-  return zoomed .. get_host_icon() .. title .. '  [' .. (get_state().color_scheme or 'default') .. ']'
+  local host = get_state(tab.window_id, 'host') or ''
+  return zoomed ..
+      get_host_icon(host) .. title .. '  [' .. (get_state(tab.window_id, 'color_scheme') or 'default') .. ']'
 end)
 
 -- OSC133
@@ -310,7 +338,7 @@ if wezterm.gui then
   --     { CopyMode = 'Close' },
   --   }),
 
-  local yank_action = wezterm.action.Multiple { { CopyTo = 'Clipboard' }, { Multiple = { 'ScrollToBottom', { CopyMode = 'Close' } } } }
+  -- local yank_action = wezterm.action.Multiple { { CopyTo = 'Clipboard' }, { Multiple = { 'ScrollToBottom', { CopyMode = 'Close' } } } }
 
   -- for i, k in ipairs(copy_mode) do
   --   if k.key == 'y' then
