@@ -28,7 +28,7 @@ if dein#check_install()
     call dein#install()
 endif
 
-exec 'colorscheme' g:color_scheme
+" exec 'colorscheme' g:color_scheme
 
 "
 " settings
@@ -44,9 +44,10 @@ set belloff=all
 set noswapfile noundofile nobackup
 set hlsearch
 set hidden
-if has('osx') != 1
-    set termguicolors
-endif
+" if has('osx') != 1
+"     set termguicolors
+" endif
+set notermguicolors
 set number
 " set clipboard=unnamedplus
 set clipboard+=unnamed

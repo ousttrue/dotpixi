@@ -28,10 +28,6 @@ function p {
 
 export EDITOR="nvim"
 
-PS1='[\u@\h \W]\$ '
-
-export PROMPT_COMMAND='history -a; history -r'
-
 export FZF_DEFAULT_OPTS="--layout=reverse --preview-window down:70%:wrap"
 export FZF_DEFAULT_COMMAND="fd --type f -H -E .git"
 function gg {
@@ -42,22 +38,6 @@ function gg {
   local selected=$(ghq list -p | fzf ${arg} --reverse +m)
   if [[ ${selected} =~ [^\s] ]]; then
     cd ${selected}
-  fi
-}
-
-# export SDL_AUDIODRIVER=pulse
-
-function fpac {
-  local selected=$(pacman -Sl | cut -d " " -f 2 | fzf --preview "pacman -Si {}")
-  if [[ ${selected} =~ [^\s] ]]; then
-    sudo pacman -S ${selected}
-  fi
-}
-
-function fapt {
-  local selected=$(apt list | cut -d "/" -f 1 | fzf --preview "apt-cache show {}")
-  if [[ ${selected} =~ [^\s] ]]; then
-    sudo apt install ${selected}
   fi
 }
 
@@ -114,6 +94,13 @@ else
     PLATFORM=LINUX
     DIST="arch"
     ICON="󰣇 "
+
+    function pfz {
+      local selected=$(pacman -Sl | cut -d " " -f 2 | fzf --preview "pacman -Si {}")
+      if [[ ${selected} =~ [^\s] ]]; then
+        sudo pacman -S ${selected}
+      fi
+    }
 
   elif grep -qi "Ubuntu" /etc/os-release; then
     SYSTEM_COLOR="RED"
@@ -358,6 +345,8 @@ Prompt() {
   # fi
 }
 
+# PS1='[\u@\h \W]\$ '
+# export PROMPT_COMMAND='history -a; history -r'
 PROMPT_COMMAND='Prompt $?'
 
 ANSI_COLORS=(
