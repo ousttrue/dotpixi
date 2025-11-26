@@ -1,3 +1,5 @@
+https://godotengine.org/
+
 - https://kidscancode.org/godot_recipes/4.x/
 - https://www.nightquestgames.com/
 
@@ -22,7 +24,12 @@ https://github.com/tonytins/citylimits
 
 # Version
 
-@2014 ~
+## 4.6 dev
+
+- OpenXR
+- https://godotengine.org/article/dev-snapshot-godot-4-6-dev-4/
+
+## 4.5
 
 ## 4.3
 
