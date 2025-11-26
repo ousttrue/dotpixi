@@ -153,6 +153,12 @@ return {
             return conf
           end,
         },
+        nav = {
+          win_opts = {
+            winblend = 0,
+          },
+        },
+        -- Jump to symbol in source window when the cursor moves
       }
     end,
     keys = {
