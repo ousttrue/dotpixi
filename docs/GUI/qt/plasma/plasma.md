@@ -24,3 +24,7 @@ fcitx5-skk を野良ビルドして /usr/local に入った so が not found に
 ```
 
 `202511` plasma6 設定左列の `input method` は必要なかった。`kcm` ?
+
+# baloo
+
+https://chienomi.org/archives/livewithlinux/1852
