@@ -57,7 +57,7 @@ local function lsp_attach(args)
   -- formatter
   vim.keymap.set("n", "<space>f", function()
     vim.cmd('nohlsearch')
-    vim.lsp.buf.format { timeout_ms = 2000 }
+    vim.lsp.buf.format { async = false }
   end, { noremap = true })
 
   -- https://blog.devoc.ninja/2025/nvim-v0-11-0-language-server-feature/

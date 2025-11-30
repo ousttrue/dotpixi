@@ -1,13 +1,13 @@
-| name     | wayland     |              |
+| name     | wayland     | note         |
 | -------- | ----------- | ------------ |
 | gnome    | ok          |              |
-| plasuma6 | ok          |              |
+| plasma6  | ok          |              |
 | Budgie   |             |              |
 | Cinnamon |             | gnome3 fork  |
 | LXDE     |             |              |
 | Phosh    | ok          | gnome base   |
 | UKUI     |             | ubunts kylin |
-| xfce     | from 4.20 ? |
+| xfce     | from 4.20 ? |              |
 
 # Budgie
 

@@ -18,3 +18,15 @@ DNS=10.1.10.1
 systemctl disable systemd-dhcpcd
 systemctl restart systemd-networkd
 ```
+
+# dns
+
+https://stackoverflow.com/questions/77219745/go-get-proxy-golang-org-connection-refused
+
+```sh
+// Source - https://stackoverflow.com/a
+// Posted by Rodrigo Carranza
+// Retrieved 2025-11-30, License - CC BY-SA 4.0
+
+# ln -sf ../run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+```

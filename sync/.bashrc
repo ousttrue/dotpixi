@@ -16,7 +16,11 @@ PROMPT_COMMAND='share_history'
 shopt -u histappend
 export HISTSIZE=9999
 
-alias ls='ls --color=auto'
+if which lsd > /dev/null; then
+  alias ls='lsd'
+else
+  alias ls='ls --color=auto'
+fi
 alias grep='grep --color=auto'
 alias v='nvim'
 alias y='yazi'

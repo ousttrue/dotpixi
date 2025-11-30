@@ -1,4 +1,6 @@
-- [新しいコマンドライン環境](https://zenn.dev/zenwerk/scraps/8d323eaa63b76d)
+- @2023 [Rust 製の ls 代替コマンド「exa」がいつの間にか EOL になって「eza」になっていた | 浅瀬に徒浪](https://shoalwave.net/develop/2023100406414/)
+- @2022 [新マンドライン環境](https://zenn.dev/zenwerk/scraps/8d323eaa63b76d)
+- [ファイル検索ツール fd の使い方メモ](https://zenn.dev/megeton/articles/c408511c66f45d)
 
 ```sh
 > neofetch
@@ -22,38 +24,14 @@ yMMNNNNNNNmmmmmNNMmhs+/-`             GPU: NVIDIA GeForce GTX 1060 6GB
   `-//////:--.
 ```
 
-- https://fekir.info/post/tuidows/
-
-# ls系
-
-## eza
-
-## lsd
-
-## exa
-
-# rg
-
-[[Rust]] grep
-
-# fd
-
-[[Rust]] find
-
-- [ファイル検索ツール fd の使い方メモ](https://zenn.dev/megeton/articles/c408511c66f45d)
-
-# fzf
-
-[[golang]]
-
-# ghq
-
-[[golang]]
-
-# bottom
-
-[[Rust]]
-
-# busybox
-
-[[busybox]]
+| basic     | modern        | windows |
+| --------- | ------------- | ------- |
+| coreutils |               | ok      |
+| ls        | lsd, eza, exa | busybox |
+| grep      | rg            | ok      |
+| find      | fd            | ok      |
+|           | fzf           | ok      |
+|           | ghq           | ok      |
+| top       | btm           | ok      |
+| cat       | bat           | ok      |
+| du        | dust          | ok      |

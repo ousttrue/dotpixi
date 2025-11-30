@@ -1,5 +1,7 @@
 https://www.gnu.org/software/gawk/manual/gawk.html
 
+https://zenn.dev/satoru_takeuchi/articles/f881927892c4ee
+
 http://itmst.blog71.fc2.com/blog-entry-57.html
 
 # command line

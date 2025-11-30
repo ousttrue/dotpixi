@@ -14,6 +14,12 @@ local DEFAULT_COLOR_SCHEME = {
   -- linux = 'Solarized Light (Gogh)',
   -- linux = 'Solarized Dark (Gogh)',
   linux = 'Rosé Pine Moon (Gogh)',
+  -- arch 青系
+  arch = 'Catppuccin Frappé (Gogh)',
+  -- ubuntu 赤系
+  -- gentoo 紫系
+  -- FairyFloss (Gogh)
+
   -- linux = 'Vaughn (Gogh)',
   -- linux = 'Gruvbox light, medium (base16)',
   wsl = 'Atelier Plateau Light (base16)',
@@ -37,7 +43,7 @@ local function get_state(_win_id, key)
   local state = wezterm.GLOBAL.state
   local win_state = state[win_id]
   if win_state then
-    wezterm.log_info(win_id, key, "<-", win_state[key])
+    -- wezterm.log_info(win_id, key, "<-", win_state[key])
     return win_state[key]
   else
     wezterm.log_info(win_id, 'no_win_state', key)
@@ -252,7 +258,7 @@ wezterm.on('window-focus-changed', function(window, pane)
     host = 'linux'
   end
 
-  wezterm.log_info(window:window_id(), 'domain_name=>', domain_name, 'host=>', host)
+  -- wezterm.log_info(window:window_id(), 'domain_name=>', domain_name, 'host=>', host)
   if host then
     set_state(window:window_id(), 'host', host)
     local color_scheme = get_state(window:window_id(), 'color_scheme')

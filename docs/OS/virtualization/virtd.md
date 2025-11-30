@@ -1,0 +1,1 @@
+- @2023 [LinuxでGPUをパススルーして仮想マシンで利用する方法 - 備忘録](https://kagasu.hatenablog.com/entry/2023/10/19/191537#11-libvirtd)%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B
