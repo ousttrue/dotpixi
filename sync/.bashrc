@@ -101,6 +101,13 @@ else
         sudo pacman -S ${selected}
       fi
     }
+    function prm {
+      local selected=$(pacman -Qs -q | fzf --preview "pacman -Si {}")
+
+      if [[ ${selected} =~ [^\s] ]]; then
+        sudo pacman -Rsu ${selected}
+      fi
+    }
 
   elif grep -qi "Ubuntu" /etc/os-release; then
     SYSTEM_COLOR="RED"
