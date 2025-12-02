@@ -16,3 +16,7 @@ https://www.raspberrypi.com/
 
 - [Raspberry Pi 5 でのカメラモジュール利用方法 #raspberrypi5 - Qiita](https://qiita.com/mizugeek/items/c5b318afdd6c2365ba46)
 - https://techietechnology.co.jp/2025/06/10/3d-stereo-vision-system-3d-industrial-raspberry-pi-5/
+
+# desktop
+
+- https://blog.itod.dev/story/2025-03-17/

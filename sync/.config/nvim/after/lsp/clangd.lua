@@ -140,6 +140,9 @@ local config = {
     "build.zig",
   },
   filetypes = { "c", "cpp" },
+  capabilities = {
+    offsetEncoding = { 'utf-16' },
+  },
 }
 
 return config

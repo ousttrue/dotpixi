@@ -4,10 +4,12 @@
 | plasma6  | ok          |              |
 | Budgie   |             |              |
 | Cinnamon |             | gnome3 fork  |
-| LXDE     |             |              |
+| LXQT     | ok          | qt6          |
 | Phosh    | ok          | gnome base   |
 | UKUI     |             | ubunts kylin |
 | xfce     | from 4.20 ? |              |
+
+- https://wiki.gentoo.org/wiki/Desktop_environment
 
 # Budgie
 
@@ -41,6 +43,8 @@ https://cinnamon-spices.linuxmint.com/
 [MATE Desktop Environment | MATE](https://mate-desktop.org/)
 
 # Qt系
+
+## LXQT
 
 ## kde
 
