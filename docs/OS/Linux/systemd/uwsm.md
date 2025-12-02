@@ -1,0 +1,2 @@
+- @2025 [Omarchyの裏側にあるuwsmについての解説 - joker1007’s diary](https://joker1007.hatenablog.com/entry/2025/10/02/222603)
+- @2024 https://www.reddit.com/r/hyprland/comments/1i17ztb/uwsm_rant/?tl=ja

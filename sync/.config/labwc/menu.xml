@@ -3,20 +3,22 @@
   <menu id="root-menu" label="">
     <item label="Firefox"><action name="Execute" command="firefox" /></item>
     <separator />
-    <item label="PCManFM"><action name="Execute" command="pcmanfm" /></item>
+    <item label="PCManFM"><action name="Execute" command="pcmanfm-qt" /></item>
     <separator />
     <item label="Wezterm"><action name="Execute" command="wezterm" /></item>
     <item label="XTerm"><action name="Execute" command="xterm" /></item>
     <item label="Foot"><action name="Execute" command="foot" /></item>
     <separator />
     <item label="pavucontrol"><action name="Execute" command="pavucontrol" /></item>
-    <item label="gmpc"><action name="Execute" command="gmpc" /></item>
+    <item label="quimp"><action name="Execute" command="quimp" /></item>
     <item label="vlc"><action name="Execute" command="vlc" /></item>
     <separator />
     <item label="conky"><action name="Execute" command="conky" /></item>
     <separator />
     <item label="Reconfigure"><action name="Reconfigure" /></item>
     <item label="wdisplays"><action name="Execute" command="wdisplays" /></item>
+    <menu execute="~/dotpixi/obamenu.py" id="obamenu" label="Menu" />
+    <separator />
     <item label="Exit"><action name="Exit" /></item>
   </menu>
 </openbox_menu>
