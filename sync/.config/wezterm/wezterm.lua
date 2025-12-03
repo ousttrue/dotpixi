@@ -8,6 +8,7 @@ local DEFAULT_COLOR_SCHEME = {
   -- windows = 'Black Metal (Mayhem) (base16)',
   windows = 'Black Metal (Gorgoroth) (base16)',
   -- windows = 'Nebula (Mayhem) (base16)',
+
   -- linux = 'Gruvbox light, medium (base16)',
   -- linux = 'Brush Trees (base16)',
   -- linux = 'Atelier Savanna Light (base16)',
@@ -19,14 +20,22 @@ local DEFAULT_COLOR_SCHEME = {
   arch = 'nordfox',
   -- darkmoss (base16)
   -- UnderTheSea
+
   -- ubuntu 赤系
+  -- Ic Orange Ppl (Gogh)
   -- 3024Night (Gogh)
+  -- Wild Cherry (Gogh)
+
   -- gentoo 紫系
   -- FairyFloss (Gogh)
-
+  -- catppuccin-macchiato
   -- linux = 'Vaughn (Gogh)',
   -- linux = 'Gruvbox light, medium (base16)',
-  wsl = 'Atelier Plateau Light (base16)',
+
+  -- wsl = 'Omni (Gogh)'
+  wsl = 'Tomorrow Night'
+  -- wsl = 'Hipster Green'
+  -- Zenburn (base16)
 }
 
 ---@class State
