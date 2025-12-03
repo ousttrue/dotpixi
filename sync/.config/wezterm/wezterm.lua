@@ -4,6 +4,8 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
+-- dark / light
+-- r, g, b, magenta
 local DEFAULT_COLOR_SCHEME = {
   -- windows = 'Black Metal (Mayhem) (base16)',
   windows = 'Black Metal (Gorgoroth) (base16)',
@@ -31,10 +33,13 @@ local DEFAULT_COLOR_SCHEME = {
   -- catppuccin-macchiato
   -- linux = 'Vaughn (Gogh)',
   -- linux = 'Gruvbox light, medium (base16)',
+  --PaleNightHC
 
   -- green
   --DjangoRebornAgain
 
+  -- light
+  -- Belafonte Day
   -- wsl = 'Omni (Gogh)'
   wsl = 'Tomorrow Night'
   -- wsl = 'Hipster Green'
@@ -263,12 +268,13 @@ local function fix_palette(v)
   else
     suffix = suffix .. '__'
   end
+
   local bg = get_closed(v.background, v.ansi, v.brights)
-  if bg and (bg.palette ~= 'ansi' or bg.index ~= 1) then
+  if bg and (bg.palette ~= 'brights' or bg.index ~= 1) then
     suffix = suffix .. bg.palette:sub(1, 1) .. tostring(bg.index)
     v.background = bg.rgb
-    local tmp = v.ansi[1]
-    v.ansi[1] = v[bg.palette][bg.index]
+    local tmp = v.brights[1]
+    v.brights[1] = v[bg.palette][bg.index]
     v[bg.palette][bg.index] = tmp
   else
     suffix = suffix .. '__'
