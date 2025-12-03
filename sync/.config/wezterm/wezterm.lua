@@ -156,6 +156,14 @@ local function make_palette(ansi)
   return str
 end
 
+local function make_color(v)
+  local SGR = '\x1b['
+  local r = tonumber(v:sub(2, 3), 16)
+  local g = tonumber(v:sub(4, 5), 16)
+  local b = tonumber(v:sub(6, 7), 16)
+  return string.format("%s48;2;%d;%d;%dm ", SGR, r, g, b)
+end
+
 ---@alias Palette {
 ---  foreground: string,
 ---  background: string,
@@ -299,10 +307,14 @@ local choices = {}
 for k, v in pairs(wezterm.color.get_builtin_schemes()) do
   k, v = filter_color_scheme(k, v) ---@diagnostic disable-line
   if k and v then
-    v, suffix = fix_palette(v)
+    -- v, suffix = fix_palette(v)
+    local suffix = ''
     table.insert(choices, {
       id = k,
       label = wezterm.format({
+        { Text = make_color(v.foreground) },
+        { Text = make_color(v.background) },
+        { Text = ' ' },
         { Text = make_palette(v.ansi) },
         { Text = make_palette(v.brights) },
         { Text = '\x1b[0m ' },
