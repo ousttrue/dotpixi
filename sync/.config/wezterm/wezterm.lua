@@ -113,12 +113,12 @@ local function set_color_scheme(window, color_scheme, use_clipboard)
   local current_color_scheme = get_state(window:window_id(), 'color_scheme')
   if color_scheme ~= current_color_scheme then
     set_state(window:window_id(), 'color_scheme', color_scheme)
-    -- window:set_config_overrides {
-    --   color_scheme = color_scheme
-    -- }
     window:set_config_overrides {
-      colors = scheme_map[color_scheme]
+      color_scheme = color_scheme
     }
+    -- window:set_config_overrides {
+    --   colors = scheme_map[color_scheme]
+    -- }
   end
   if use_clipboard then
     window:copy_to_clipboard(color_scheme)
@@ -312,11 +312,12 @@ for k, v in pairs(wezterm.color.get_builtin_schemes()) do
     table.insert(choices, {
       id = k,
       label = wezterm.format({
-        { Text = make_color(v.foreground) },
-        { Text = make_color(v.background) },
-        { Text = ' ' },
         { Text = make_palette(v.ansi) },
+        { Text = '\x1b[0m ' },
         { Text = make_palette(v.brights) },
+        { Text = '\x1b[0m ' },
+        { Text = make_color(v.background) },
+        { Text = make_color(v.foreground) },
         { Text = '\x1b[0m ' },
         { Foreground = { Color = v.foreground } },
         { Background = { Color = v.background } },

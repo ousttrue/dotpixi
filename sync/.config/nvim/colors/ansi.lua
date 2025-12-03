@@ -155,7 +155,7 @@ local function define()
   vim.api.nvim_set_hl(0, "@keyword.modifier.cpp", { link = "@keyword.modifier" })
 
   -- literal
-  vim.api.nvim_set_hl(0, "String", { ctermfg = 7 })
+  vim.api.nvim_set_hl(0, "String", { ctermfg = nil })
   vim.api.nvim_set_hl(0, "@string", { link = "String" })
   vim.api.nvim_set_hl(0, "@boolean", { link = "String" })
   vim.api.nvim_set_hl(0, "@markup.link", { link = "String" })
