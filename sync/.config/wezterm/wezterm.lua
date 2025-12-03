@@ -209,7 +209,8 @@ local function get_closed(_target, ansi, brights)
     local dr = target.r - r
     local dg = target.g - g
     local db = target.b - b
-    if (dr * dr + dg * dg + db * db) < sq then
+    local new_sq = (dr * dr + dg * dg + db * db)
+    if new_sq < sq then
       current = {
         palette = 'ansi',
         index = i,
