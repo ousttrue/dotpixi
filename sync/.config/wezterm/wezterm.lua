@@ -32,6 +32,9 @@ local DEFAULT_COLOR_SCHEME = {
   -- linux = 'Vaughn (Gogh)',
   -- linux = 'Gruvbox light, medium (base16)',
 
+  -- green
+  --DjangoRebornAgain
+
   -- wsl = 'Omni (Gogh)'
   wsl = 'Tomorrow Night'
   -- wsl = 'Hipster Green'
