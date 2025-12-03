@@ -349,11 +349,11 @@ Prompt() {
   # else
   # printf '\e]133;A\e\\'
   #
-  PALLETE='\[\e[31m\]■\[\e[32m\]■\[\e[33m\]■\[\e[34m\]■\[\e[35m\]■\[\e[36m\]■\[\e[37m\]■\[\e[38m\]■\[\e[0m\]'
+  PALETTE='\[\e[31m\]■\[\e[32m\]■\[\e[33m\]■\[\e[34m\]■\[\e[35m\]■\[\e[36m\]■\[\e[37m\]■\[\e[38m\]■\[\e[0m\]'
   if [ "$1" = "0" ]; then
-    PS1="${PALLETE}$(Header 0)\n$(FG CYAN)$(OSC 133 A)>$(FG DEFAULT)$(OSC 133 B) "
+    PS1="$(Header 0)\n$(FG CYAN)$(OSC 133 A)>$(FG DEFAULT)$(OSC 133 B) "
   else
-    PS1="${PALLETE}$(Header 1)\n$(FG RED)$(OSC 133 A)>$(FG DEFAULT)$(OSC 133 B) "
+    PS1="$(Header 1)\n$(FG RED)$(OSC 133 A)>$(FG DEFAULT)$(OSC 133 B) "
   fi
   # fi
 }

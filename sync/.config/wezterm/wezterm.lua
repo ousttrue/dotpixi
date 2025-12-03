@@ -16,6 +16,7 @@ local DEFAULT_COLOR_SCHEME = {
   linux = 'Rosé Pine Moon (Gogh)',
   -- arch 青系
   arch = 'Catppuccin Frappé (Gogh)',
+  -- darkmoss (base16)
   -- ubuntu 赤系
   -- 3024Night (Gogh)
   -- gentoo 紫系
@@ -123,7 +124,7 @@ config.font_size = 12
 
 config.enable_kitty_graphics = true
 
-local function make_pallete(ansi)
+local function make_palette(ansi)
   local SGR = '\x1b['
   local str = ''
   for _, v in ipairs(ansi) do
@@ -136,16 +137,17 @@ local function make_pallete(ansi)
   return str
 end
 
----@alias Pallete {
+---@alias Palette {
 ---  foreground: string,
 ---  background: string,
 ---  ansi: string[],
 ---  brights: string[],
 ---}
+
 ---@param k string
----@param v Pallete
+---@param v Palette
 ---@return nil | string
----@return nil | Pallete
+---@return nil | Palette
 local function filter_color_scheme(k, v)
   if not v.ansi then
     return
@@ -156,9 +158,9 @@ local function filter_color_scheme(k, v)
   end
   local is_gogh = k:find("%(Gogh%)$")
   local is_base16 = k:find("%(base16%)$")
-  if not is_gogh then
-    return
-  end
+  -- if not is_gogh then
+  --   return
+  -- end
   -- if not is_base16 then
   --   return
   -- end
@@ -167,7 +169,7 @@ local function filter_color_scheme(k, v)
 end
 
 ---@class Closed
----@field pallete 'ansi'|'brights'
+---@field palette 'ansi'|'brights'
 ---@field index integer 1-8
 ---@field rgb string #RRGGBB
 ---@field r integer red 0-255
@@ -179,7 +181,7 @@ local function get_closed(_target, ansi, brights)
   local sq = 255 * 255 + 255 * 255 + 255 * 255
   ---@type Closed
   local target = {
-    pallete = 'ansi',
+    palette = 'ansi',
     index = 0,
     rgb = _target,
     r = tonumber(_target:sub(2, 3), 16),
@@ -198,7 +200,7 @@ local function get_closed(_target, ansi, brights)
     local db = target.b - b
     if (dr * dr + dg * dg + db * db) < sq then
       current = {
-        pallete = 'ansi',
+        palette = 'ansi',
         index = i,
         rgb = color,
         r = r,
@@ -217,7 +219,7 @@ local function get_closed(_target, ansi, brights)
     local new_sq = (dr * dr + dg * dg + db * db)
     if new_sq < sq then
       current = {
-        pallete = 'brights',
+        palette = 'brights',
         index = i,
         rgb = color,
         r = r,
@@ -233,25 +235,25 @@ end
 
 ---@return table
 ---@return string
-local function fix_pallete(v)
+local function fix_palette(v)
   local fg = get_closed(v.foreground, v.ansi, v.brights)
   local suffix = '['
-  if fg and (fg.pallete ~= 'ansi' or fg.index ~= 8) then
-    suffix = suffix .. fg.pallete:sub(1, 1) .. tostring(fg.index)
+  if fg and (fg.palette ~= 'ansi' or fg.index ~= 8) then
+    suffix = suffix .. fg.palette:sub(1, 1) .. tostring(fg.index)
     v.foreground = fg.rgb
     local tmp = v.ansi[8]
-    v.ansi[8] = v[fg.pallete][fg.index]
-    v[fg.pallete][fg.index] = tmp
+    v.ansi[8] = v[fg.palette][fg.index]
+    v[fg.palette][fg.index] = tmp
   else
     suffix = suffix .. '__'
   end
   local bg = get_closed(v.background, v.ansi, v.brights)
-  if bg and (bg.pallete ~= 'ansi' or bg.index ~= 1) then
-    suffix = suffix .. bg.pallete:sub(1, 1) .. tostring(bg.index)
+  if bg and (bg.palette ~= 'ansi' or bg.index ~= 1) then
+    suffix = suffix .. bg.palette:sub(1, 1) .. tostring(bg.index)
     v.background = bg.rgb
     local tmp = v.ansi[1]
-    v.ansi[1] = v[bg.pallete][bg.index]
-    v[bg.pallete][bg.index] = tmp
+    v.ansi[1] = v[bg.palette][bg.index]
+    v[bg.palette][bg.index] = tmp
   else
     suffix = suffix .. '__'
   end
@@ -263,12 +265,12 @@ local choices = {}
 for k, v in pairs(wezterm.color.get_builtin_schemes()) do
   k, v = filter_color_scheme(k, v) ---@diagnostic disable-line
   if k and v then
-    v, suffix = fix_pallete(v)
+    v, suffix = fix_palette(v)
     table.insert(choices, {
       id = k,
       label = wezterm.format({
-        { Text = make_pallete(v.ansi) },
-        { Text = make_pallete(v.brights) },
+        { Text = make_palette(v.ansi) },
+        { Text = make_palette(v.brights) },
         { Text = '\x1b[0m ' },
         { Foreground = { Color = v.foreground } },
         { Background = { Color = v.background } },
