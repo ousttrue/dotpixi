@@ -254,6 +254,16 @@ local function get_closed(_target, ansi, brights)
   return current
 end
 
+---
+--- 1: black bg
+--- 2: red
+--- 3: green
+--- 4: yellow
+--- 5: blue
+--- 6: magenta
+--- 7: cyan
+--- 8: white fg
+---
 ---@return table
 ---@return string
 local function fix_palette(v)
@@ -261,6 +271,7 @@ local function fix_palette(v)
   local suffix = '['
   if fg and (fg.palette ~= 'ansi' or fg.index ~= 8) then
     suffix = suffix .. fg.palette:sub(1, 1) .. tostring(fg.index)
+    -- fg to ascii[8]
     v.foreground = fg.rgb
     local tmp = v.ansi[8]
     v.ansi[8] = v[fg.palette][fg.index]
@@ -270,11 +281,12 @@ local function fix_palette(v)
   end
 
   local bg = get_closed(v.background, v.ansi, v.brights)
-  if bg and (bg.palette ~= 'brights' or bg.index ~= 1) then
+  if bg and (bg.palette ~= 'ascii' or bg.index ~= 1) then
     suffix = suffix .. bg.palette:sub(1, 1) .. tostring(bg.index)
+    -- bg to ascii[1]
     v.background = bg.rgb
-    local tmp = v.brights[1]
-    v.brights[1] = v[bg.palette][bg.index]
+    local tmp = v.ascii[1]
+    v.ascii[1] = v[bg.palette][bg.index]
     v[bg.palette][bg.index] = tmp
   else
     suffix = suffix .. '__'
