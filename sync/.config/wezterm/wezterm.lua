@@ -218,6 +218,7 @@ local function get_closed(_target, ansi, brights)
         g = g,
         b = b,
       }
+      sq = new_sq
     end
   end
   for i, color in ipairs(brights) do
