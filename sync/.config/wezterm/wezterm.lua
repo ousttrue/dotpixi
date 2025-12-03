@@ -17,6 +17,7 @@ local DEFAULT_COLOR_SCHEME = {
   -- arch 青系
   arch = 'Catppuccin Frappé (Gogh)',
   -- ubuntu 赤系
+  -- 3024Night (Gogh)
   -- gentoo 紫系
   -- FairyFloss (Gogh)
 
@@ -82,6 +83,8 @@ local function get_host_icon(host)
   return '❓'
 end
 
+local scheme_map = {}
+
 ---@param window Window
 ---@param color_scheme string
 ---@param use_clipboard boolean?
@@ -90,8 +93,11 @@ local function set_color_scheme(window, color_scheme, use_clipboard)
   local current_color_scheme = get_state(window:window_id(), 'color_scheme')
   if color_scheme ~= current_color_scheme then
     set_state(window:window_id(), 'color_scheme', color_scheme)
+    -- window:set_config_overrides {
+    --   color_scheme = color_scheme
+    -- }
     window:set_config_overrides {
-      color_scheme = color_scheme
+      colors = scheme_map[color_scheme]
     }
   end
   if use_clipboard then
@@ -159,10 +165,105 @@ local function filter_color_scheme(k, v)
 
   return k, v
 end
+
+---@class Closed
+---@field pallete 'ansi'|'brights'
+---@field index integer 1-8
+---@field rgb string #RRGGBB
+---@field r integer red 0-255
+---@field g integer green 0-255
+---@field b integer blue 0-255
+
+---@return Closed?
+local function get_closed(_target, ansi, brights)
+  local sq = 255 * 255 + 255 * 255 + 255 * 255
+  ---@type Closed
+  local target = {
+    pallete = 'ansi',
+    index = 0,
+    rgb = _target,
+    r = tonumber(_target:sub(2, 3), 16),
+    g = tonumber(_target:sub(4, 5), 16),
+    b = tonumber(_target:sub(6, 7), 16),
+  }
+  ---@type Closed?
+  local current = nil
+
+  for i, color in ipairs(ansi) do
+    local r = tonumber(color:sub(2, 3), 16)
+    local g = tonumber(color:sub(4, 5), 16)
+    local b = tonumber(color:sub(6, 7), 16)
+    local dr = target.r - r
+    local dg = target.g - g
+    local db = target.b - b
+    if (dr * dr + dg * dg + db * db) < sq then
+      current = {
+        pallete = 'ansi',
+        index = i,
+        rgb = color,
+        r = r,
+        g = g,
+        b = b,
+      }
+    end
+  end
+  for i, color in ipairs(brights) do
+    local r = tonumber(color:sub(2, 3), 16)
+    local g = tonumber(color:sub(4, 5), 16)
+    local b = tonumber(color:sub(6, 7), 16)
+    local dr = target.r - r
+    local dg = target.g - g
+    local db = target.b - b
+    local new_sq = (dr * dr + dg * dg + db * db)
+    if new_sq < sq then
+      current = {
+        pallete = 'brights',
+        index = i,
+        rgb = color,
+        r = r,
+        g = g,
+        b = b,
+      }
+      sq = new_sq
+    end
+  end
+
+  return current
+end
+
+---@return table
+---@return string
+local function fix_pallete(v)
+  local fg = get_closed(v.foreground, v.ansi, v.brights)
+  local suffix = '['
+  if fg and (fg.pallete ~= 'ansi' or fg.index ~= 8) then
+    suffix = suffix .. fg.pallete:sub(1, 1) .. tostring(fg.index)
+    v.foreground = fg.rgb
+    local tmp = v.ansi[8]
+    v.ansi[8] = v[fg.pallete][fg.index]
+    v[fg.pallete][fg.index] = tmp
+  else
+    suffix = suffix .. '__'
+  end
+  local bg = get_closed(v.background, v.ansi, v.brights)
+  if bg and (bg.pallete ~= 'ansi' or bg.index ~= 1) then
+    suffix = suffix .. bg.pallete:sub(1, 1) .. tostring(bg.index)
+    v.background = bg.rgb
+    local tmp = v.ansi[1]
+    v.ansi[1] = v[bg.pallete][bg.index]
+    v[bg.pallete][bg.index] = tmp
+  else
+    suffix = suffix .. '__'
+  end
+  suffix = suffix .. ']'
+  return v, suffix
+end
+
 local choices = {}
 for k, v in pairs(wezterm.color.get_builtin_schemes()) do
   k, v = filter_color_scheme(k, v) ---@diagnostic disable-line
   if k and v then
+    v, suffix = fix_pallete(v)
     table.insert(choices, {
       id = k,
       label = wezterm.format({
@@ -171,8 +272,9 @@ for k, v in pairs(wezterm.color.get_builtin_schemes()) do
         { Text = '\x1b[0m ' },
         { Foreground = { Color = v.foreground } },
         { Background = { Color = v.background } },
-        { Text = k }, }),
+        { Text = k .. suffix }, }),
     })
+    scheme_map[k] = v
   end
 end
 
