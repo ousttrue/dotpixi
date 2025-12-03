@@ -159,7 +159,7 @@ else
   if grep -qi microsoft /proc/version; then
     SYSTEM_COLOR="BLUE"
     IS_WSL=1
-    ICON="󰻀 "
+    # ICON="󰻀 "
   fi
 fi
 

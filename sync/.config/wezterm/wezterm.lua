@@ -15,8 +15,10 @@ local DEFAULT_COLOR_SCHEME = {
   -- linux = 'Solarized Dark (Gogh)',
   linux = 'Rosé Pine Moon (Gogh)',
   -- arch 青系
-  arch = 'Catppuccin Frappé (Gogh)',
+  -- arch = 'Catppuccin Frappé (Gogh)',
+  arch = 'nordfox',
   -- darkmoss (base16)
+  -- UnderTheSea
   -- ubuntu 赤系
   -- 3024Night (Gogh)
   -- gentoo 紫系
