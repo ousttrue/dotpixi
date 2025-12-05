@@ -469,20 +469,15 @@ wezterm.on('format-window-title', function(
       get_host_icon(host) .. title .. '  [' .. (get_state(tab.window_id, 'color_scheme') or 'default') .. ']'
 end)
 
--- OSC133
--- https://zenn.dev/ymotongpoo/scraps/ec945f11b2b750
-local copy_mode = nil
-if wezterm.gui then
-  wezterm.log_info('## setup osc133 ##')
-  copy_mode = wezterm.gui.default_key_tables().copy_mode
+local function copy_mode_keymap(ekymap)
   table.insert(
-    copy_mode,
+    ekymap,
     -- move the cursor backwards to the start of the current zone, or to the prior zone if already at the start
     { key = 'z', mods = 'NONE', action = wezterm.action.CopyMode { MoveBackwardZoneOfType = 'Prompt' } }
   )
 
   table.insert(
-    copy_mode,
+    ekymap,
     -- move the cursor forwards to the start of the next zone
     { key = 'Z', mods = 'NONE', action = wezterm.action.CopyMode { MoveForwardZoneOfType = 'Prompt' } }
   )
@@ -497,33 +492,46 @@ if wezterm.gui then
 
   -- local yank_action = wezterm.action.Multiple { { CopyTo = 'Clipboard' }, { Multiple = { 'ScrollToBottom', { CopyMode = 'Close' } } } }
 
-  -- for i, k in ipairs(copy_mode) do
+  -- for i, k in ipairs(ekymap) do
   --   if k.key == 'y' then
   --     found = true
   --     k.action = yank_action
   --   end
   -- end
   -- if not found then
-  table.insert(
-    copy_mode,
-    {
-      key = 'y',
-      mods = 'NONE',
-      -- action = yank_action,
-      action = { CopyTo = 'Clipboard' },
-      -- action = wezterm.action_callback(function(w, p)
-      --   wezterm.log_info("y")
-      --   window:perform_action(wezterm.action.CopyTo 'Clipboard', p)
-      -- end
-    }
-  )
+  table.insert(ekymap, {
+    key = 'y',
+    mods = 'NONE',
+    -- action = yank_action,
+    action = { CopyTo = 'Clipboard' },
+    -- action = wezterm.action_callback(function(w, p)
+    --   wezterm.log_info("y")
+    --   window:perform_action(wezterm.action.CopyTo 'Clipboard', p)
+    -- end
+  })
+  table.insert(ekymap, {
+    key = '[',
+    mods = 'CTRL',
+    action = wezterm.action.CopyMode 'Close'
+  })
+  -- end
+end
+
+-- OSC133
+-- https://zenn.dev/ymotongpoo/scraps/ec945f11b2b750
+if wezterm.gui then
+  wezterm.log_info('## setup osc133 ##')
+  local t = wezterm.gui.default_key_tables()
+  local copy_mode = t.copy_mode
+  -- for k, v in pairs(t) do
+  --   wezterm.log_info('key=>', k)
   -- end
 
-  -- window:set_config_overrides {
+  copy_mode_keymap(copy_mode)
+
   config.key_tables = {
     copy_mode = copy_mode,
   }
-  -- }
 end
 
 wezterm.log_info('## reloaded ##')

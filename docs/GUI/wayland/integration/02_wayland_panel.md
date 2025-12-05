@@ -13,3 +13,7 @@ cp /etc/xdg/waybar/* ~/.config/waybar/
 # HybridBar
 
 [GitHub - vars1ty/HybridBar: A status bar focused on wlroots Wayland compositors](https://github.com/vars1ty/HybridBar)
+
+# sfwbar
+
+- https://labwc.github.io/obligatory-screenshot.html

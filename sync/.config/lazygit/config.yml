@@ -1,4 +1,6 @@
 # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
 # - [lazygitを英語で使いたい](https://k-koh.hatenablog.com/entry/2022/11/15/155430)
+os:
+  editPreset: "nvim-remote"
 gui:
   language: 'en'

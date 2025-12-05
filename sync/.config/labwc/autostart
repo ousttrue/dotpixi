@@ -4,7 +4,9 @@ if type xremap >/dev/null 2>&1; then
   xremap ~/.xremap &
 fi
 
-if type waybar >/dev/null 2>&1; then
+if type sfwbar >/dev/null 2>&1; then
+  sfwbar &
+elif type waybar >/dev/null 2>&1; then
   waybar &
 elif type xfce4-panel >/dev/null 2>&1; then
   xfce4-panel &

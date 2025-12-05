@@ -154,7 +154,7 @@ else
   BUILD_ROOT_LIB=${BUILD_ROOT}/lib
   export LD_LIBRARY_PATH=${BUILD_ROOT_LIB}
   export PKG_CONFIG_PATH=${BUILD_ROOT_LIB}/pkgconfig
-  export PYTHONPATH=${HOME}/prefix/lib/python3.10/site-packages
+  # export PYTHONPATH=${HOME}/prefix/lib/python3.10/site-packages
 
   if grep -qi microsoft /proc/version; then
     SYSTEM_COLOR="BLUE"
