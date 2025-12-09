@@ -1,7 +1,6 @@
 https://wayland.app/protocols/
 
 - [Wayland](https://wayland.freedesktop.org/docs/html/index.html)
-
   - [Wayland Desktop Landscape - Gentoo Wiki](https://wiki.gentoo.org/wiki/Wayland_Desktop_Landscape)
 
 - @2016 [Wayland の Client と Compositor の概念を理解する - Qiita](https://qiita.com/naohikowatanabe/items/06a8b988b89b4b1ec899)
