@@ -14,6 +14,9 @@ $ sudo systemctl start seatd
 # group seat
 ```
 
-# action
+# action / keybinds
 
-https://manpages.opensuse.org/Tumbleweed/labwc/labwc-actions.5.en.html
+https://labwc.github.io/labwc-actions.5.html
+
+https://labwc.github.io/labwc-config.5.html#entry_keyboard_default
+

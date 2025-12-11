@@ -1,15 +1,90 @@
 <?xml version="1.0"?>
 <labwc_config>
+  <!-- https://labwc.github.io/labwc-config.5.html -->
+  <!-- https://wiki.gentoo.org/wiki/Labwc#rc.xml -->
+
+  <core>
+    <gap>10</gap>
+    <windowSwitcher show="yes" preview="yes" outlines="yes" />
+  </core>
+
+  <placement>
+    <policy>automatic</policy>
+  </placement>
+
+  <snapping><notifyClient>never</notifyClient></snapping>
+
+  <desktops number="1" />
+
   <theme>
+    <font><name>sans</name><size>10</size></font>
+    <dropShadows>yes</dropShadows>
+
     <name>Numix</name>
+    <cornerRadius>0</cornerRadius>
+
+    <!-- <name>Arc-Clone</name> -->
   </theme>
 :
   <keyboard>
     <default />
+
+    <!-- https://labwc.github.io/labwc-actions.5.html -->
+
+    <!-- https://github.com/labwc/labwc/issues/2293 -->
+    <keybind key="W-d">
+      <action name="ForEach">
+      <query desktop="current" />
+      <then>
+        <action name="Iconify" />
+      </then>
+      </action>
+    </keybind>
+
+    <keybind key="W-r"><action name="Execute" command="wofi --show=run" /></keybind>
     <keybind key="W-z"><action name="Execute" command="wofi --show=drun" /></keybind>
 
     <keybind key="W-Return">
-      <action name="Execute" command="foot" />
+      <action name="Execute" command="wezterm" />
+    </keybind>
+
+    <keybind key="W-F5">
+      <action name="Reconfigure" />
+      <action name="Execute" command="killall -SIGUSR2 waybar" />
+    </keybind>
+
+    <keybind key="W-left">
+      <action name="UnSnap" />
+      <action name="MoveRelative" x="-100" y="0" />
+    </keybind>
+    <keybind key="W-down">
+      <action name="UnSnap" />
+      <action name="MoveRelative" x="0" y="100" />
+    </keybind>
+    <keybind key="W-up">
+      <action name="UnSnap" />
+      <action name="MoveRelative" x="0" y="-100" />
+    </keybind>
+    <keybind key="W-right">
+      <action name="UnSnap" />
+      <action name="MoveRelative" x="100" y="0" />
+    </keybind>
+
+    <keybind key="W-S-left">
+      <action name="MoveToEdge" direction="left" snapWindows="no" />
+      <action name="FitToOutput" />
+    </keybind>
+    <keybind key="W-S-down">
+      <action name="MoveToEdge" direction="down" snapWindows="no" />
+      <action name="FitToOutput" />
+    </keybind>
+    <keybind key="W-S-up">
+      <action name="MoveToEdge" direction="up" snapWindows="no" />
+      <action name="FitToOutput" />
+    </keybind>
+    <keybind key="W-S-right">
+      <action name="MoveToEdge" direction="right" snapWindows="no" />
+      <action name="FitToOutput" />
     </keybind>
 
     <keybind key="A-Left">

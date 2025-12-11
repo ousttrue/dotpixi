@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <openbox_menu>
+  <!-- https://labwc.github.io/labwc-menu.5.html -->
   <menu id="root-menu" label="">
     <item label="Firefox"><action name="Execute" command="firefox" /></item>
     <separator />
@@ -17,7 +18,7 @@
     <separator />
     <item label="Reconfigure"><action name="Reconfigure" /></item>
     <item label="wdisplays"><action name="Execute" command="wdisplays" /></item>
-    <menu execute="~/dotpixi/obamenu.py" id="obamenu" label="Menu" />
+    <menu execute="labwc-menu-generator" id="obamenu" label="Menu" />
     <separator />
     <item label="Exit"><action name="Exit" /></item>
   </menu>

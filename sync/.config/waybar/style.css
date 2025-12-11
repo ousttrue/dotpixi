@@ -1,0 +1,17 @@
+/* https://github.com/Alexays/Waybar/wiki/Styling */
+* {
+    font-family: monospace;
+}
+
+window.HDMI-A-1 {
+  font-size: 20px;
+}
+window.HDMI-A-1 #clock {
+  font-size: 50px;
+  padding: 0em;
+}
+
+window.DP-2 {
+  font-size: 20px;
+  padding: 0em;
+}
