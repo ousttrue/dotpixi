@@ -28,7 +28,9 @@ if type kanshi >/dev/null 2>&1; then
 fi
 
 # notification daemon
-if type mako >/dev/null 2>&1; then
+if type dunst >/dev/null 2>&1; then
+  dunst&
+elif type mako >/dev/null 2>&1; then
   mako&
 fi
 

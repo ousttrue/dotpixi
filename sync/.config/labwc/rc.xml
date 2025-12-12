@@ -14,6 +14,10 @@
 
   <snapping><notifyClient>never</notifyClient></snapping>
 
+  <resistance>
+    <screenEdgeStrength>0</screenEdgeStrength>
+  </resistance>
+
   <desktops number="1" />
 
   <theme>

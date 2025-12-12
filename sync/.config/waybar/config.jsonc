@@ -12,58 +12,65 @@
     "position": "right",
     "width": 200,
     "spacing": 5,
-    "modules-left": ["mpd", ],
-    "modules-center": ["cpu", "load", "temperature", "memory", "disk", "systemd-failed-units", ],
+    "modules-left": ["mpd"],
+    "modules-center": [
+      "cpu",
+      "load",
+      "temperature",
+      "memory",
+      "disk",
+      "systemd-failed-units",
+    ],
     "modules-right": ["clock"],
     // https://github.com/Alexays/Waybar/wiki/Module:-MPD
     "mpd": {
-      "format" : "{stateIcon}{title:12.12}",
+      "format": "{stateIcon}{title:12.12}",
       "state-icons": {
-          "paused": "",
-          "playing": ""
+        "paused": "",
+        "playing": "",
       },
-      "on-click": "mpc toggle -q"
+      "on-click": "mpc toggle -q",
     },
     "sndio": {
-        "format": "{raw_value} 🎜",
-        "scroll-step": 3
+      "format": "{raw_value} 🎜",
+      "scroll-step": 3,
     },
     // https://github.com/Alexays/Waybar/wiki/Module:-CPU
     "cpu": {
-         "interval": 1,
-         "format": "{icon0} {icon1} {icon2} {icon3} {icon4} {icon5} {icon6} {icon7}",
-         "format-icons": [
-              "<span color='#69ff94'>▁</span>", // green
-              "<span color='#2aa9ff'>▂</span>", // blue
-              "<span color='#f8f8f2'>▃</span>", // white
-              "<span color='#f8f8f2'>▄</span>", // white
-              "<span color='#ffffa5'>▅</span>", // yellow
-              "<span color='#ffffa5'>▆</span>", // yellow
-              "<span color='#ff9977'>▇</span>", // orange
-              "<span color='#dd532e'>█</span>"  // red
-         ]
+      "interval": 1,
+      "format": "{icon0} {icon1} {icon2} {icon3} {icon4} {icon5} {icon6} {icon7}",
+      "format-icons": [
+        "<span color='#69ff94'>▁</span>",
+        "<span color='#2aa9ff'>▂</span>",
+        "<span color='#f8f8f2'>▃</span>",
+        "<span color='#f8f8f2'>▄</span>",
+        "<span color='#ffffa5'>▅</span>",
+        "<span color='#ffffa5'>▆</span>",
+        "<span color='#ff9977'>▇</span>",
+        "<span color='#dd532e'>█</span>",
+      ],
     },
     "load": {
       "interval": 10,
       "format": "load: {load1}",
-      "max-length": 10
+      "max-length": 10,
     },
     "temperature": {
       // "thermal-zone": 2,
       // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
       // "critical-threshold": 80,
       // "format-critical": "{temperatureC}°C ",
-      "format": "{temperatureC}°C "
+      "format": "{temperatureC}°C ",
     },
     "memory": {
-        "interval": 30,
-        "format": "{}% ",
-        "max-length": 10
+      "interval": 30,
+      "format": "{}% ",
+      "max-length": 10,
     },
     "disk": {
       "interval": 30,
       "format": "{used}/{total}",
-      "path": "/"
+      "path": "/",
     },
     // https://github.com/Alexays/Waybar/wiki/Module:-Clock
     "clock": {
@@ -75,7 +82,7 @@
       "format": "✗ {nr_failed}",
       "format-ok": "✓",
       "system": true, // Monitor failed systemwide units.
-      "user": false // Ignore failed user units.
+      "user": false, // Ignore failed user units.
     },
   },
   //
@@ -84,14 +91,15 @@
   {
     "layer": "top",
     "output": "DP-2",
-    "position": "left",
-    "width": 200,
+    "position": "bottom",
+    "height": 100,
     "modules-left": ["wlr/taskbar"],
-    "modules-center": ["tray"],
+    "modules-right": ["tray"],
 
     // https://github.com/Alexays/Waybar/wiki/Module:-Taskbar
     "wlr/taskbar": {
-        "format": "{icon}{name:12.12}",
+      "format": "{icon}{name:12.12}",
+      "icon-size": 24,
       "on-click": "minimize-raise",
     },
     "tray": {
@@ -99,8 +107,9 @@
       "spacing": 10,
       "icons": {
         "blueman": "bluetooth",
-        "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-      }
+        "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png",
+      },
+      "icon-size": 40,
     },
   },
 ]

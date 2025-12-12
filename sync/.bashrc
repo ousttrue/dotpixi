@@ -30,6 +30,10 @@ function p {
   v
 }
 
+function ptouch {
+  mkdir -p "$(dirname "$1")" && touch "$1"
+}
+
 export EDITOR="nvim"
 
 export FZF_DEFAULT_OPTS="--layout=reverse --preview-window down:70%:wrap"
