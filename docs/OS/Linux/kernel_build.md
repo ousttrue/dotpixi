@@ -142,3 +142,10 @@ efibootmgr -c -d /dev/sda -p 1 -L "Gentoo EFI Stub" -l '\EFI\example\bzImage.efi
 
 # DRM
 
+# lsmod
+
+- https://mongonta.com/f277-howto-shorten-linux-kernel-build-time/
+
+# build
+
+- https://github.com/sititou70/kbuild-progress
