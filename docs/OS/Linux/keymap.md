@@ -66,3 +66,6 @@ setxkbmap -option lv3:ralt_alt
 [最強のキーリマッパーで、ラズパイBookwormのWayland環境を最強にする | Yagifulのブログ](https://yagiful.com/blog/raspi-bookworm-xremap/)
 
 
+# udev
+
+- [Wayland でお好みのキーバインド - bearmini's blog](https://bearmini.hatenablog.com/entry/2023/12/03/134330)
