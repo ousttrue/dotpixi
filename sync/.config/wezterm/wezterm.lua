@@ -95,9 +95,9 @@ local function get_host_icon(host)
   if host == 'windows' then
     return '🪟'
   elseif host == 'wsl' then
-    return '⛺'
+    return '🪹'
   elseif host == 'linux' then
-    return '🐦'
+    return '🐧'
   end
 
   return '❓'
@@ -141,7 +141,7 @@ else
   config.initial_rows = 40
 end
 config.font_size = 12
-config.line_height = 1.3
+config.line_height = 1.25
 
 config.enable_kitty_graphics = true
 
