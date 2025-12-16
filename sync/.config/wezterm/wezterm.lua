@@ -137,9 +137,11 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.initial_rows = 60
 else
   config.use_ime = true
+  -- wayland: text-input-v3
   config.initial_rows = 40
 end
 config.font_size = 12
+config.line_height = 1.3
 
 config.enable_kitty_graphics = true
 
@@ -482,7 +484,6 @@ local function copy_mode_keymap(ekymap)
     { key = 'Z', mods = 'NONE', action = wezterm.action.CopyMode { MoveForwardZoneOfType = 'Prompt' } }
   )
 
-  -- local found = false
   -- local yank_action = wezterm.action.Multiple({
   --   { CopyTo = 'Clipboard' },
   --   wezterm.action.Multiple({
@@ -490,7 +491,17 @@ local function copy_mode_keymap(ekymap)
   --     { CopyMode = 'Close' },
   --   }),
 
-  -- local yank_action = wezterm.action.Multiple { { CopyTo = 'Clipboard' }, { Multiple = { 'ScrollToBottom', { CopyMode = 'Close' } } } }
+  local yank_action_list = {
+    { CopyTo = 'Clipboard' },
+    -- {
+    --   Multiple = {
+    --     'ScrollToBottom',
+    --     { CopyMode = 'Close' }
+    --   }
+    -- }
+  }
+
+  -- local found = false
 
   -- for i, k in ipairs(ekymap) do
   --   if k.key == 'y' then
@@ -502,8 +513,14 @@ local function copy_mode_keymap(ekymap)
   table.insert(ekymap, {
     key = 'y',
     mods = 'NONE',
-    -- action = yank_action,
-    action = { CopyTo = 'Clipboard' },
+    action = wezterm.action.Multiple({
+      { CopyTo = 'Clipboard' },
+      wezterm.action.Multiple({
+        'ScrollToBottom',
+        { CopyMode = 'Close' },
+      })
+    }),
+    -- action = { CopyTo = 'Clipboard' },
     -- action = wezterm.action_callback(function(w, p)
     --   wezterm.log_info("y")
     --   window:perform_action(wezterm.action.CopyTo 'Clipboard', p)

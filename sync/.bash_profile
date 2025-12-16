@@ -11,3 +11,4 @@ export PATH="${HOME}/.cargo/bin:${HOME}/go/bin:${HOME}/local/bin:${HOME}/local/g
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export LANG=en_US.utf8

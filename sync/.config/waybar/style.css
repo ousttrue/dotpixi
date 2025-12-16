@@ -3,6 +3,10 @@
     font-family: monospace;
 }
 
+window.eDP-1 {
+  font-size: 16px;
+}
+
 window.HDMI-A-1 {
   font-size: 20px;
 }

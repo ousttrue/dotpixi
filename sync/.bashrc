@@ -344,6 +344,15 @@ Header() {
 Prompt() {
   share_history
 
+  PA='\[\e[30m\]■\[\e[31m\]■\[\e[32m\]■\[\e[33m\]■\[\e[34m\]■\[\e[35m\]■\[\e[36m\]■\[\e[37m\]■'
+  PB='\[\e[90m\]■\[\e[91m\]■\[\e[92m\]■\[\e[93m\]■\[\e[94m\]■\[\e[95m\]■\[\e[96m\]■\[\e[97m\]■'
+  CLR='\[\e[0m\]'
+  if [ "$1" = "0" ]; then
+    PS1="(${CLR}${PA}${CLR} ${PB}${CLR})$(Header 0)\n$(FG CYAN)$(OSC 133 A)>$(FG DEFAULT)$(OSC 133 B) "
+  else
+    PS1="(${CLR}${PA}${CLR} ${PB}${CLR})$(Header 1)\n$(FG RED)$(OSC 133 A)>$(FG DEFAULT)$(OSC 133 B) "
+  fi
+
   # if [ -v TMUX ]; then
   #   if [ "$1" = "0" ]; then
   #     PS1="$(TmuxHeader)\n\[$(FG CYAN)\]>\[$(FG DEFAULT)\] "
@@ -353,20 +362,14 @@ Prompt() {
   # else
   # printf '\e]133;A\e\\'
   #
-  PA='\[\e[30m\]■\[\e[31m\]■\[\e[32m\]■\[\e[33m\]■\[\e[34m\]■\[\e[35m\]■\[\e[36m\]■\[\e[37m\]■'
-  PB='\[\e[90m\]■\[\e[91m\]■\[\e[92m\]■\[\e[93m\]■\[\e[94m\]■\[\e[95m\]■\[\e[96m\]■\[\e[97m\]■'
-  CLR='\[\e[0m\]'
-  if [ "$1" = "0" ]; then
-    PS1="(${CLR}${PA}${CLR} ${PB}${CLR})$(Header 0)\n$(FG CYAN)$(OSC 133 A)>$(FG DEFAULT)$(OSC 133 B) "
-  else
-    PS1="(${CLR}${PA}${CLR} ${PB}${CLR})$(Header 1)\n$(FG RED)$(OSC 133 A)>$(FG DEFAULT)$(OSC 133 B) "
-  fi
   # fi
 }
 
 # PS1='[\u@\h \W]\$ '
 # export PROMPT_COMMAND='history -a; history -r'
-PROMPT_COMMAND='Prompt $?'
+if [ "$TERM" != "linux" ];then
+  PROMPT_COMMAND='Prompt $?'
+fi
 
 ANSI_COLORS=(
   "       Black  "

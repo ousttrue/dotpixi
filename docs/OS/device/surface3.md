@@ -12,3 +12,18 @@ Surface UEFI が表示されるので。次のいずれかを実行。
 ```
 
 # linux_surface_pro3
+
+## wifi device
+
+```
+02:00.0 Ethernet controller: Marvell Technology Group Ltd. 88W8897 [AVASTAR] 802.11ac Wireless
+        Subsystem: Device 0003:045e
+        Kernel driver in use: mwifiex_pcie
+        Kernel modules: mwifiex_pcie
+```
+
+```
+pacman -S linux-firmware-marvell
+
+pacman -S iwd
+```

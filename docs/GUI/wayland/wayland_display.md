@@ -3,3 +3,5 @@ https://askubuntu.com/questions/1514352/ubuntu-24-04-with-nvidia-driver-libegl-w
 ```sh
 $ sudo apt-get install wdisplays libnvidia-egl-wayland1
 ```
+
+# wdisplays
