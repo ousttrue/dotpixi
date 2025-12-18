@@ -1,8 +1,8 @@
 #XKB_DEFAULT_LAYOUT=jp
 XKB_DEFAULT_LAYOUT=us
 XKB_DEFAULT_OPTIONS=caps:ctrl
-GTK_IM_MODULE=fcitx
-QT_IM_MODULE=fcitx
+# GTK_IM_MODULE=fcitx
+# QT_IM_MODULE=fcitx
 XMODIFIERS=@im=fcitx
 DefaultIMModule=fcitx
 # SHELL=$HOME/.dotnet/tools/pwsh

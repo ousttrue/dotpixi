@@ -24,7 +24,6 @@ keymap SPC NEXT_PAGE
 keymap > UP
 keymap < DOWN
 
-
 keymap j MOVE_DOWN1
 keymap k MOVE_UP1
 #keymap H NEXT_LEFT
@@ -37,3 +36,5 @@ keymap C-k NEXT_UP
 keymap x EXTERN
 keymap ";" MARK_URL
 
+keymap c COMMAND "EXTERN; PEEK"
+keymap u COMMAND "EXTERN_LINK; PEEK_LINK"

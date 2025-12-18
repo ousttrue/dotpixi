@@ -3,6 +3,24 @@
   <!-- https://labwc.github.io/labwc-config.5.html -->
   <!-- https://wiki.gentoo.org/wiki/Labwc#rc.xml -->
 
+  <!-- https://forums.raspberrypi.com/viewtopic.php?t=378619 -->
+  <libinput>
+    <device category="default">
+      <naturalScroll>yes</naturalScroll>
+      <!-- <leftHanded></leftHanded> -->
+      <!-- <pointerSpeed></pointerSpeed> -->
+      <!-- <accelProfile></accelProfile> -->
+      <!-- <tap>yes</tap> -->
+      <!-- <tapButtonMap></tapButtonMap> -->
+      <tapAndDrag>no</tapAndDrag>
+      <!-- <dragLock></dragLock> -->
+      <!-- <middleEmulation></middleEmulation> -->
+      <disableWhileTyping>yes</disableWhileTyping>
+      <!-- <clickMethod></clickMethod> -->
+      <!-- <sendEventsMode></sendEventsMode> -->
+    </device>
+  </libinput>
+
   <core>
     <gap>10</gap>
     <windowSwitcher show="yes" preview="yes" outlines="yes" />
@@ -49,7 +67,8 @@
     <keybind key="W-z"><action name="Execute" command="wofi --show=drun" /></keybind>
 
     <keybind key="W-Return">
-      <action name="Execute" command="wezterm" />
+      <!-- <action name="Execute" command="wezterm" /> -->
+      <action name="Execute" command="ghostty" />
     </keybind>
 
     <keybind key="W-F5">
@@ -75,19 +94,26 @@
     </keybind>
 
     <keybind key="W-S-left">
-      <action name="MoveToEdge" direction="left" snapWindows="no" />
-      <action name="FitToOutput" />
+      <!-- <action name="MoveToEdge" direction="left" snapWindows="no" /> -->
+      <!-- <action name="FitToOutput" /> -->
+      <action name="SnapToEdge" direction="left"/>
     </keybind>
+    <keybind key="W-S-right">
+      <!-- <action name="MoveToEdge" direction="right" snapWindows="no" /> -->
+      <!-- <action name="FitToOutput" /> -->
+      <action name="SnapToEdge" direction="right"/>
+    </keybind>
+
+    <keybind key="W-C">
+      <item label="Reconfigure"><action name="Reconfigure" /></item>
+    </keybind>
+
     <keybind key="W-S-down">
       <action name="MoveToEdge" direction="down" snapWindows="no" />
       <action name="FitToOutput" />
     </keybind>
     <keybind key="W-S-up">
       <action name="MoveToEdge" direction="up" snapWindows="no" />
-      <action name="FitToOutput" />
-    </keybind>
-    <keybind key="W-S-right">
-      <action name="MoveToEdge" direction="right" snapWindows="no" />
       <action name="FitToOutput" />
     </keybind>
 
