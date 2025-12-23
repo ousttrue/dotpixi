@@ -6,7 +6,7 @@
   <!-- https://forums.raspberrypi.com/viewtopic.php?t=378619 -->
   <libinput>
     <device category="default">
-      <naturalScroll>yes</naturalScroll>
+      <!-- <naturalScroll>yes</naturalScroll> -->
       <!-- <leftHanded></leftHanded> -->
       <!-- <pointerSpeed></pointerSpeed> -->
       <!-- <accelProfile></accelProfile> -->
