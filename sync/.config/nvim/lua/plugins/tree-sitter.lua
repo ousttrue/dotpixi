@@ -5,10 +5,10 @@ return {
     lazy = false,
     build = ":TSUpdate",
     dependencies = {
-      { "nvim-treesitter/nvim-treesitter-textobjects", event = "CursorMoved", },
+      -- { "nvim-treesitter/nvim-treesitter-textobjects", event = "CursorMoved", },
       { "m-demare/hlargs.nvim",                        opts = {} },
     },
-    main = "nvim-treesitter.configs",
+    -- main = "nvim-treesitter.configs",
     opts = {
       highlight = {
         enable = true,
@@ -16,26 +16,26 @@ return {
       },
       indent = { enable = true },
       -- https://qiita.com/ysmb-wtsg/items/2c9eaf444c60ca172588
-      textobjects = {
-        select = {
-          enable = true,
-
-          -- Automatically jump forward to textobj, similar to targets.vim
-          lookahead = true,
-
-          keymaps = {
-            -- You can use the capture groups defined in textobjects.scm
-            ["af"] = {
-              query = "@function.outer",
-              desc = "Select outer part of a method/function definition",
-            },
-            ["if"] = {
-              query = "@function.inner",
-              desc = "Select inner part of a method/function definition",
-            },
-          },
-        },
-      },
+      -- textobjects = {
+      --   select = {
+      --     enable = true,
+      --
+      --     -- Automatically jump forward to textobj, similar to targets.vim
+      --     lookahead = true,
+      --
+      --     keymaps = {
+      --       -- You can use the capture groups defined in textobjects.scm
+      --       ["af"] = {
+      --         query = "@function.outer",
+      --         desc = "Select outer part of a method/function definition",
+      --       },
+      --       ["if"] = {
+      --         query = "@function.inner",
+      --         desc = "Select inner part of a method/function definition",
+      --       },
+      --     },
+      --   },
+      -- },
     },
   },
   {
