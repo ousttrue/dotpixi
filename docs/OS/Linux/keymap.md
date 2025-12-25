@@ -1,3 +1,21 @@
+# udev
+
+- [Wayland でお好みのキーバインド - bearmini's blog](https://bearmini.hatenablog.com/entry/2023/12/03/134330)
+
+```sh
+sudo evtest
+
+/etc/udev/hwdb.d/10-mykeyboard.hwdb
+
+
+```
+
+```sh
+sudo systemd-hwdb update 
+sudo udevadm trigger
+```
+
+
 # ARCH
 
 ```
@@ -64,13 +82,4 @@ setxkbmap -option lv3:ralt_alt
 # xremap
 
 [最強のキーリマッパーで、ラズパイBookwormのWayland環境を最強にする | Yagifulのブログ](https://yagiful.com/blog/raspi-bookworm-xremap/)
-
-# udev
-
-- [Wayland でお好みのキーバインド - bearmini's blog](https://bearmini.hatenablog.com/entry/2023/12/03/134330)
-
-```sh
-sudo systemd-hwdb update 
-sudo udevadm trigger
-```
 
