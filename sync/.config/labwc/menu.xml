@@ -6,11 +6,13 @@
     <separator />
     <item label="PCManFM"><action name="Execute" command="pcmanfm-qt" /></item>
     <separator />
-    <item label="Wezterm"><action name="Execute" command="wezterm" /></item>
+    <item label="Kitty"><action name="Execute" command="kitty" /></item>
     <item label="XTerm"><action name="Execute" command="xterm" /></item>
     <item label="Foot"><action name="Execute" command="foot" /></item>
+    <item label="Wezterm"><action name="Execute" command="wezterm" /></item>
     <separator />
-    <item label="pavucontrol"><action name="Execute" command="pavucontrol" /></item>
+    <item label="pavucontrol-qt"><action name="Execute" command="pavucontrol-qt" /></item>
+    <item label="qpwgraph"><action name="Execute" command="qpwgraph" /></item>
     <item label="quimp"><action name="Execute" command="quimp" /></item>
     <item label="vlc"><action name="Execute" command="vlc" /></item>
     <separator />

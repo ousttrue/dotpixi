@@ -103,6 +103,7 @@ else
     DIST="arch"
     ICON="󰣇 "
 
+    alias world='sudo pacman -Syu'
     function pfz {
       local selected=$(pacman -Sl | cut -d " " -f 2 | fzf --preview "pacman -Si {}")
       if [[ ${selected} =~ [^\s] ]]; then

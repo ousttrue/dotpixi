@@ -5,8 +5,8 @@
 
   <!-- https://forums.raspberrypi.com/viewtopic.php?t=378619 -->
   <libinput>
-    <device category="default">
-      <!-- <naturalScroll>yes</naturalScroll> -->
+    <device category="touchpad">
+      <naturalScroll>yes</naturalScroll>
       <!-- <leftHanded></leftHanded> -->
       <!-- <pointerSpeed></pointerSpeed> -->
       <!-- <accelProfile></accelProfile> -->
@@ -68,12 +68,16 @@
 
     <keybind key="W-Return">
       <!-- <action name="Execute" command="wezterm" /> -->
-      <action name="Execute" command="ghostty" />
+      <!-- <action name="Execute" command="ghostty" /> -->
+      <action name="Execute" command="kitty" />
     </keybind>
 
     <keybind key="W-F5">
       <action name="Reconfigure" />
       <action name="Execute" command="killall -SIGUSR2 waybar" />
+    </keybind>
+    <keybind key="W-C">
+      <action name="Reconfigure" />
     </keybind>
 
     <keybind key="W-left">
@@ -102,10 +106,6 @@
       <!-- <action name="MoveToEdge" direction="right" snapWindows="no" /> -->
       <!-- <action name="FitToOutput" /> -->
       <action name="SnapToEdge" direction="right"/>
-    </keybind>
-
-    <keybind key="W-C">
-      <item label="Reconfigure"><action name="Reconfigure" /></item>
     </keybind>
 
     <keybind key="W-S-down">
