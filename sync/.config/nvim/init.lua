@@ -19,10 +19,7 @@ require("config.markdown").setup()
 vim.cmd "colorschem ansi"
 require("config.grep").setup()
 require("project").setup()
-
-vim.cmd [[
-autocmd QuickfixCmdPost make,vimgrep copen
-]]
+require("config.qfix").setup()
 
 vim.keymap.set("n", "<C-n>", ":cn<CR>", { noremap = true })
 vim.keymap.set("n", "<C-p>", ":cp<CR>", { noremap = true })
