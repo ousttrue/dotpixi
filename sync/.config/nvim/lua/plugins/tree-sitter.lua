@@ -6,7 +6,7 @@ return {
     build = ":TSUpdate",
     dependencies = {
       -- { "nvim-treesitter/nvim-treesitter-textobjects", event = "CursorMoved", },
-      { "m-demare/hlargs.nvim",                        opts = {} },
+      { "m-demare/hlargs.nvim", opts = {} },
     },
     -- main = "nvim-treesitter.configs",
     opts = {
@@ -124,7 +124,8 @@ return {
         -- close_automatic_events = { "switch_buffer" },
         -- optionally use on_attach to set keymaps when aerial has attached to a buffer
         on_attach = function(bufnr)
-          -- Jump forwards/backwards with '{' and '}'
+          vim.keymap.set("n", "[a", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+          vim.keymap.set("n", "]a", "<cmd>AerialNext<CR>", { buffer = bufnr })
         end,
         -- Options for opening aerial in a floating win
         float = {
@@ -163,8 +164,6 @@ return {
     end,
     keys = {
       { "<leader>a", "<cmd>AerialNavToggle <CR>" },
-      { "[a",        "<cmd>AerialPrev<CR>" },
-      { "]a",        "<cmd>AerialNext<CR>" },
     },
   },
   {
