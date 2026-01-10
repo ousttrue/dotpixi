@@ -6,6 +6,10 @@ without logind
 
 ```sh
 systemctl enable ly.service --now
+
+# 変わった
+
+systemctl enable ly@tty2.service --now
 ```
 
 # gentoo
