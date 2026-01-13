@@ -10,45 +10,70 @@ https://pipewire.org/
 
 ## 1.2
 
-# xdg-desktop-portal
+# config
 
-https://wiki.gentoo.org/wiki/XDG/xdg-desktop-portal
+```sh
+cp /usr/share/pipewire/pipewire.conf ~/.config/pipewire/pipewire.conf 
 
-# bluetooth
+```
 
-- LDAC、aptX
+# trouble
 
-# libpipewire
+```sh
+> wpctl status
+Could not connect to PipeWire
 
-> ユーザーセッションごとに1つのPipeWireデーモンが存在し、Unixドメインソケット
+> systemctl --user status pipewire
+× pipewire.service - PipeWire Multimedia Service
+     Loaded: loaded (/usr/lib/systemd/user/pipewire.service; enabled; preset: enabled)
+     Active: failed (Result: exit-code) since Tue 2026-01-13 20:05:23 JST; 16min ago
+   Duration: 61ms
+ Invocation: 9a6f57f86cd84122b6c8d1a749249bfa
+TriggeredBy: × pipewire.socket
+   Main PID: 28645 (code=exited, status=240/LOGS_DIRECTORY)
+   Mem peak: 2.2M
+        CPU: 54ms
 
-- Unixソケット上のIPC（カスタムプロトコルを使用）を介してデーモンと通信
+Jan 13 20:05:23 arch systemd[757]: pipewire.service: Scheduled restart job, restart counter is at 6.
+Jan 13 20:05:23 arch systemd[757]: pipewire.service: Start request repeated too quickly.
+Jan 13 20:05:23 arch systemd[757]: pipewire.service: Failed with result 'exit-code'.
+Jan 13 20:05:23 arch systemd[757]: Failed to start PipeWire Multimedia Service.
+```
 
-# objects
+```sh
+> systemctl --user enable --now pipewire pipewire-pulse
+```
 
-Device、Factory
+# setup
 
-## node
+## user
 
-### AudioSource
+```~/.config/pipewire/pipewire.conf
+context.objects = [
+    { factory = adapter
+       args = {
+           factory.name           = api.alsa.pcm.sink
+           node.name              = "alsa-sink"
+           node.description       = "PCM Sink"
+           media.class            = "Audio/Sink"
+           api.alsa.path          = "dmix:AMPLIFIER,0"
+       }
+    }
+]
+```
 
-### AudioSink
+## arch linux
 
-- Bluetoothヘッドセット
-
-### AudioStream
-
-### VideoCapture
+```sh
+sudo pacman -S pipewire pipewire-audio pipewire-pulse pipewire-alsa wireplumber
+systemctl --user enable --now pipewire pipewire-pulse wireplumber
+```
 
 # session manager
 
 ## pipewire-media-session.service
 
 > 現在は非推奨となり、WirePlumberに取って代わられました
-
-# libpipewire-module-portal
-
-# pipewire-pulse
 
 # sink を決める
 
