@@ -148,6 +148,12 @@ else
         sudo emerge -av --autounmask=y --autounmask-license=y --autounmask-write=y ${selected}
       fi
     }
+    function erm {
+      local selected=$(eix-installed -a | sed -r 's/-[^-]+(-r[0-9]+)*$//' | fzf --preview "eix -e --color=always {}")
+      if [[ ${selected} =~ [^\s] ]]; then
+        sudo emerge --deselect ${selected}
+      fi
+    }
 
   else
     SYSTEM_COLOR="GREEN"
@@ -368,7 +374,7 @@ Prompt() {
 
 # PS1='[\u@\h \W]\$ '
 # export PROMPT_COMMAND='history -a; history -r'
-if [ "$TERM" != "linux" ];then
+if [ "$TERM" != "linux" ]; then
   PROMPT_COMMAND='Prompt $?'
 fi
 
