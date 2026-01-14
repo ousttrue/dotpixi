@@ -48,6 +48,12 @@ function gg {
     cd ${selected}
   fi
 }
+function gs {
+  local selected=$(git branch | fzf)
+  if [[ ${selected} =~ [^\s] ]]; then
+    git switch $selected
+  fi
+}
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
