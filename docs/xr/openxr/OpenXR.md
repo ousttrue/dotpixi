@@ -1,5 +1,9 @@
 - [OpenXR - Mixed Reality | Microsoft Learn](https://learn.microsoft.com/ja-jp/windows/mixed-reality/develop/native/openxr)
 
+https://github.com/elliotttate/OpenXR-Simulator
+
+https://github.com/rpavlik/xr-picker
+
 - https://developers.meta.com/horizon/documentation/native/native-media-projection/
 - https://github.com/android/media-samples/tree/main/ScreenCapture
 
