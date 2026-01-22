@@ -33,7 +33,7 @@ local config = {
   {
     name = "ousttrue/neomarkdown.nvim",
     dependencies = { "uga-rosa/utf8.nvim" },
-    -- enabled = false,
+    enabled = false,
     dir = GHQ_ROOT .. "/github.com/ousttrue/neomarkdown.nvim",
     dev = false,
     config = function()
