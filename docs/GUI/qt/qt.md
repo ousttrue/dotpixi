@@ -4,6 +4,11 @@
 
 # version
 
+## 6.10 @202510
+
+- https://www.qt.io/ja-jp/blog/qt-6.10-released
+- `VR` https://invent.kde.org/plasma/kwin/-/merge_requests/8671
+
 ## 6.7 @202407
 
 - [Qt 6.7 リリース](https://www.qt.io/ja-jp/blog/qt-6.7-released)
