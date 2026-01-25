@@ -59,6 +59,7 @@ function gs {
 
 # Created by `pipx` on 2025-07-27 06:39:41
 export PATH="$PATH:/home/ousttrue/.local/bin"
+export PATH="$PATH:/home/ousttrue/local/bin"
 
 #
 # prompt
@@ -120,7 +121,7 @@ else
       local selected=$(pacman -Qs -q | fzf --preview "pacman -Si {}")
 
       if [[ ${selected} =~ [^\s] ]]; then
-        sudo pacman -Rsu ${selected}
+        sudo pacman -Rcns ${selected}
       fi
     }
 

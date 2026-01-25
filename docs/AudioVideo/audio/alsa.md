@@ -1,5 +1,14 @@
 https://www.alsa-project.org/wiki/Main_Page
 
+# sound user
+
+```sh
+> fuser -v /dev/snd/*
+                     USER        PID ACCESS COMMAND
+/dev/snd/controlC2:  ousttrue    739 F.... jackd
+/dev/snd/pcmC2D0p:   ousttrue    739 F...m jackd
+```
+
 # devices
 
 ```sh

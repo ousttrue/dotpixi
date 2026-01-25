@@ -4,15 +4,23 @@ https://wiki.archlinux.jp/index.php/WirePlumber
 
 > PipeWire Media Session `deprecated` の後継
 
+```sh
+> wpctl status
+> wpctl inspect 48
+```
+
 # version
 
 ```sh
-wpctl status
-wpctl inspect 48
+> wireplumber --version
+wireplumber
+Compiled with libwireplumber 0.5.13
+Linked with libwireplumber 0.5.13
 ```
 
 ## 0.5
 
+- https://pipewire.pages.freedesktop.org/wireplumber/daemon/configuration/alsa.html
 - https://www.reddit.com/r/debian/comments/1cvdijl/heads_up_debian_trixie_wireplumber_05_alsa/?tl=ja
 
 - [PipeWire徹底解説：LinuxマルチメディアアーキテクチャをOSエンジニアリングの観点から読み解く #pulseaudio - Qiita](https://qiita.com/shinonome_taku/items/d7b396de3174d5c24404)
@@ -21,6 +29,7 @@ wpctl inspect 48
 ## 0.4
 
 - `/usr/share/wireplumber/wireplumber.conf` が lua
+- `alsa_monitor` https://wiki.archlinux.jp/index.php/PipeWire#ALSA_dmix_%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
 
 # restart
 

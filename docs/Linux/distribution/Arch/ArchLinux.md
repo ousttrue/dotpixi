@@ -9,6 +9,20 @@ $ pacstrap /mnt base linux linux-firmware
 $ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
+## nvidia
+
+GTX-1060 が AUR に。
+
+`nvidia-580xx-dkms` を使う。
+事前に dkms(Dynamic Kernel Module Support) のビルド環境を入れておくべし。
+
+```sh
+> sudo pacman -S dkms linux-headers
+
+> fd nvidia.ko /lib/modules
+/lib/modules/6.18.5-arch1-1/updates/dkms/nvidia.ko.zst
+```
+
 ## chroot, passwd, useradd
 
 ```sh
@@ -59,9 +73,11 @@ grub> boot
 ```
 
 ## ip
+
 ### static
 
 ```ini title="/etc/systemd/networkd/lan.network"
+
 ```
 
 ```sh

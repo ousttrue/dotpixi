@@ -13,7 +13,8 @@
     <separator />
     <item label="pavucontrol-qt"><action name="Execute" command="pavucontrol-qt" /></item>
     <item label="qpwgraph"><action name="Execute" command="qpwgraph" /></item>
-    <item label="quimp"><action name="Execute" command="quimp" /></item>
+    <item label="quimup"><action name="Execute" command="quimup" /></item>
+    <item label="qmmp"><action name="Execute" command="qmmp" /></item>
     <item label="vlc"><action name="Execute" command="vlc" /></item>
     <separator />
     <item label="conky"><action name="Execute" command="conky" /></item>

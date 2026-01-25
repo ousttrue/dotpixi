@@ -12,6 +12,17 @@
 - [UEFI エミュレータで遊ぶ](https://zenn.dev/nokute/articles/7b085ad55e174a)
 - [現代における自作 OS の難しさ 〜自作 OS のいまと昔 [第 2 回] | さくらのナレッジ](https://knowledge.sakura.ad.jp/22963/)
 
+## minimum
+
+```sh
+# find /efi
+/efi
+/efi/EFI
+/efi/EFI/GRUB
+/efi/EFI/GRUB/grubx64.efi
+```
+
+
 ## partition 構成
 
 > ストレージの第一パーティションを UEFI のシステムパーティション

@@ -2,3 +2,9 @@
 
 
 https://github.com/fferri/qt3d-transform-gizmo
+
+## OpenXR
+
+- https://github.com/technobaboo/quick3d-openxr
+
+

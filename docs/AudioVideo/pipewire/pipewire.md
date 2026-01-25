@@ -2,6 +2,10 @@ https://pipewire.org/
 
 - https://docs.pipewire.org/
 
+```sh
+$ speaker-test -c 2 -r 48000 -D pipewire
+```
+
 # version
 
 - https://blogs.gnome.org/uraeus/2020/09/04/pipewire-late-summer-update-2020/
@@ -113,7 +117,7 @@ Server Name: PulseAudio (on PipeWire 1.4.8)
 Server Version: 15.0.0
 Default Sample Specification: float32le 2ch 48000Hz
 Default Channel Map: front-left,front-right
-Default Sink: alsa_output.usb-FOSTER_Elec._CO.__LTD_PERSONAL_AMPLIFIER-01.analog-stereo
+Default Sink: alsa_output.usb-FOSTER_Elec._CO.__LTD_PERSONAL_AMPLIFIER-01.analog-stereo # <<
 Default Source: alsa_output.usb-FOSTER_Elec._CO.__LTD_PERSONAL_AMPLIFIER-01.analog-stereo.monitor
 Cookie: 6fa4:3fff
 ```
