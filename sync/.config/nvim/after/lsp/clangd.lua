@@ -103,6 +103,11 @@ local function get_compile_commands_json_dir()
     return zig_root
   end
 
+  local cmake_root = vim.fs.root(dir, { "CMakeLists.txt" })
+  if cmake_root then
+    return cmake_root .. "/build"
+  end
+
   return dir
 end
 
@@ -112,7 +117,7 @@ local config = {
   ---@param config vim.lsp.ClientConfig
   cmd = function(dispatchers, config)
     local dir = get_compile_commands_json_dir()
-    -- print('get_compile_commands_json_dir => ' .. dir)
+    print('get_compile_commands_json_dir => ' .. dir)
     --- lazy cmd
     local config_cmd = {
       vim.fn.exepath "clangd",
@@ -122,7 +127,8 @@ local config = {
       "--offset-encoding=utf-8",
       -- avoid stderr log message
       "--log=error",
-      "--compile-commands-dir=" .. dir,
+      -- "--compile-commands-dir=" .. dir,
+      "--compile-commands-dir=./build",
     }
     return vim.lsp.rpc.start(config_cmd, dispatchers, {
       cwd = config.cmd_cwd,
@@ -138,6 +144,7 @@ local config = {
     "builddir/compile_commands.json",
     "build_android/compile_commands.json",
     "build.zig",
+    "build/compile_commands.json",
   },
   filetypes = { "c", "cpp" },
   capabilities = {

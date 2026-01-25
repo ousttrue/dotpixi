@@ -61,6 +61,12 @@ div[aria-label="ホームタイムライン"] {
 # GoogleAI
 
 ```css
+div :has(> div> div> div> div> div[decode-data-ved="1"]){
+    display: none;
+}
+```
+
+```css
 div :has(> div> div > div > div > div > div > strong) {
 /*     AI による概要 */
     display: none;
