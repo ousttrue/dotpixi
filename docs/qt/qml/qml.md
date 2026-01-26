@@ -2,6 +2,8 @@ https://doc.qt.io/qt-6/qtqml-index.html
 
 # host
 
+https://www.slideshare.net/slideshow/yoctodistro/64976596
+
 ## cmake
 
 ```cmake
