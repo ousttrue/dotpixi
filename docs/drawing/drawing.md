@@ -1,0 +1,3 @@
+- https://www.palmie.jp/lessons/349
+- https://note.com/isnoyet/n/n1cebf62ebddf
+- https://x.com/GesDraw/status/1780899078760431692

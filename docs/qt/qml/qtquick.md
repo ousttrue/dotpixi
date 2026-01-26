@@ -1,1 +1,1 @@
-> The Qt Quick module is the standard library for writing QML applications
+https://www.qt.io/product/qt6/qml-book/ch02-start-app-types#qt-quick-application
