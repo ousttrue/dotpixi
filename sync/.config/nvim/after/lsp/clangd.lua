@@ -94,8 +94,9 @@ local function get_compile_commands_json_dir()
 
   local pixi_root = vim.fs.root(dir, { "pixi.toml" })
   if pixi_root then
-    local name = vim.fn.expand('%:p:t')
-    return vim.fs.joinpath(pixi_root, 'build', name)
+    -- local name = vim.fn.expand('%:p:t')
+    -- return vim.fs.joinpath(pixi_root, 'build', name)
+    return pixi_root
   end
 
   local zig_root = vim.fs.root(dir, { "build.zig" })
@@ -113,29 +114,6 @@ end
 
 ---@type vim.lsp.Config
 local config = {
-  ---@param dispatchers vim.lsp.rpc.Dispatchers
-  ---@param config vim.lsp.ClientConfig
-  cmd = function(dispatchers, config)
-    local dir = get_compile_commands_json_dir()
-    print('get_compile_commands_json_dir => ' .. dir)
-    --- lazy cmd
-    local config_cmd = {
-      vim.fn.exepath "clangd",
-      "--header-insertion=never",
-      "--clang-tidy",
-      "--background-index",
-      "--offset-encoding=utf-8",
-      -- avoid stderr log message
-      "--log=error",
-      -- "--compile-commands-dir=" .. dir,
-      "--compile-commands-dir=./build",
-    }
-    return vim.lsp.rpc.start(config_cmd, dispatchers, {
-      cwd = config.cmd_cwd,
-      env = config.cmd_env,
-      detached = config.detached,
-    })
-  end,
   root_markers = {
     -- ros2 package
     "package.xml",
@@ -151,5 +129,28 @@ local config = {
     offsetEncoding = { 'utf-16' },
   },
 }
+
+---@param dispatchers vim.lsp.rpc.Dispatchers
+---@param config vim.lsp.ClientConfig
+config.cmd = function(dispatchers, cfg)
+  -- local dir = get_compile_commands_json_dir()
+  --- lazy cmd
+  local config_cmd = {
+    vim.fn.exepath "clangd",
+    "--header-insertion=never",
+    "--clang-tidy",
+    "--background-index",
+    "--offset-encoding=utf-8",
+    -- avoid stderr log message
+    "--log=error",
+    -- "--compile-commands-dir=" .. dir,
+    "--compile-commands-dir=./build",
+  }
+  return vim.lsp.rpc.start(config_cmd, dispatchers, {
+    cwd = config.cmd_cwd,
+    env = config.cmd_env,
+    detached = config.detached,
+  })
+end
 
 return config

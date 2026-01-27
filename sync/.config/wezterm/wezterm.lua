@@ -134,7 +134,7 @@ config.initial_cols = 120
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.default_prog = { "pwsh", "-nologo" }
-  config.initial_rows = 46
+  config.initial_rows = 38
 else
   config.use_ime = true
   -- wayland: text-input-v3
