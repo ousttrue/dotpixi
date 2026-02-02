@@ -1,3 +1,7 @@
+if vim.fn.has('win32') ~= 0 then
+  vim.opt.shadafile = "NONE"
+end
+
 require("config.lazy")
 
 vim.api.nvim_create_user_command("Here", ":!start %:p:h", {})

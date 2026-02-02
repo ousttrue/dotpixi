@@ -1,10 +1,17 @@
-- @2021 [QML 3D: First impressions - Scythe Studio Blog](https://scythe-studio.com/en/blog/qml-3d-first-impressions)
+https://doc.qt.io/qt-6/qtquick3d-index.html
 
+- https://doc.qt.io/qt-6/quick3d-examples.html
+- https://doc.qt.io/qt-6/qtquick3d-intro-example.html
 
-https://github.com/fferri/qt3d-transform-gizmo
+## sample
 
-## OpenXR
+- https://github.com/Match-Yang/SOrbitCameraController
+- https://github.com/fferri/qt3d-transform-gizmo
+- https://github.com/oddukgi/learnopengl-qt3d
+- https://github.com/KDABLabs/qt3d-examples/tree/master
+
+## XR
+
+https://doc.qt.io/qt-6/qt-quick-3d-xr.html
 
 - https://github.com/technobaboo/quick3d-openxr
-
-
