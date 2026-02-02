@@ -35,3 +35,4 @@ https://doc.qt.io/qt-6/qmlapplications.html
 
 - https://doc.qt.io/qt-6/ja/qtquick-codesamples.html
 
+
