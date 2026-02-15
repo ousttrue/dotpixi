@@ -9,6 +9,18 @@ aliases:
 
 [Meta Quest release notes | Meta Store](https://www.meta.com/help/quest/articles/whats-new/release-notes/?utm_source=developer.oculus.com&utm_medium=oculusredirect)
 
+## 85
+
+https://www.meta.com/blog/meta-horizon-worlds-v85-release-notes/
+
+- https://github.com/meta-quest/Meta-OpenXR-SDK/tree/v85
+
+## 83
+
+https://www.meta.com/blog/meta-horizon-worlds-v83-release-notes/
+
+- https://github.com/meta-quest/Meta-OpenXR-SDK/tree/v83
+
 ## 59
 
 - @202311

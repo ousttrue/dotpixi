@@ -1,0 +1,1 @@
+- [初めて OpenWrt を導入する際の注意事項 #openwrt - Qiita](https://qiita.com/Bacalhau/items/161a16e9c7f4eaa572b0)

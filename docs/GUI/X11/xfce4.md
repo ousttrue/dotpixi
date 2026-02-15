@@ -13,6 +13,7 @@ $ sudo apt-get xubuntu-desktop
 ## 4.20
 
 - wayland ?
+- [Xfwl4 - The roadmap for a Xfce Wayland Compositor](https://alexxcons.github.io/blogpost_15.html)
 - https://wiki.xfce.org/releng/wayland_roadmap
 
 ## 4.18
