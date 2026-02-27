@@ -20,7 +20,8 @@ function M.get_lsp_servers()
       end
       local item = items[1]
       if item and (item.type == 'file' or item.type == 'link') and vim.endswith(item.name, ".lua") then
-        table.insert(lsp_servers, item.name.sub(item.name, 1, #item.name - 4))
+        local name = item.name.sub(item.name, 1, #item.name - 4)
+        table.insert(lsp_servers, name)
       end
     end
     vim.uv.fs_closedir(dir)
@@ -32,7 +33,10 @@ local function lsp_attach(args)
   local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
   -- disable semantic highlights
-  client.server_capabilities.semanticTokensProvider = nil
+  if client.server_capabilities.semanticTokensProvider then
+    -- print("stop semanticTokensProvider")
+    client.server_capabilities.semanticTokensProvider = nil
+  end
 
   if client.name == 'ruff' then
     -- conflicts ruff and pyright

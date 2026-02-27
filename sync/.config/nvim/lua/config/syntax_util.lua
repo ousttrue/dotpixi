@@ -6,6 +6,10 @@ local function hl_clear(name)
 end
 
 function M.clear_syntax_link(ev)
+  --
+  -- TODO: see colorscheme ansi
+  --
+
   if ev.match == "habamax" then
     vim.api.nvim_set_hl(0, "MatchParen", { link = "Title" })
     vim.api.nvim_set_hl(0, "VertSplit", { link = "NotifyDEBUGBorder" })

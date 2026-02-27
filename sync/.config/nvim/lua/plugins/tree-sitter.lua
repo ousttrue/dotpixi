@@ -2,6 +2,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     lazy = false,
     build = ":TSUpdate",
     dependencies = {
@@ -9,34 +10,48 @@ return {
       { "m-demare/hlargs.nvim", opts = {} },
     },
     -- main = "nvim-treesitter.configs",
-    opts = {
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-      },
-      indent = { enable = true },
-      -- https://qiita.com/ysmb-wtsg/items/2c9eaf444c60ca172588
-      -- textobjects = {
-      --   select = {
-      --     enable = true,
-      --
-      --     -- Automatically jump forward to textobj, similar to targets.vim
-      --     lookahead = true,
-      --
-      --     keymaps = {
-      --       -- You can use the capture groups defined in textobjects.scm
-      --       ["af"] = {
-      --         query = "@function.outer",
-      --         desc = "Select outer part of a method/function definition",
+    config = function()
+      -- https://blog.atusy.net/2025/08/10/nvim-treesitter-main-branch/
+      require("nvim-treesitter").setup()
+
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("vim-treesitter-start", {}),
+        callback = function(ctx)
+          -- 必要に応じて`ctx.match`に入っているファイルタイプの値に応じて挙動を制御
+          -- `pcall`でエラーを無視することでパーサーやクエリがあるか気にしなくてすむ
+          pcall(vim.treesitter.start)
+        end,
+      })
+
+      -- local opts = {
+      --       highlight = {
+      --         enable = true,
+      --         additional_vim_regex_highlighting = false,
       --       },
-      --       ["if"] = {
-      --         query = "@function.inner",
-      --         desc = "Select inner part of a method/function definition",
-      --       },
-      --     },
-      --   },
-      -- },
-    },
+      --       indent = { enable = true },
+      --       -- https://qiita.com/ysmb-wtsg/items/2c9eaf444c60ca172588
+      --       -- textobjects = {
+      --       --   select = {
+      --       --     enable = true,
+      --       --
+      --       --     -- Automatically jump forward to textobj, similar to targets.vim
+      --       --     lookahead = true,
+      --       --
+      --       --     keymaps = {
+      --       --       -- You can use the capture groups defined in textobjects.scm
+      --       --       ["af"] = {
+      --       --         query = "@function.outer",
+      --       --         desc = "Select outer part of a method/function definition",
+      --       --       },
+      --       --       ["if"] = {
+      --       --         query = "@function.inner",
+      --       --         desc = "Select inner part of a method/function definition",
+      --       --       },
+      --       --     },
+      --       --   },
+      --       -- },
+      --     }
+    end,
   },
   {
     -- https://github.com/kevinhwang91/nvim-ufo
@@ -97,7 +112,7 @@ return {
 
         backends = {
           -- ["_"] = { "lsp", "treesitter", "markdown", "man" },
-          ["_"] = { "treesitter", "lsp", "markdown", "man" },
+          ["_"] = { "treesitter", "lsp", "man" },
           -- toml = { "treesitter" },
           lua = { "lsp", "treesitter" },
         },

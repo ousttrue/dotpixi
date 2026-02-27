@@ -5,3 +5,16 @@ $ sudo apt-get install wdisplays libnvidia-egl-wayland1
 ```
 
 # wdisplays
+
+# display
+
+`/sys/class/display`
+
+- `card1-HDMI-A-1`
+
+# Display
+
+`WAYLAND_DISPLAY=wayland-0`
+`export XDG_RUNTIME_DIR=/tmp`
+
+

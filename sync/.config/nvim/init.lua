@@ -20,7 +20,6 @@ require("config.keymap").setup()
 require("config.lsp").setup()
 require("config.markdown").setup()
 -- require("config.color").setup()
-vim.cmd "colorschem ansi"
 require("config.grep").setup()
 require("project").setup()
 require("config.qfix").setup()
@@ -29,3 +28,11 @@ vim.keymap.set("n", "<C-n>", ":cn<CR>", { noremap = true })
 vim.keymap.set("n", "<C-p>", ":cp<CR>", { noremap = true })
 
 vim.keymap.set("n", "g/", ":s/\\\\/\\//g<CR>", { noremap = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+  -- group = vim.api.nvim_create_augroup("vim-treesitter-start", {}),
+  callback = function(ctx)
+    -- print('colorschem => ansi')
+    vim.cmd "colorschem ansi"
+  end,
+})
