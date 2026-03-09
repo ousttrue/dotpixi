@@ -126,7 +126,7 @@ return {
   --- get html and replace markdown `title url`
   get_html_title = function()
     -- https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lua/nvim-treesitter/ts_utils.lua
-    local ts_utils = require "nvim-treesitter.ts_utils"
+    local ts_utils = (require "nvim-treesitter").ts_utils
     local node = ts_utils.get_node_at_cursor(0, false)
     if not node then
       return

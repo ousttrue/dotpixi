@@ -53,6 +53,11 @@ hotswap => FWA-AW
 | e元素           | z-84            |       | 75% / CWA / 赤                     | 33?   |                            |
 | KIMOCA          | KMC68R2BL-SA    | 5280  | hs / 60% / CWA-ACMF / 赤青茶       | 330   | カーソルキーなし           |
 | LOFREE          | FLOW LITE       | 17600 | 75% / CWA                          | long? |                            |
+=======
+# z-88
+
+- [e元素（Z88RGB81B）のゲーミングキーボードを徹底レビュー【RGB81キー・アンチゴースト】](https://gamingcat.jp/egenso-z88rgb81b/)
+- [4,000円以下で買える「ちゃんと使える」格安メカニカルキーボード｜e元素 Z-884](https://note.com/monoblog/n/ne5a246f0442a)
 
 # normal
 

@@ -32,7 +32,7 @@ target_link_libraries(openxr_loader INTERFACE openxr_loader.lib)
 - [GitHub - KhronosGroup/OpenXR-SDK: Generated headers and sources for OpenXR loader.](https://github.com/KhronosGroup/OpenXR-SDK)
 
 `OpenXR.Loader.1.0.24.nupkg`
-```
+```sh
 git clone https://github.com/KhronosGroup/OpenXR-SDK.git
 cd OpenXR-SDK
 cmake -G Ninja -Bbuild -DCMAKE_BUILD_TYPE=Release

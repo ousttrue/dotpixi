@@ -5,13 +5,24 @@
 ```sh
 sudo evtest
 
-/etc/udev/hwdb.d/10-mykeyboard.hwdb
+cat /sys/class/input/event19/device/modalias
 
+/etc/udev/hwdb.d/10-mykeyboard.hwdb
 
 ```
 
+```
+# Input device ID: bus 0x3 vendor 0x258a product 0x2a version 0x111
+# Input device name: "SINO WEALTH Gaming KB "
+# cat /sys/class/input/event4/device/modalias
+evdev:input:b0003v258Ap002A*
+  KEYBOARD_KEY_70039=leftctrl
+```
+
+`evdev:input:b0003v258Ap002Ae*` はマッチしないぽい
+
 ```sh
-sudo systemd-hwdb update 
+sudo systemd-hwdb update
 sudo udevadm trigger
 ```
 
