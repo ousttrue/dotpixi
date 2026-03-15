@@ -16,6 +16,7 @@ search ?
 # navigation
 
 - [x] orbit around selection
+- [x] zoom to mouse position
 
 # keyap
 

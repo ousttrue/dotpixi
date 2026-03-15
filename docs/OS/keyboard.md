@@ -6,11 +6,21 @@
 - テンキー無し 75%
   - function 無し60%
 
-## caps 位置に ctrl があるキーボードは非正規
+# caps 位置に ctrl があるキーボードは非正規
 
 - 正式に `ctrl` が `A` の左にあるレイアウトは、 `mac` の日本語版のみ
 - [CtrlとCapsキーを入れ替え（管理者権限なし）｜Ryos](https://note.com/ryopc/n/ne2692434f23f)
 - @2019 [「Aの左」に位置するキーに文化を見る　キーボード配列とコンピュータの歴史](https://www.itmedia.co.jp/news/articles/1912/17/news102.html)
+
+# z-88
+
+- Spaceに手が触れていると押される。敏感すぎる。設定できるか？
+
+- https://ingste.net/z88/
+- https://masayamatome.com/e-genso-gaming-keyboard
+- https://ameblo.jp/koujoutyo829/entry-12692750273.html
+- [e元素（Z88RGB81B）のゲーミングキーボードを徹底レビュー【RGB81キー・アンチゴースト】](https://gamingcat.jp/egenso-z88rgb81b/)
+- [4,000円以下で買える「ちゃんと使える」格安メカニカルキーボード｜e元素 Z-884](https://note.com/monoblog/n/ne5a246f0442a)
 
 # list
 
@@ -53,11 +63,6 @@ hotswap => FWA-AW
 | e元素           | z-84            |       | 75% / CWA / 赤                     | 33?   |                            |
 | KIMOCA          | KMC68R2BL-SA    | 5280  | hs / 60% / CWA-ACMF / 赤青茶       | 330   | カーソルキーなし           |
 | LOFREE          | FLOW LITE       | 17600 | 75% / CWA                          | long? |                            |
-=======
-# z-88
-
-- [e元素（Z88RGB81B）のゲーミングキーボードを徹底レビュー【RGB81キー・アンチゴースト】](https://gamingcat.jp/egenso-z88rgb81b/)
-- [4,000円以下で買える「ちゃんと使える」格安メカニカルキーボード｜e元素 Z-884](https://note.com/monoblog/n/ne5a246f0442a)
 
 # normal
 
