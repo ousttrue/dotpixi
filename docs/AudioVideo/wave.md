@@ -1,0 +1,1 @@
+- [ 音の大きさの秘密を解く：dB、dBu、LUFS、Peak、RMSを徹底解説｜し～む](https://note.com/shimix/n/n89c676875262)

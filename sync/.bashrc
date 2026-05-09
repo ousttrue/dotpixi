@@ -36,7 +36,8 @@ function ptouch {
 
 export EDITOR="nvim"
 
-export FZF_DEFAULT_OPTS="--layout=reverse --preview-window down:70%:wrap"
+export FZF_DEFAULT_OPTS="--layout=reverse --preview-window down:70%:wrap --bind ctrl-u:unix-line-discard --color='hl:-1:reverse,hl+:-1:reverse'"
+export FZF_DEFAULT_OPTS=
 export FZF_DEFAULT_COMMAND="fd --type f -H -E .git"
 function gg {
   local arg=""
@@ -60,6 +61,7 @@ function gs {
 # Created by `pipx` on 2025-07-27 06:39:41
 export PATH="$PATH:/home/ousttrue/.local/bin"
 export PATH="/home/ousttrue/local/bin:$PATH"
+export PATH="$HOME/dotfiles.zig/zig-out/bin:$PATH"
 
 #
 # prompt
@@ -118,7 +120,7 @@ else
       fi
     }
     function prm {
-      local selected=$(pacman -Qs -q | fzf --preview "pacman -Si {}")
+      local selected=$(pacman -Qe -q | fzf --preview "pacman -Si {}")
 
       if [[ ${selected} =~ [^\s] ]]; then
         sudo pacman -Rcns ${selected}
@@ -362,9 +364,9 @@ Prompt() {
   PB='\[\e[90m\]■\[\e[91m\]■\[\e[92m\]■\[\e[93m\]■\[\e[94m\]■\[\e[95m\]■\[\e[96m\]■\[\e[97m\]■'
   CLR='\[\e[0m\]'
   if [ "$1" = "0" ]; then
-    PS1="(${CLR}${PA}${CLR} ${PB}${CLR})$(Header 0)\n$(FG CYAN)$(OSC 133 A)>$(FG DEFAULT)$(OSC 133 B) "
+    PS1="\h $(Header 0)\n$(FG CYAN)$(OSC 133 A)>$(FG DEFAULT)$(OSC 133 B) "
   else
-    PS1="(${CLR}${PA}${CLR} ${PB}${CLR})$(Header 1)\n$(FG RED)$(OSC 133 A)>$(FG DEFAULT)$(OSC 133 B) "
+    PS1="\h $(Header 1)\n$(FG RED)$(OSC 133 A)>$(FG DEFAULT)$(OSC 133 B) "
   fi
 
   # if [ -v TMUX ]; then

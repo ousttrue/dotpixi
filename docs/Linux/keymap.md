@@ -11,6 +11,10 @@ cat /sys/class/input/event19/device/modalias
 
 ```
 
+- `UpperCase !`
+- `evdev:input:b0003v258Ap002Ae*` はマッチしないぽい
+- `b大文字hex` `v大文字hex` `p大文字hex` であることに注意!
+
 ```
 # Input device ID: bus 0x3 vendor 0x258a product 0x2a version 0x111
 # Input device name: "SINO WEALTH Gaming KB "
@@ -19,13 +23,10 @@ evdev:input:b0003v258Ap002A*
   KEYBOARD_KEY_70039=leftctrl
 ```
 
-`evdev:input:b0003v258Ap002Ae*` はマッチしないぽい
-
 ```sh
 sudo systemd-hwdb update
 sudo udevadm trigger
 ```
-
 
 # ARCH
 
@@ -93,4 +94,3 @@ setxkbmap -option lv3:ralt_alt
 # xremap
 
 [最強のキーリマッパーで、ラズパイBookwormのWayland環境を最強にする | Yagifulのブログ](https://yagiful.com/blog/raspi-bookworm-xremap/)
-

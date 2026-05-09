@@ -12,6 +12,8 @@
 
 ## 0.15 @202508
 
+- io_uring
+- Grand Central Dispatch (GCD) 
 - [Zig's New Async I/O](https://kristoff.it/blog/zig-new-async-io/)
 - `usingnamespace` [Zig v0.15.1 リリース](https://zenn.dev/smallkirby/articles/feb8ceefaddbd0)
 

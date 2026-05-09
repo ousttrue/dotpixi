@@ -1,22 +1,3 @@
-# TODO
-
-- @2025 [爆速Fuzzy FinderプラグインSnacks.pickerの使い方 | eiji.page](https://eiji.page/blog/neovim-snacks-picker-intro/)
-
-- cursor 下の情報を message 表示: ga
-- spelling English
-
-```
-grep search
-- pattern
-- include
-- exclude
-
-file search
-- pattern
-- include
-- exclude
-```
-
 # version
 
 - [News - Neovim](https://neovim.io/news/)
@@ -24,7 +5,10 @@ file search
 
 ## 0.12 dev
 
+- https://vieitesss.github.io/posts/Neovim-new-config/
 - tbl_xxx の deprecated
+- package
+- nvim-treesitter
 
 ## 0.11 `202503` lsp 周り
 

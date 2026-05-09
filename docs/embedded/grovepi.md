@@ -1,0 +1,2 @@
+- @2019 [GrovePi における Dexter 社と Seeedstudio 社の違い #Raspberrypi3 - Qiita](https://qiita.com/KEINOS/items/106fe61c7bd86e832043)
+- @2015 [Raspberry Pi 2でGrovePiを使う | DevelopersIO](https://dev.classmethod.jp/articles/raspberry-pi-2-using-grovepi/)

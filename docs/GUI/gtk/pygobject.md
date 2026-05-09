@@ -1,8 +1,4 @@
----
-aliases: [pygtk]
----
-
-[[gobject-introspection]]
+[pygobject を使う #gstreamer - Qiita](https://qiita.com/ousttrue/items/52af61491fcf92c989f4)
 
 - [GitHub - GNOME/pygobject: Read-only mirror of https://gitlab.gnome.org/GNOME/pygobject](https://github.com/GNOME/pygobject)
 - [Overview — PyGObject](https://pygobject.readthedocs.io/en/latest/)
@@ -27,3 +23,8 @@ aliases: [pygtk]
 # gst
 
 - [Gtkビデオ再生 - Moonlight Lullaby](https://www.moonlight-lullaby.info/post/2020/06-29/)
+
+# stub
+
+- https://github.com/pygobject/pygobject-stubs
+- https://github.com/ousttrue/gi_tool

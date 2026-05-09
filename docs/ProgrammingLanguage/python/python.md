@@ -8,6 +8,8 @@ https://www.python.org/
 
 > 毎年10月
 
+## 3.14 @2025
+
 ## 3.13 @2024
 
 - https://docs.python.org/3.13/whatsnew/3.13.html

@@ -29,6 +29,9 @@
 | c-b |     | page up          |
 | ]d  |     | next diagnostics |
 | [d  |     | prev diagnostics |
+| gd  |     | }                |
+| gf  |     | }                |
+| gx  |     | }                |
 
 # 汎用
 

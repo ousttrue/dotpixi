@@ -2,3 +2,8 @@
 - @2020 [広告ブロックするchrome拡張を自作してみた | ぴのの社](https://okinotori.net/archives/274)
 
 # manifest
+
+# ask google
+
+- https://note.com/gamecentergx/n/n552415151d7c
+- https://www.askvg.com/disable-or-remove-ask-google-about-this-page-from-chrome-address-bar/

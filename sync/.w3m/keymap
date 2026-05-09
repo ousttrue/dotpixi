@@ -10,7 +10,7 @@ keymap 0 LINE_BEGIN
 keymap * DICT_WORD_AT
 
 keymap TAB NEXT_LINK
-keymap S-TAB PREV_LINK
+#keymap S-TAB PREV_LINK
 keymap B PREV
 keymap F NEXT
 keymap y BEGIN
@@ -18,7 +18,7 @@ keymap Y END
 
 keymap b PREV_WORD
 #keymap b PREV_PAGE
-keymap S-SPACE PREV_PAGE
+#keymap S-SPACE PREV_PAGE
 keymap i PREV_PAGE
 keymap SPC NEXT_PAGE
 keymap > UP
@@ -36,5 +36,5 @@ keymap C-k NEXT_UP
 keymap x EXTERN
 keymap ";" MARK_URL
 
-keymap c COMMAND "EXTERN; PEEK"
-keymap u COMMAND "EXTERN_LINK; PEEK_LINK"
+#keymap c COMMAND "EXTERN; PEEK"
+#keymap u COMMAND "EXTERN_LINK; PEEK_LINK"

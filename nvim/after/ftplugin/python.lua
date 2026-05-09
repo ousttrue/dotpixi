@@ -1,0 +1,7 @@
+-- vim.opt.confirm = false
+-- vim.opt.expandtab = false
+-- vim.opt.tabstop = 4
+-- vim.opt.softtabstop = 0
+-- vim.opt.shiftwidth = 4
+-- vim.g.python_recommended_style = 0
+-- vim.g.autoformat = false

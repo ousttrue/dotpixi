@@ -13,6 +13,12 @@
 
 - `LspAttach` @2023 [Neovim 0.8以降のビルトインLSPについて](https://zenn.dev/ryoppippi/articles/8aeedded34c914)
 
+# capabilities
+
+```
+:lua =vim.lsp.get_active_clients()[1].server_capabilities
+```
+
 # manual start
 
 https://neovim.io/doc/user/lsp.html

@@ -6,4 +6,4 @@ XKB_DEFAULT_OPTIONS=caps:ctrl
 XMODIFIERS=@im=fcitx
 DefaultIMModule=fcitx
 # SHELL=$HOME/.dotnet/tools/pwsh
-PATH=${HOME}/.cargo/bin:${HOME}/go/bin:${HOME}/local/bin:${HOME}/local/go/bin:${PATH}
+PATH=${HOME}/dotfiles.zig/zig-out/bin:${HOME}/.cargo/bin:${HOME}/go/bin:${HOME}/local/bin:${HOME}/local/go/bin:${PATH}
