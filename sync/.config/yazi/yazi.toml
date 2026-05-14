@@ -25,10 +25,10 @@ rules = [
   { mime = "text/*", use = "edit" },
   { mime = "video/*", use = "play" },
   # { mime = "application/json", use = "edit" },
-  { name = "*.json", use = "edit" },
+  { url = "*.json", use = "edit" },
   # Multiple openers for a single rule
-  { name = "*.html", use = ["open", "edit"] },
-  { name = "*.exe", use = ["exe"] },
+  { url = "*.html", use = ["open", "edit"] },
+  { url = "*.exe", use = ["exe"] },
 ]
 
 [plugin]
@@ -36,10 +36,10 @@ prepend_previewers = [
   # HEIC previewer
   { mime = "image/heic", run = "heic" },
   # RAF previewer
-  { name = "*.raf", run = "raf" },
+  { url = "*.raf", run = "raf" },
 ]
 append_previewers = [
   # My fallback previewer
-  { name = "*", run = "binary" },
-  { name = "*/", run = "project-folder" },
+  { url = "*", run = "binary" },
+  { url = "*/", run = "project-folder" },
 ]

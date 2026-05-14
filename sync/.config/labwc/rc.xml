@@ -23,7 +23,7 @@
 
   <core>
     <gap>10</gap>
-    <windowSwitcher show="yes" preview="yes" outlines="yes" />
+    <!-- <windowSwitcher show="yes" preview="yes" outlines="yes" /> -->
   </core>
 
   <placement>
