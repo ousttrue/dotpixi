@@ -1,6 +1,7 @@
 - [Linuxルーターを systemd-networkd に移行してみる](https://blog.ingen084.net/posts/2024-02-04-migrate-to-systemd-networkd)
+- [systemd-networkd で有線と無線をいい感じにする](https://zenn.dev/ysms/articles/37a4d5a687ad5a)
 
-`/etc/systemd/network/`
+`systemd-networkd`, `systemd-resolved`, `iwd.service` が必要なので有効にして起動しておきます。
 
 ## 固定IP
 
