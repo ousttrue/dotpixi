@@ -11,6 +11,19 @@
 sudo pacman -S flatpak xdg-desktop-portal xdg-utils
 ```
 
+# command line
+
+- https://discussion.fedoraproject.org/t/how-to-add-cli-parameter-to-flatpak-application-startup/143076
+
+```sh
+> flatpak list --app
+Name                 Application ID           Version                Branch        Installation
+Google Chrome        com.google.Chrome        148.0.7778.96-1        stable        system
+Slack                com.slack.Slack          4.49.89                stable        system
+> flatpak info --show-location com.google.Chrome
+/var/lib/flatpak/app/com.google.Chrome/x86_64/stable/XXX
+```
+
 # remote
 
 ## remotes(remote-list)

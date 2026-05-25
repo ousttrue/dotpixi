@@ -1,5 +1,10 @@
 # udev
 
+```sh
+ $ sudo udevadm hwdb --update
+ $ sudo udevadm trigger
+```
+
 - [Wayland でお好みのキーバインド - bearmini's blog](https://bearmini.hatenablog.com/entry/2023/12/03/134330)
 
 ```sh

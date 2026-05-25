@@ -2,6 +2,10 @@
 - @2022 [新マンドライン環境](https://zenn.dev/zenwerk/scraps/8d323eaa63b76d)
 - [ファイル検索ツール fd の使い方メモ](https://zenn.dev/megeton/articles/c408511c66f45d)
 
+## fastfetch
+
+## neofetch
+
 ```sh
 > neofetch
          -/oyddmdhs+:.                ousttrue@gent

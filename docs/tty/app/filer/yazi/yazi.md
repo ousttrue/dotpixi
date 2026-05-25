@@ -9,6 +9,10 @@ https://yazi-rs.github.io/
 - @2024 [【CLIファイルファインダー】yazi #初心者 - Qiita](https://qiita.com/darallium/items/ae7060ff66ff1214bcec)
 - https://zenn.dev/ring_belle/books/mac-environment/viewer/terminal-yazi
 
+# 設定
+
+- https://github.com/sxyazi/yazi/tree/main/yazi-config/preset
+
 # vim-yazi
 
 - @2025 [プラグインの引っ越し地獄から脱却！令和のVimファイラーはこれで決まり！](https://zenn.dev/1227yukimura/articles/introduce-vim-yazi)

@@ -8,12 +8,26 @@
 - @2024 [202405 | Zig 语言中文社区](https://ziglang.cc/monthly/202405/)
 - [什么是 Zig | Zig 语言圣经](https://course.ziglang.cc/)
 
+# zig manager
+
+## zv `rust`
+
+Windows動かない。
+
+## zvm `go`
+
+動かなかった・・・
+
+## zigup `zig`
+
+更新終了
+
 # Version
 
 ## 0.15 @202508
 
 - io_uring
-- Grand Central Dispatch (GCD) 
+- Grand Central Dispatch (GCD)
 - [Zig's New Async I/O](https://kristoff.it/blog/zig-new-async-io/)
 - `usingnamespace` [Zig v0.15.1 リリース](https://zenn.dev/smallkirby/articles/feb8ceefaddbd0)
 

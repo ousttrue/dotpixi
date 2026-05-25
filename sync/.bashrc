@@ -62,6 +62,7 @@ function gs {
 export PATH="$PATH:/home/ousttrue/.local/bin"
 export PATH="/home/ousttrue/local/bin:$PATH"
 export PATH="$HOME/dotfiles.zig/zig-out/bin:$PATH"
+export PATH="$HOME/.devcontainers/bin:$PATH"
 
 #
 # prompt

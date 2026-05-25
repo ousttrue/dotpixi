@@ -8,3 +8,6 @@ Slack      com.slack.Slack      4.46.99      stable      user
 
 - @2025 [flatpakのgoogle chromeをインストール｜若林たかゆき](https://note.com/wakabaya/n/nc34b3a9b177c)
 
+# chrome
+
+- [Flatpak版Chromeでホームディレクトリを閲覧できない場合の対処法｜若林たかゆき](https://note.com/wakabaya/n/n365d1ddf9748)

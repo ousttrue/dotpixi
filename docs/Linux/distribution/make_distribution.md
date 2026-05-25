@@ -1,0 +1,1 @@
+- [Linuxディストリビューションを自作したいあなたへ](https://zenn.dev/baba0119/articles/75371dc63d7eac)
