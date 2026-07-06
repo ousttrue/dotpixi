@@ -9,6 +9,8 @@
 
 - app-portage/gentoolkit
 
+## ufed
+
 ## euse
 
 - https://wiki.gentoo.org/wiki/Euse

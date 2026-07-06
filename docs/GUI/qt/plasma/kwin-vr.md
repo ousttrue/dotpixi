@@ -1,0 +1,1 @@
+- https://launchpad.net/~lightofmysoul/+archive/ubuntu/kwin-vr

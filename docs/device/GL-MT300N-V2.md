@@ -1,4 +1,4 @@
-`mango`
+`GL-MT300N-V2`, `mango`
 
 https://docs.gl-inet.com/router/jp/3/setup/mini_router/first_time_setup/
 
@@ -8,3 +8,6 @@ https://docs.gl-inet.com/router/jp/3/setup/mini_router/first_time_setup/
 ## IIJ VPN
 
 - [セットアップ手順（VPNアクセス利用） (GL-MT300N-V2)](https://manual.iij.jp/iot/devices/47994384.html)
+
+## adblock
+

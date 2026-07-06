@@ -1,10 +1,43 @@
 [ベクトルタイル仕様書](https://github.com/madefor/vector-tile-spec/blob/master/2.1/README.md)
-- https://github.com/mapbox/vector-tile-spec/blob/master/2.1/README.md
+
+- @2018 [バイナリベクトルタイルを地図ライブラリ以外で扱う #JavaScript - Qiita](https://qiita.com/cieloazul310/items/32d692a95b87b113bf35)
+
+## content-type
 
 `Conetent-Type=application/vnd.mapbox-vector-tile`
 `Conetent-Encoding=gzip`
 
-- @2018 [バイナリベクトルタイルを地図ライブラリ以外で扱う #JavaScript - Qiita](https://qiita.com/cieloazul310/items/32d692a95b87b113bf35)
+## structure
+
+```js
+Tile {
+    layers: Record<label | building | waterarea | transp | symbol |road, Layer>;
+};
+```
+
+## Layer
+
+```json
+{
+    name = 'admin',    
+    version = 2,
+    extent = 4096,
+    features = Feature[],
+}
+```
+
+## Feature
+
+```json
+{
+    geometries,
+}
+```
+
+## Geometry
+
+```
+```
 
 ## from mbtiles
 
@@ -21,6 +54,5 @@
 https://www.npmjs.com/package/mapbox-vector-tile/v/0.1.0
 
 ```ts
-import { VectorTile } from 'mapbox-vector-tile';
+import { VectorTile } from "mapbox-vector-tile";
 ```
-

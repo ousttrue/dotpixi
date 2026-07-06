@@ -1,0 +1,1 @@
+- [【24.04LTS最新版】systemd-networkd で光クロスのLinuxルーターを作る](https://blog.ingen084.net/posts/2024-07-21-hikari-cross-systemd-networkd)

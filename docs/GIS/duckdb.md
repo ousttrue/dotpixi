@@ -1,0 +1,4 @@
+- @2026 [DuckDBを試してみたら、Pandasとの相性が良くて便利だったので使い方をまとめてみた #Python - Qiita](https://qiita.com/atsushi11o7/items/d9daab9a05552fdc0579)
+- @2024 [DuckDBが思った以上に便利だった話 - CARTA TECH BLOG](https://techblog.cartaholdings.co.jp/entry/duckdb-trial)
+- @2024 [DuckDB使ってみたら便利だった件 - Speaker Deck](https://speakerdeck.com/myu65/duckdbshi-tutemitarabian-li-datutajian)
+- [DuckDB Internals: Why is DuckDB Fast? | Greybeam](https://www.greybeam.ai/blog/duckdb-internals-part-1)

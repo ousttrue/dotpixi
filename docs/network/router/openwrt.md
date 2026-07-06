@@ -22,10 +22,20 @@
 
 # mango
 
-https://manual.iij.jp/iot/devices/47994384.html
+- [セットアップ手順（VPNアクセス利用） (GL-MT300N-V2)](https://manual.iij.jp/iot/devices/47994384.html)
 
+# 10G
 
-[OpenWrt DS-LITE 各VNE事業者別 全自動構成 #openwrt - Qiita](https://qiita.com/site_u/items/b6d5097f5e3a0f91c95d)
+## promox
 
-- [1,000円のルーターにOpenWrtをインストールしDS-Liteで使えるようにする | Wi-Fiマニュアル](https://wifi-manual.net/openwrt-dslite-settings/)
-- [OpenWrtを使用したds-lite | 暇言](https://wp.hima-jin.info/openwrt-ds-lite/)
+- [TOPTONの産業用ミニPCで10Gbps対応ルーターを自作！ Proxmox VE+OpenWrtを入れてフレッツ 光クロス回線で使う【イニシャルB】 - INTERNET Watch](https://internet.watch.impress.co.jp/docs/column/shimizu/2017994.html)
+- [10Gルータを自作する #proxmox - Qiita](https://qiita.com/kitashu/items/98c505ba47dcd5979de9)
+
+## banana pi
+
+- [ y2blog » OpenWRT + Banana Pi R4 で10Gのv6プラス（MAP-E & 固定IP）ルータを構築してみる（その２：固定IP編） ](https://y2tech.net/blog/inet/building-a-10g-speed-router-with-bananapi-r4-and-openwrt-part-2-2-11122/)
+- [OpenWrt Banana Pi BPI-R4 Wi-Fi7 MLO #openwrt - Qiita](https://qiita.com/site_u/items/8214286f8e8d5ee41e65)
+
+## N150
+
+- [ミニPC(N150)+OpenWrtで10Gbpsルーターを作る - 839の日記](https://839.hateblo.jp/entry/2025/03/11/224859)

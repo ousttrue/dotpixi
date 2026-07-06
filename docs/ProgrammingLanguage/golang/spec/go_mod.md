@@ -1,3 +1,28 @@
+# GOMODULE
+
+- [GOPATHを掃除してGo Modulesに移行しよう - KAYAC engineers' blog](https://techblog.kayac.com/migration-gopath-to-go-modules)
+
+## project構成
+
+- @2020 [あなたのGoアプリ/ライブラリのパッケージ構成もっとシンプルでよくない？ | フューチャー技術ブログ](https://future-architect.github.io/articles/20200528/)
+
+## go mod init
+
+- [Tutorial: Get started with Go - The Go Programming Language](https://go.dev/doc/tutorial/getting-started)
+- @2023 [ちゃんと理解するGo言語開発環境構築：go mod initとその必要性 - Qiita](https://qiita.com/TakanoriVega/items/6d7210147c289b45298a)
+- @2021 [go mod完全に理解した](https://zenn.dev/optimisuke/articles/105feac3f8e726830f8c)
+
+```
+$ go mod init hello
+# go mod init github.com/ユーザー名/GoProject
+go.mod
+```
+
+```go.mod
+module hello
+
+go 1.19
+```
 
 [[golang]]
 

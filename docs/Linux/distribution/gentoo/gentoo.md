@@ -1,11 +1,14 @@
-[[Linux]]
-
 - [Downloads – Gentoo Linux](https://www.gentoo.org/downloads/)
+
+- eclean-kernel
+- eclean-dist
+- eclean-pkg
+- e4defrag
+- shake
 
 # WSL
 
-[[OS/Linux/wsl]]
-
+- @2025 [Gentoo Linuxを選ぶ理由と戦略](https://zenn.dev/raika_xino/articles/7190ef989c42d4)
 - [Gentoo in WSL - Gentoo Wiki](https://wiki.gentoo.org/wiki/Gentoo_in_WSL)
 - @2022 [Gentoo on WSL2](https://zenn.dev/nanasess/articles/gentoo-on-wsl2)
 

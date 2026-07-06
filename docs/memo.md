@@ -1,5 +1,6 @@
 # todo
 
+- term on sokol + imgui
 - text
 - rect
 - cube

@@ -1,0 +1,1 @@
+- @2025 [Gentoo + KDE Plasma + CachyOS-kernel + btrfsで作る高性能デスクトップ環境 #Linux - Qiita](https://qiita.com/Kanade147359/items/7d9aefafba3772a01668)

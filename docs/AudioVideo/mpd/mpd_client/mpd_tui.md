@@ -2,7 +2,11 @@
 
 # rmpc
 
-https://rmpc.mierak.dev/
+- https://rmpc.mierak.dev/
+
+# waitingroom
+
+- https://codeberg.org/meatpuppet/waitingroom
 
 # ncpmcdpp
 

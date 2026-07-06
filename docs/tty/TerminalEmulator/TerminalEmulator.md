@@ -1,20 +1,20 @@
-[[TERM]]
+- @2019 [Windows の Terminal を変えた #alacritty - Qiita](https://qiita.com/kikuchi_kentaro/items/040aa16979eab9ae0af6#alacritty)
 
-|term|platform|copymode|[[clipboard]]|ctrl-/|
-|-|-|-|-|-|
-|[[xterm]]|[[X11]]|-|?|
-|foot|[[wayland]]|?|?|
-|[[wezterm]]|[[X11]]/[[Windows]]/[[wayland]]|OK||keybind|
+# c
 
-# OpenGL
-[[TERM/TerminalEmulator/opengl_term]]
+# go
 
-# Windows
-[[windows_terminal]]
-- [Tabby - a terminal for a more modern age](https://tabby.sh/)
-- [モダンなターミナルソフト「Tabby」の紹介](https://zenn.dev/datsukan/articles/5496d45f71c925)
+- https://github.com/Mage-100/minty
+- https://github.com/iskanye/terminal-emulator
+- https://github.com/fyne-io/terminal
+- https://github.com/viktomas/gritty
+- https://github.com/nlamirault/mert
+- https://github.com/reusee/terminal
+- https://github.com/yhal003/terminal
+- https://github.com/aasm3535/spark
 
-# WebGL
-- [Rio terminal: A native and web terminal application powered by Rust, WebGPU and WebAssembly | by Raphael Amorim | Medium](https://medium.com/@raphamorim/rio-terminal-a-native-and-web-terminal-application-powered-by-rust-webgpu-and-webassembly-76d03a8c99ed)
-## xterm.js
-- hyper
+- https://dave.cheney.net/2014/08/03/tinyterm-a-silly-terminal-emulator-written-in-go
+
+# zig
+
+- https://codeberg.org/panda2code/zerotty

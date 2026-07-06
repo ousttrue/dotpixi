@@ -1,6 +1,10 @@
-[[Linux]]
-
+- @2025 [新Linuxカーネル解読室落穂拾い (1) - VA Linux エンジニアブログ ](https://www.valinux.co.jp/blog/entry/20250724)
+- @2018 [カーネルのビルド時間を短縮する技 | ガジェット好きの日記](https://mongonta.com/f277-howto-shorten-linux-kernel-build-time/)
 - @2022 [Linuxカーネルビルド大全 - Qiita](https://qiita.com/progrunner/items/d2ab0a85b3881a4b7ed8)
+
+# modprobed-db
+
+- https://wiki.gentoo.org/wiki/Modprobed-db
 
 ```sh
 $ git clone https://github.com/torvalds/linux.git # ソースコードを取得

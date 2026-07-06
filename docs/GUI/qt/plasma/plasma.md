@@ -1,5 +1,9 @@
 # version
 
+## 6.7 @202606
+
+- [KDE Plasma 6.7リリース、ユーザ待望の“画面ごとの仮想デスクトップ機能”をサポート | gihyo.jp](https://gihyo.jp/article/2026/06/daily-linux-260619)
+
 ## 6.5
 
 - https://gihyo.jp/article/2025/10/daily-linux-251022

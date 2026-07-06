@@ -1,10 +1,40 @@
-[FAQ · tmux/tmux Wiki · GitHub](https://github.com/tmux/tmux/wiki/FAQ
+- @2023 [tmuxの知られざるパワフルな機能を紹介してみる - VISASQ Dev Blog](https://tech.visasq.com/introduce-tmux-powerful-features)
+- @2023 [便利なtmuxの使い方をまとめてみる](https://zenn.dev/azunasu/articles/25d9999ca0fb96)
+
+# .tmux.conf
+
+```.tmux.conf
+unbind C-b
+set -g prefix C-l
+bind C-l send-prefix
+```
+
+- [.tmux.conf · GitHub](https://gist.github.com/disktnk/2075bc74fbc5f079657d742b808e2993)
+
+## set
+
+- [UNIX/tmux/set-optionの-gと-sと-wとset-window-option - yanor.net/wiki](https://yanor.net/wiki/?UNIX/tmux/set-option%E3%81%AE-g%E3%81%A8-s%E3%81%A8-w%E3%81%A8set-window-option)
+
+|        | session                         | global  | sever   |
+| ------ | ------------------------------- | ------- | ------- |
+|        | set-option, set                 | set -g  | set -s  |
+| window | set-window-option, set -w, setw | setw -g | setw -s |
 
 # Version
 
-## 4
+## 3.7 @2026
 
-## 3.3a
+- [Tmux 3.7 Terminal Multiplexer Released with Initial Floating Pane Support](https://linuxiac.com/tmux-3-7-terminal-multiplexer-released-with-initial-floating-pane-support/)
+
+## 3.6
+
+- [Tmux 3.6 のアップデートにスクロールバーと新しいテーマモードが追加](https://www.linux-jp.org/?p=22830)
+
+## 3.5 @2024
+
+- [tmux 3.5 release – matoken's blog](https://matoken.org/blog/2024/10/05/tmux-3-5-release/)
+
+## 3.3
 
 ## 3.2
 
@@ -40,16 +70,10 @@ set -g mode-style fg=yellow,bg=red,blink,underline
 
 # articles
 
-- @2023 [tmuxの知られざるパワフルな機能を紹介してみる - VISASQ Dev Blog](https://tech.visasq.com/introduce-tmux-powerful-features)
-- @2023 [便利なtmuxの使い方をまとめてみる](https://zenn.dev/azunasu/articles/25d9999ca0fb96)
+- [FAQ · tmux/tmux Wiki · GitHub](https://github.com/tmux/tmux/wiki/FAQ
+- https://zenn.dev/ring_belle/books/mac-environment/viewer/terminal-tmux
 
 # layout
-
-## session
-
-## window(tab)
-
-- title
 
 ## pane
 
@@ -64,40 +88,3 @@ set -g mode-style fg=yellow,bg=red,blink,underline
 ### statusline
 
 - [tmuxのペインのステータスラインにgitのブランチとかディレクトリとか表示する(プロンプトはもう古い) - Qiita](https://qiita.com/arks22/items/db8eb6a14223ce29219a)
-
-# .tmux.conf
-
-```.tmux.conf
-unbind C-b
-set -g prefix C-l
-bind C-l send-prefix
-```
-
-- [.tmux.conf · GitHub](https://gist.github.com/disktnk/2075bc74fbc5f079657d742b808e2993)
-
-## set
-
-- [UNIX/tmux/set-optionの-gと-sと-wとset-window-option - yanor.net/wiki](https://yanor.net/wiki/?UNIX/tmux/set-option%E3%81%AE-g%E3%81%A8-s%E3%81%A8-w%E3%81%A8set-window-option)
-
-|        | session                         | global  | sever   |
-| ------ | ------------------------------- | ------- | ------- |
-|        | set-option, set                 | set -g  | set -s  |
-| window | set-window-option, set -w, setw | setw -g | setw -s |
-
-## show
-
-```
-tmux show-options -g `|` grep status
-```
-
-# satusline
-
-## powerline
-
-- [【tmux】Powerlineでステータスバーをカスタマイズ | amateur engineer's blog](https://amateur-engineer-blog.com/tmux-powerline/)
-
-## window list
-
-## left / right
-
-## pane-border-status

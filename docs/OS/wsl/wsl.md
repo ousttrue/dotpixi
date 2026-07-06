@@ -1,16 +1,20 @@
-- [The Windows Subsystem for Linux is now open source - Windows Developer Blog](https://blogs.windows.com/windowsdeveloper/2025/05/19/the-windows-subsystem-for-linux-is-now-open-source/)
+# image
 
-- [WSLのWindowsのフォルダの色が見づらいのを直す - 新しいことにはウェルカム](https://www.kwbtblog.com/entry/2019/04/27/023411)
+```sh
+pwsh> fd ".vhdx" $env:LOCALAPPDATA
+```
+
+わりと大容量になる
+
+`%LOCALAPPDATA%/Packages/CanonicalGroupLimited.Ubuntu22.04LTS\_.../LocalState/ext4.vhdx` => 30G
 
 # Version
 
-## 2.4.4
+https://github.com/microsoft/WSL/releases
 
-- @2025 [ArchLinuxをWSLにインストール(2025)](https://zenn.dev/dozo/articles/a0ef464bfd77f0)
+## 2.7.3
 
-## 2.0.9
-
-- @2023 [WSL2 2.0.x正式版がこっそリリース](https://zenn.dev/dozo/articles/82e24c52e0ccdc)
+- @202604 https://github.com/microsoft/WSL/releases/tag/2.7.3
 
 # /etc/wsl.conf
 
@@ -30,6 +34,7 @@ systemd=true
 # vscode
 
 ` /mnt/c/Users/USER_NAME/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code`
+
 でインストールできる。
 
 ## error
@@ -44,12 +49,12 @@ $ code
 # startup
 
 ```bat
-wsl /bin/bash --login -c btm
+> wsl /bin/bash --login -c btm
 ```
 
 # maintenance
 
-## list --online
+## list
 
 インストール可能の一覧
 
@@ -63,7 +68,7 @@ wsl /bin/bash --login -c btm
 wsl --install Ubuntu22.04
 ```
 
-初手
+### ubuntu 初手
 
 ```sh
 sudo apt install vim git unzip
@@ -91,9 +96,3 @@ wsl --unregister Ubuntu-22.04
 image ごと消える。
 
 - @2021 [グチャグチャになった「Ubuntu on WSL2」のやり直し方 #Ubuntu - Qiita](https://qiita.com/PoodleMaster/items/b54db3608c4d343d27c4)
-
-## image
-
-わりと大容量になる
-
-%LOCALAPPDATA%/Packages/CanonicalGroupLimited.Ubuntu22.04LTS\_.../LocalState/ext4.vhdx => 30G

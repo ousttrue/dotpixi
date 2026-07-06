@@ -1,0 +1,2 @@
+- [爆速で起動する Neovim を作る #Vim - Qiita](https://qiita.com/delphinus/items/fb905e452b2de72f1a0f)
+- [あなたは多分、Neovim の本当の起動速度を知らない #neovim - Qiita](https://qiita.com/delphinus/items/7eecc1ed07627f60c288)

@@ -9,6 +9,7 @@ https://buildersbox.corp-sansan.com/entry/2020/07/29/113000
 [GitHub - jmigpin/editor: Source code editor in pure Go.](https://github.com/jmigpin/editor)
 
 # vi binding
+
 [GitHub - manojVivek/go-vim: A vi editor implementation in Golang.](https://github.com/manojVivek/go-vim)
 
 [GitHub - bkthomps/Ven: Vi Enhanced. A text editor which is an enhancement to vi, and is similar to vim, but written in Go.](https://github.com/bkthomps/Ven)
