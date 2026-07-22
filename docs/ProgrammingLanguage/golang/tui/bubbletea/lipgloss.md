@@ -1,8 +1,14 @@
 [lipgloss package - github.com/charmbracelet/lipgloss - Go Packages](https://pkg.go.dev/github.com/charmbracelet/lipgloss)
 
+# version
+
+## v2
+
+## v1
+
 - @2023 [リッチなターミナル描画を実現！ Lip Glossのススメ(ざっくりできること編)](https://zenn.dev/kurusugawa/articles/6cd32c4ab59d58)
 
-# Style
+### Style
 
 - https://zenn.dev/kou_pg_0131/articles/charm-log-introduction
 
@@ -20,6 +26,6 @@ var style = lipgloss.NewStyle().
 fmt.Println(style.Render("Hello, kitty"))
 ```
 
-# Log
+### Log
 
 - [Charm 製の Go ロギングライブラリ「Log」を試してみる](https://zenn.dev/kou_pg_0131/articles/charm-log-introduction)

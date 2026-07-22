@@ -1,3 +1,5 @@
+- https://github.com/charmbracelet/bubbletea-app-template/blob/main/main.go
+
 [bubbletea/examples at master · charmbracelet/bubbletea · GitHub](https://github.com/charmbracelet/bubbletea/tree/master/examples)
 
 # examples

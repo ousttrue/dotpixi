@@ -25,15 +25,13 @@ https://kid3.sourceforge.io/kid3_en.html#frame-list
 - https://zenn.dev/kjumanenobikto/articles/368a3b08269f8c
 - https://eleken.y-lab.org/report/other/mp3tags.shtml
 
-# tui
-
-## python
+# python
 
 - https://github.com/sudormrfbin/clid
 
 - https://mutagen.readthedocs.io/en/latest/
 
-## foobar2000
+# foobar2000
 
 - https://foobar2000.xrea.jp/?ID3v2+tag+support+%E3%81%A4%E3%81%8B%E3%81%84%E3%81%8B%E3%81%9F
 
@@ -43,7 +41,12 @@ https://kid3.sourceforge.io/kid3_en.html#frame-list
 
 - https://www.mp3tag.de/en/
 
-## nvim
+# nvim
 
 https://gitlab.com/itaranto/id3.nvim
 
+# golang
+
+- https://pkg.go.dev/github.com/bobertlo/go-id3/id3
+- https://pkg.go.dev/github.com/bogem/id3v2/v2
+- https://github.com/dhowden/tag

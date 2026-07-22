@@ -70,3 +70,7 @@ https://wiki.gentoo.org/wiki/Project:GURU
 eselect repository enable guru
 emaint sync -r guru
 ```
+
+# TUI
+
+- https://github.com/dsafxP/carnage

@@ -2,6 +2,7 @@
 
 - https://www.sankeisha.com/iroha/booksize
 - [本棚（単行本）のサイズ | 一級建築士のリノベーション、耐震診断、間取り、設計、住宅の話](https://www.forma-fae.com/architect/20170124)
+- [本の収納に最適なダンボール箱のサイズは390mm×225mm×155mmかもしれない｜杉本＠むにゅ10号](https://note.com/longfish801/n/n0df1f7a5b428)
 
 |         | h mm | d mm |
 | ------- | ---- | ---- |

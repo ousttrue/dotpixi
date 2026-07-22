@@ -1,3 +1,7 @@
+https://github.com/fhs/gompd
+
+- https://pkg.go.dev/github.com/fhs/gompd/v2/mpd
+
 ## pms (Practical Music Search)
 
 https://github.com/kimtore/pms
@@ -7,7 +11,7 @@ https://github.com/kimtore/pms
 
 ## jmmpc
 
-`simple` https://github.com/Jaidenmagnan/jmmpc
+`simple` `bubbletea v1` https://github.com/Jaidenmagnan/jmmpc
 
 ```go
 	conn, err := mpd.Dial("tcp", "localhost:6600")
@@ -15,24 +19,28 @@ https://github.com/kimtore/pms
 
 ## kato
 
-`unix` https://github.com/pspiagicw/kato
+`unix` `bubbletea v0` https://github.com/pspiagicw/kato
 
 ## mpcc
 
-[自作音楽プレーヤーの音飛びがなぜ起きていたか](https://zenn.dev/mattn/articles/2c11c179e4dd811f6d7f)
+https://github.com/mattn/mpcc
+
+- [自作音楽プレーヤーの音飛びがなぜ起きていたか](https://zenn.dev/mattn/articles/2c11c179e4dd811f6d7f)
 
 ## mpcube
 
-`ずれる`
+ずれる
 
-https://github.com/paulchambaz/mpcube
+`bubbletea v1` https://github.com/paulchambaz/mpcube
 
 ## termusic
 
-https://github.com/riteshshukladev/termusic
+downloader
+
+`bubbletea v1` https://github.com/riteshshukladev/termusic
 
 ## gomp
 
 local mpd 用 ?
 
-https://github.com/akurdunkar/gomp
+`tcell` https://github.com/akurdunkar/gomp
