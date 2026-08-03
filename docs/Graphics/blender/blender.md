@@ -1,5 +1,11 @@
 # Version
 
+## 5.2LTS @2026
+
+## 5.1 @2026
+
+- https://gamemakers.jp/article/2026_03_18_133711/
+
 ## 4.2
 
 - https://developer.blender.org/docs/release_notes/4.2/

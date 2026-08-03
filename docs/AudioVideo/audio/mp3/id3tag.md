@@ -22,8 +22,8 @@ https://kid3.sourceforge.io/kid3_en.html#frame-list
 
 # format
 
-- https://zenn.dev/kjumanenobikto/articles/368a3b08269f8c
-- https://eleken.y-lab.org/report/other/mp3tags.shtml
+- `v1` `v2` [MP3ファイルのタグについて (+MP4)](https://eleken.y-lab.org/report/other/mp3tags.shtml)
+- `v2` [mp3を読む ～バイナリからID3v2タグを見てみよう～](https://zenn.dev/kjumanenobikto/articles/368a3b08269f8c)
 
 # python
 

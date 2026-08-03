@@ -18,3 +18,4 @@ nvim_buf_set_extmark({buffer}, {ns_id}, {line}, {col}, {opts})
 
 - [Neovimでバッファを縞模様にする](https://zenn.dev/notomo/articles/neovim-zebra-highlight)
 
+# osc8

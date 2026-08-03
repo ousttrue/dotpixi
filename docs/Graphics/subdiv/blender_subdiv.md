@@ -7,3 +7,11 @@ fbx はできるぽい
 ## usd
 
 https://projects.blender.org/blender/blender/pulls/113267
+
+# 三角形からの復元
+
+## decimate
+
+## metaseq
+
+https://www.metaseq.net/software/unsubdivide.html

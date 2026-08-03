@@ -9,15 +9,16 @@ https://kmiya-culti.github.io/RLogin/ctrlcode.html#OSC
 
 - https://manpages.ubuntu.com/manpages/noble/ja/man4/console_codes.4.html
 
-|       |                   |         |
-| ----- | ----------------- | ------- |
-| 0,1,2 | set wndow title   |         |
-| 4     | set color pallete |         |
-| 7     | pwd               | wezterm |
-| 10,11 | f                 |         |
-| 52    | clipboard         |         |
-| 133   | prompt position   | wezterm |
-| 1337  | set user var      | wezterm |
+|       |                   |          |
+| ----- | ----------------- | -------- |
+| 0,1,2 | set wndow title   |          |
+| 4     | set color pallete |          |
+| 7     | pwd               | wezterm  |
+| 8     | hyperlinks        | tmux-3.4 |
+| 10,11 | f                 |          |
+| 52    | clipboard         |          |
+| 133   | prompt position   | wezterm  |
+| 1337  | set user var      | wezterm  |
 
 # <OSC> = `{0x1B}{0x5D}`(<ESC>])
 

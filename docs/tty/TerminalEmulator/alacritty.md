@@ -20,3 +20,15 @@ https://alacritty.org/changelog.html
 # yml => toml
 
 `$env:APPDATA/alacritty/alacritty.yml`
+
+# keybinding
+
+"<C-/>"
+
+```toml
+# https://github.com/alacritty/alacritty/issues/7608
+[[keyboard.bindings]]
+key = "Slash"
+mods = "Control"
+chars   = "\u001f"
+```
