@@ -1,3 +1,5 @@
+# gompd
+
 https://github.com/fhs/gompd
 
 - https://pkg.go.dev/github.com/fhs/gompd/v2/mpd
@@ -44,3 +46,17 @@ downloader
 local mpd 用 ?
 
 `tcell` https://github.com/akurdunkar/gomp
+
+## mpd-brainz
+
+https://github.com/sav/mpd-brainz
+
+## ymuse
+
+https://github.com/yktoo/ymuse
+
+# go-mpdclient
+
+https://github.com/vinymeuh/go-mpdclient
+
+
