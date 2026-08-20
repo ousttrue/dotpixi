@@ -2,9 +2,13 @@ https://www.winehq.org/
 
 # version
 
-## 10.0
+## 11.0 @2026
 
-- @2025 [「Wine 10.0」がリリース ～「ARM64EC」と高DPIスケーリングに対応 - 窓の杜](https://forest.watch.impress.co.jp/docs/news/1656326.html)
+- [Wine 11.0が変えるWindowsからの脱出劇｜情報の灯台](https://note.com/joho_no_todai/n/n2a55013a4179)
+
+## 10.0 @2025
+
+- [「Wine 10.0」がリリース ～「ARM64EC」と高DPIスケーリングに対応 - 窓の杜](https://forest.watch.impress.co.jp/docs/news/1656326.html)
 
 ## 5.5
 
