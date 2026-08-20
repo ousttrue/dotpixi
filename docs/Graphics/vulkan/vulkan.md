@@ -23,6 +23,8 @@ https://docs.vulkan.org/features/latest/features/proposals/VK_VERSION_1_4.html
 ## 1.3
 
 - @2022 [Vulkan 1.3がリリース。新追加機能はオプションではなく実装を義務付け - PC Watch](https://pc.watch.impress.co.jp/docs/news/1383547.html)
+- @2022 `Dynamic Rendering` [Vulkan 1.3のDynamic Renderingを使ってみた](https://zenn.dev/nishiki/articles/cbff357553ae0c)
+  - `beginRenderPass()` => `beginRendering()`
 
 ## 1.2
 

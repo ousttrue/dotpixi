@@ -1,7 +1,29 @@
+https://ufcpp.net/search?words=span
 
-- @2020 [(C#) List[T]からSpan[T]を引き抜いて高速化 - ネコのために鐘は鳴る](https://ikorin2.hatenablog.jp/entry/2020/04/13/131614)
-- @2019 [[C#] Span[T]構造体からref Tを取得する方法の違い #C# - Qiita](https://qiita.com/kenichiuda/items/9789678bfa1d35f9f303)
-- @2017 [Span構造体 - C によるプログラミング入門 | ++C++; // 未確認飛行 C](https://ufcpp.net/study/csharp/resource/span/)
+# cs
 
-# ref struct
-- @2017 [ref構造体 - C# によるプログラミング入門 | ++C++; // 未確認飛行 C](https://ufcpp.net/study/csharp/resource/refstruct/)
+## 14 .NET9
+
+- @2025 [C# 14 の破壊的変更点(First-class Span) | ++C++; // 未確認飛行 C ブログ](https://ufcpp.net/blog/2025/10/first-class-span-breaking-change/)
+- @2025 [First-class な Span 型 | ++C++; // 未確認飛行 C ブログ](https://ufcpp.net/blog/2025/1/first-class-span/)
+
+## 13
+
+- @2024 [ファーストクラスな Span 型 | ++C++; // 未確認飛行 C ブログ](https://ufcpp.net/blog/2024/2/first-class-span/)
+
+## 12
+
+- @2023 [【C# 12 候補】params Span、改め、params ReadOnlySpan | ++C++; // 未確認飛行 C ブログ](https://ufcpp.net/blog/2023/2/params-ros/)
+
+## 11
+
+- @2022 [【C# 11 候補】params Span | ++C++; // 未確認飛行 C ブログ](https://ufcpp.net/blog/2022/2/params-span/)
+
+## 9 .NET5
+
+- @2020 [(C#) ListからSpanを引き抜いて高速化 - ネコのために鐘は鳴る](https://ikorin2.hatenablog.jp/entry/2020/04/13/131614)
+
+## 7.2
+
+- `Span<T>` や `ReadOnlySpan<T>` が導入
+- [ref構造体 - C# によるプログラミング入門 | ++C++; // 未確認飛行 C](https://ufcpp.net/study/csharp/resource/refstruct/)

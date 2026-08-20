@@ -1,4 +1,4 @@
-# udev
+# udev /etc/udev/hwdb.d
 
 ```sh
  $ sudo udevadm hwdb --update
@@ -32,6 +32,13 @@ evdev:input:b0003v258Ap002A*
 sudo systemd-hwdb update
 sudo udevadm trigger
 ```
+
+| vendor   |                               |                           |
+| -------- | ----------------------------- | ------------------------- |
+| lenovo   | b0003v17EFp619E*              |                           |
+| Keychron | b0003v3434p071A*              |                           |
+| skb      | b0003v1C4Fp0027*              |                           |
+| apple    | b0003v05ACp029c version 0x110 | Apple Inc. Magic Keyboard |
 
 # ARCH
 
