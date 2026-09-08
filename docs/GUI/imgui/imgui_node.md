@@ -1,4 +1,2 @@
-[[imgui]]
-
-# ImNodes
+- [imnodes: writing an immediate mode node editor library // My thought repository](https://nelari.us/post/imnodes/)
 - [Introduction to ImNodes (Node Editor) | HackLAB](https://www.geeks3d.com/hacklab/20210913/introduction-to-imnodes-node-editor/)

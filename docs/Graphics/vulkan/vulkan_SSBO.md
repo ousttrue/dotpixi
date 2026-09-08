@@ -1,0 +1,1 @@
+- @2016 [モダンな OpenGL で頂点モーフ - SEGA TECH Blog](https://techblog.sega.jp/entry/2016/10/27/140454)

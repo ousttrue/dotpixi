@@ -11,3 +11,9 @@ https://www.freedesktop.org/software/systemd/man/latest/systemd.slice.html
 ## app.slice
 
 ## background.slice
+
+# environment variables
+
+```sh
+$ systemctl --user show-environment
+```

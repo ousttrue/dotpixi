@@ -1,4 +1,16 @@
-# stymee/SilkVulkanTutorial
+https://vulkan.org/tools
+
+# Vortice.Vulkan
+
+https://github.com/amerkoleci/Vortice.Vulkan
+
+`Stride(Xenko)` の backend.
+
+- https://github.com/amerkoleci/Vortice.Vulkan/tree/main/src/samples
+
+# Silk.NET
+
+## stymee/SilkVulkanTutorial
 
 `.NET7` https://github.com/stymee/SilkVulkanTutorial
 
@@ -11,11 +23,12 @@
 > dotnet run --project .\Source\Sandbox02ImGui\Sandbox02ImGui.csproj
 ```
 
-# dfkeenan/SilkVulkanTutorial
+## dfkeenan/SilkVulkanTutorial
 
 `.NET8` https://github.com/dfkeenan/SilkVulkanTutorial
 
 vscode からなら動く。`dotnet run` だとうまくいかない？
+shader 等のリソースの相対パス。
 
 |                      |          |
 | -------------------- | -------- |
@@ -34,3 +47,9 @@ vscode からなら動く。`dotnet run` だとうまくいかない？
 | 13                   |          |
 | 14_CommandBuffers    | window   |
 | 15_HelloTriangle     | triangle |
+
+# Vulkan.NET
+
+`Evergine` の backend.
+
+https://github.com/EvergineTeam/Vulkan.NET
