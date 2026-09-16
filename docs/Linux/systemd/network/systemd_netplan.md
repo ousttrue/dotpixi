@@ -1,0 +1,2 @@
+- [ubuntuでのnetplanからsystemd-networkdへの移行](https://zenn.dev/oto/scraps/98c846e6bb3fe6)
+- [Ubuntu netplan, systemd-networkd, systemd-resolved の設定 #Ubuntu - Qiita](https://qiita.com/to_su/items/9b6eae54e59cd3699ae2)
