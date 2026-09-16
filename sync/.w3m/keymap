@@ -28,7 +28,7 @@ keymap j MOVE_DOWN1
 keymap k MOVE_UP1
 #keymap H NEXT_LEFT
 keymap C-m GOTO_LINK
-keymap C-j NEXT_DOWN 
+#keymap C-j NEXT_DOWN 
 # same enter
 keymap C-k NEXT_UP
 #keymap L NEXT_RIGHT

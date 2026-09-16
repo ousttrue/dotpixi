@@ -16,6 +16,8 @@
 
 # build
 
+- https://github.com/buty4649/mruby-build
+
 > require Ruby 2.5 or late
 
 - [mruby/compile.md at master · mruby/mruby · GitHub](https://github.com/mruby/mruby/blob/master/doc/guides/compile.md)

@@ -10,6 +10,8 @@ https://steamdeck-images.steamos.cloud/steamdeck/
 
 ## 3.9 @2026
 
+- [Valve、SteamOS 3.9プレビューを公開——Linux 7.2カーネルとKDE Plasma 6.7を採用 — BigGo ファイナンス](https://finance.biggo.jp/news/12541384-4b5a-48c1-afd3-3c67535ccf07)
+
 - https://www.reddit.com/r/SteamOS/comments/1pw3oep/steamos_39/?tl=ja
 - https://www.reddit.com/r/SteamOS/comments/1pxeu0h/i_finally_installed_steamos_39/?tl=ja
 

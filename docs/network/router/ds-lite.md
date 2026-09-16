@@ -8,3 +8,5 @@
 
 - [1,000円のルーターにOpenWrtをインストールしDS-Liteで使えるようにする | Wi-Fiマニュアル](https://wifi-manual.net/openwrt-dslite-settings/)
 - [OpenWrtを使用したds-lite | 暇言](https://wp.hima-jin.info/openwrt-ds-lite/)
+
+- [LinuxルーターでのDS-Lite設定 | ktaka's blog](https://ktaka.blog.ccmp.jp/2020/05/linuxds-lite.html/)

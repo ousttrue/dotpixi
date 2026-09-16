@@ -34,3 +34,22 @@ https://www.raspberrypi.com/
 ## 3B+ @2018
 
 ## 3B @2016
+
+# 4 と 5
+
+- [Raspberry Pi 5 と Pi 4 の違いを徹底比較｜スペック・性能・できること【2026年版】](https://www.issoh.co.jp/tech/details/8373/)
+- [最新版Raspberry Pi 5レビュー、ラズパイ4との違い](https://raspi-school.com/raspberry-pi-5-review/)
+
+# cooler
+
+- [Raspberry Pi 5に純正アクティブクーラーは必須なのか？クーラーの有無で温度がどう変化するのか検証してみた - GIGAZINE](https://gigazine.net/news/20231103-raspberry-pi-5-install-thermal/)
+- [Raspberry Pi 5向け最強で完全なファンレスケース - 銅ヒートパイプ冷却技術で56°C安定](https://techietechnology.co.jp/2025/04/24/the-most-powerful-and-complete-fanless-case-for-raspberry-pi-5/)
+- [Raspberry Pi 5用公式アクティブクーラーの取り付け方法 #Fan - Qiita](https://qiita.com/tamamori/items/10d5ccd63a60bd9c6ae1)
+
+> になります。そしてサーマルスロットリングが発生します。
+> 高負荷時に冷却なしでは、すぐに85°C
+> アイドル状態でも65°C
+
+- [ラズパイ4のCPUを50℃以下で運用可能なICE Tower Cooling Fan | ラズパイダ](https://raspida.com/ice-tower-cooling-fan/)
+- [Raspberry Pi ４用のヒートシンクやクーラーを比較してみた – Seeed Bazaar JP](https://jp.seeedstudio.com/blog/2019/11/18/raspberry-pi-4-cooling-test-compare-heat-sinks-and-cooling-fan/)
+

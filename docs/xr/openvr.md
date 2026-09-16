@@ -1,5 +1,7 @@
 # steamvr (openvr)
 
+- https://github.com/elvissteinjr/DesktopPlus
+
 https://github.com/ValveSoftware/openvr
 https://github.com/ValveSoftware/openvr/wiki/API-Documentation
 https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings

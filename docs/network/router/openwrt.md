@@ -39,3 +39,7 @@
 ## N150
 
 - [ミニPC(N150)+OpenWrtで10Gbpsルーターを作る - 839の日記](https://839.hateblo.jp/entry/2025/03/11/224859)
+
+## LXD
+
+- [市販品のUSB-Wifi ドングルを使って５GHzのAPをつくる - それマグで！](https://takuya-1st.hatenablog.jp/entry/2023/03/27/032755)

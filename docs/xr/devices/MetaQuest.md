@@ -3,6 +3,10 @@ aliases:
   - quest
 ---
 
+# Quest 設定アプリ
+
+- https://key.kubiwa.moe/notes/aomulftpxk3gl0n1
+
 [[QuestMobileSDK]]
 
 # Version
