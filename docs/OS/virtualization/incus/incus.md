@@ -45,4 +45,6 @@ $ incus list
 ## openwrt
 
 - [Incus コンテナ内で OpenWRT を動かしルーターにする #container - Qiita](https://qiita.com/assi-dangomushi/items/f797537af5ace9f6a406)
+- [市販品のUSB-Wifi ドングルを使って５GHzのAPをつくる - それマグで！](https://takuya-1st.hatenablog.jp/entry/2023/03/27/032755)
+- [ProxmoxVE 9.1でOpenWrtのLXCを利用する](https://zenn.dev/ueguch/articles/d4d84617a5f1c5#%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%81%AE%E4%BD%9C%E6%88%90)
 
