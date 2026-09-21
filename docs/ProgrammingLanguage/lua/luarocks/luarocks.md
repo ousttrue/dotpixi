@@ -124,3 +124,13 @@ $ make install
 https://qiita.com/suzuryo3893/items/bd7685ea49ac81bad6f3
 
 
+- [GitHub - luarocks/hererocks: Python script for installing Lua/LuaJIT and LuaRocks into a local directory](https://github.com/luarocks/hererocks)
+- [Windows環境にluarocksをインストールするにはhererocksが便利 | Birth, Gaming, Gaming, Death](https://bggd.github.io/2019/12/20/hererocks-on-windows.html)
+
+`$ pip install hererocks`
+
+```
+$ pip install git+https://github.com/luarocks/hererocks\
+```
+
+`$ hererocks.exe lua -l latest -r latest --target vs`

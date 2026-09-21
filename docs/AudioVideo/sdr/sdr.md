@@ -2,7 +2,13 @@
 
 - @2026 [SDRが変えた受信機の世界｜LoPRA Lab](https://note.com/lopra_lab/n/n82524a2b67f0)
 
-- https://ojisankoubou.web.fc2.com/sdr-1/index.html
+- [ＡＭラジオ　ＳＤＲ－１　( Software Defined Radio )](https://ojisankoubou.web.fc2.com/sdr-1/index.html)
+
+## linux
+
+- [LinuxサーバーにRTL-SDR v4を挿して、どこからでも短波受信できる環境を作る | achiyochi.jp](https://achiyochi.jp/iot/rtl-sdr-v4-linux/)
+- `FM` [Rocky Linux 10でSDRとgqrxを使ってNHK‑FM (82.5 MHz) を聴く│システムガーディアン株式会社](https://sys-guard.com/post-20573/)
+- https://github.com/nihsok/sdr
 
 ## rtl
 

@@ -42,3 +42,12 @@ IKEA、Third-Reality、Sonoff
 # CC2531
 
 - [Raspberry PiとNode-redで、Hueブリッジ（Zigbee Hub）を作ってみた（スマホ＆Alexa操作対応） | スマートホーム×DIY](https://www.smarthome-diy.info/blog/developper/smarthome/2020/06/1382/)
+
+# EFR32MG21
+
+- https://community.home-assistant.io/t/cant-get-itead-sonoff-zigbee-3-0-usb-dongle-plus-model-zbdongle-e-efr32mg21-variant-to-work-with-neither-zha-nor-zigbee2mqtt/452441/4
+- https://community.home-assistant.io/t/home-assistant-supervised-on-incus-lxc-a-lightweight-installation-for-the-post-ai-economy/996251
+
+```
+incus config device add homeassistant zigbee-usb usb vendorid=1a86 productid=55d4
+```

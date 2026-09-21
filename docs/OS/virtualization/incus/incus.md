@@ -1,7 +1,7 @@
 LXD の Fork.
 コマンドもだいたい同じ？
 
-https://incus-ja.readthedocs.io/ja/latest/
+[Incus ドキュメント](https://incus-ja.readthedocs.io/ja/latest/)
 
 LXD は Canonical 傘下。Incus はコミュニティ主導。
 
@@ -19,6 +19,16 @@ LXD は Canonical 傘下。Incus はコミュニティ主導。
 
 - [第571回　LXD 3.0のストレージ設定 | gihyo.jp](https://gihyo.jp/admin/serial/01/ubuntu-recipe/0571)
 
+# instance
+
+## create
+
+## start
+
+## stop
+
+## delete
+
 ## list
 
 ```sh
@@ -28,16 +38,6 @@ $ incus storage list
 +---------+--------+-------------+---------+---------+
 | default | dir    |             | 2       | CREATED |
 +---------+--------+-------------+---------+---------+
-```
-
-# image
-
-# instance
-
-## list
-
-```sh
-$ incus list
 ```
 
 # image

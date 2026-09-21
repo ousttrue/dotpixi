@@ -2,11 +2,6 @@
 
 - [Matter ローカル制御 2026：クラウド不要のスマートホーム | PromptQuorum](https://www.promptquorum.com/ja/smart-home/matter-local-control-guide)
 
-# OTBR(OpenThread Border Router)
-
-- [OpenThread Border Router](https://openthread.io/guides/border-router?hl=ja)
-- [【2026年】OpenThread Border Router構築ガイド｜Raspberry Pi で Thread ネットワーク | 自作PC関連記事 - 自作.com](https://jisaku.com/posts/openthread-border-router)
-
 # dongle
 
 - Nordic Semiconductor nRF52840-Dongle

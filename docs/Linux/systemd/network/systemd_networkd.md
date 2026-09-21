@@ -18,6 +18,9 @@ Name=enp0s*
 Address=10.1.10.9/24
 Gateway=10.1.10.1
 DNS=10.1.10.1
+# https://github.com/systemd/systemd/issues/6359
+LinkLocalAddressing = no
+IPv6AcceptRA = no
 ```
 
 ```sh

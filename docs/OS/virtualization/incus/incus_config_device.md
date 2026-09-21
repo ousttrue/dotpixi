@@ -8,3 +8,6 @@ lxc config device add wrt-01 wifi nic nictype=physical parent=wlan1 name=wlan0
 lxc config device add wrt-01 myvlan nic nictype=macvlan parent=eth0
 ```
 
+## USB
+
+https://jj2yyk.forums.gr.jp/2026/07/17/usb-hat-mmdvm-setup-guide/
