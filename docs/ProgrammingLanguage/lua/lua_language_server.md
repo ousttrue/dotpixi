@@ -1,7 +1,29 @@
 # vscode
 
+`.luarc.json`
+
+```json
+i{
+  "workspace.library": ["path/to/library/directory"],
+  "runtime.version": "Lua 5.3",
+  "hint.enable": false
+}
+```
+
+👆
+👇
+
 - [GitHub - sumneko/vscode-lua: Release lua-language-server for VSCode](https://github.com/sumneko/vscode-lua)
-  `.vscode/settings.json`
+
+`.vscode/settings.json`
+
+```json
+i{
+  "LUA.workspace.library": ["path/to/library/directory"],
+  "LUA.runtime.version": "Lua 5.3",
+  "LUA.hint.enable": false
+}
+```
 
 ```json
 {
@@ -11,7 +33,9 @@
 }
 ```
 
-# lspconfig
+# nvim
+
+## lspconfig
 
 - [nvim-lspconfig/server_configurations.md at master · neovim/nvim-lspconfig · GitHub](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls)
 

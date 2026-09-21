@@ -1,19 +1,43 @@
-コマンドライン引数。
-`love.dll` が最初から分かれているので、起動スクリプトがあればデバッグできそう？
+# lua-local で break できる
 
-- `src/modules/love/love.jitsetup.lua`
-- `src/modules/love/boot.lua`
+- https://zenn.dev/m9m/scraps/52a88a63cdd1f4
 
-改造しないと厳しそう？
+`./vscode/launch.json`
 
-- [Love as Lua module - LÖVE](https://love2d.org/forums/viewtopic.php?t=86145)
+- program: love.exe
+- scriptRoots
 
-slandalone lua の `-e` オプションを追加するのが良いか？
+があれば動く。
 
-`lua local-debug` でデバッグするのがよい。
-
-- [GitHub - tomblind/local-lua-debugger-vscode: Local Lua Debugger for VSCode](https://github.com/tomblind/local-lua-debugger-vscode)
+- cwd を指定することで scriptRoots を省略することもできる
 
 ```lua
 require("lldebugger").start()
 ```
+
+```json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "hello",
+            "type": "lua-local",
+            "request": "launch",
+            "program": {
+                "command": "${workspaceFolder}/love2d/love.exe"
+            },
+            "cwd": "${workspaceFolder}/src/hello",
+            "args": [
+                "."
+            ],
+            // "scriptRoots": [
+            //     "."
+            // ]
+        }
+    ]
+}
+```
+

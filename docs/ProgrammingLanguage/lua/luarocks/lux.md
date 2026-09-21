@@ -1,1 +1,1 @@
-https://nvim-neorocks.github.io/
+https://github.com/lumen-oss/lux

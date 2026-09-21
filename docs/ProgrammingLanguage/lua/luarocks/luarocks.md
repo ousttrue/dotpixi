@@ -70,7 +70,7 @@ https://github.com/luarocks/luarocks/wiki/make-manifest
 
 - [Installation instructions for Windows · luarocks/luarocks Wiki · GitHub](https://github.com/luarocks/luarocks/wiki/Installation-instructions-for-Windows)
 
-- [File locations · luarocks/luarocks Wiki · GitHub](https://github.com/luarocks/luarocks/wiki/File-locations)
+- https://github.com/luarocks/luarocks/blob/main/docs/file_locations.md
 
 ```sh
 > luarocks path
@@ -123,13 +123,4 @@ $ make install
 
 https://qiita.com/suzuryo3893/items/bd7685ea49ac81bad6f3
 
-# hererocks
 
-- [GitHub - luarocks/hererocks: Python script for installing Lua/LuaJIT and LuaRocks into a local directory](https://github.com/luarocks/hererocks)
-- [Windows環境にluarocksをインストールするにはhererocksが便利 | Birth, Gaming, Gaming, Death](https://bggd.github.io/2019/12/20/hererocks-on-windows.html)
-
-`$ pip install hererocks`
-master
-``$ pip install git+https://github.com/luarocks/hererocks`
-
-`$ hererocks.exe lua -l latest -r latest --target vs`
