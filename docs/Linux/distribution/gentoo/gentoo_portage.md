@@ -1,41 +1,22 @@
 - https://wiki.gentoo.org/wiki/Gentoo_Cheat_Sheet/ja
 
-# keyword
+# install 後
 
-```
---autounmask=y --autounmask-write
-```
-# gentoolkit
+## gentoolkit
 
 - app-portage/gentoolkit
 
-## ufed
-
-## euse
+### euse
 
 - https://wiki.gentoo.org/wiki/Euse
-
-## equery
-
-- https://wiki.gentoo.org/wiki/Equery/ja
-
-# install 後
-
-## git化
-
-- [GentooのPortageのアップデートをrsyncからgitにした](https://zenn.dev/minervajuppiter/articles/a1d15e757ef0f8)
-- eselect repository
-- https://wiki.gentoo.org/wiki/Eselect/Repository
-
-`/var/db/repos/gentoo` に clone される。
-
-## eix
 
 ```sh
 euse -E sqlite -p eix
 ```
 
-## cron daily
+## eix
+
+### cron daily[obsolete] => systemd
 
 `/etc/cron.daily/sync.sh`
 
@@ -44,31 +25,33 @@ euse -E sqlite -p eix
 eix-sync
 ```
 
-# unmet requirements.
-
-https://wiki.gentoo.org/wiki/Required_USE_flags
-
-# use flags
-
-# overlay
-
-https://wiki.gentoo.org/wiki/Project:Overlays/Overlays_guide
-
-### mirror
+## git化
 
 https://wiki.gentoo.org/wiki/Portage_with_Git
 
-- [::gentoo のGit mirrorを使う :: 切腹倶楽部](https://seppuku.club/unix-like/gentoo-git-mirror/)
+`/var/db/repos/gentoo` に clone される。
+`/var/db/repos/gentoo` を空にしておかないと途中でエラーになるので注意。
+上記手順に書いてある(後に書いてある)
 
 ## guru
 
-https://wiki.gentoo.org/wiki/Project:GURU
+- eselect repository
+- https://wiki.gentoo.org/wiki/Eselect/Repository
+- https://wiki.gentoo.org/wiki/Project:GURU
 
 - https://github.com/gentoo/guru
 
 ```sh
 eselect repository enable guru
 emaint sync -r guru
+```
+
+# unmask
+
+## keyword
+
+```
+--autounmask=y --autounmask-write
 ```
 
 # TUI

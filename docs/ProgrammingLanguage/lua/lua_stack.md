@@ -1,6 +1,5 @@
-[[lua]]
-
 # stack size
+
 ```c
 int stackSize = lua_gettop(L);
 ```

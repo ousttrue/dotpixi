@@ -3,6 +3,16 @@
 
 `~/.local/share/flatpak`
 
+# search path
+
+`wofi` など
+
+- https://github.com/omacom/omarchy/issues/234
+
+```sh
+export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share/applications:/var/lib/flatpak/exports/share/applications:$XDG_DATA_DIRS"
+```
+
 # install
 
 ## arch

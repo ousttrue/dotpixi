@@ -50,3 +50,9 @@ https://gitlab.com/itaranto/id3.nvim
 - https://pkg.go.dev/github.com/bobertlo/go-id3/id3
 - https://pkg.go.dev/github.com/bogem/id3v2/v2
 - https://github.com/dhowden/tag
+
+# windows
+
+- https://github.com/haseta2002/STEP_J-h
+- https://forest.watch.impress.co.jp/docs/review/1009244.html
+

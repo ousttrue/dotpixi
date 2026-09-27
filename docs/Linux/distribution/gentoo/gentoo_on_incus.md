@@ -1,0 +1,1 @@
+- [Incus: Gentoo Linux を使う #Gentoo - Qiita](https://qiita.com/ekzemplaro/items/2f05b00db27a4aca17b9)
